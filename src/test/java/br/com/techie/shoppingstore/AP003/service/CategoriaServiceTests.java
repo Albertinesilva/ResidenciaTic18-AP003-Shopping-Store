@@ -19,15 +19,19 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import br.com.techie.shoppingstore.AP003.dto.form.CategoriaForm;
 import br.com.techie.shoppingstore.AP003.model.Categoria;
 import br.com.techie.shoppingstore.AP003.repository.CategoriaRepository;
 import br.com.techie.shoppingstore.AP003.service.exception.DatabaseException;
 import br.com.techie.shoppingstore.AP003.service.exception.ResourceNotFoundException;
 import br.com.techie.shoppingstore.AP003.tests.Factory;
+import jakarta.persistence.EntityNotFoundException;
 
 @ExtendWith(SpringExtension.class)
 public class CategoriaServiceTests {
@@ -43,6 +47,7 @@ public class CategoriaServiceTests {
   private long dependentId;
   private PageImpl<Categoria> page;
   private Categoria categoria;
+  CategoriaForm categoriaForm;
 
   @BeforeEach
   void setUp() throws Exception {
@@ -50,6 +55,7 @@ public class CategoriaServiceTests {
     nonExistingId = 2L;
     dependentId = 3L;
     categoria = Factory.createCategoria();
+    categoriaForm = Factory.createCategoriaForm();
     page = new PageImpl<>(List.of(categoria));
 
     when(categoriaRepository.findAll((Pageable) ArgumentMatchers.any())).thenReturn(page);
@@ -62,6 +68,55 @@ public class CategoriaServiceTests {
     doNothing().when(categoriaRepository).deleteById(existingId);
     doThrow(EmptyResultDataAccessException.class).when(categoriaRepository).deleteById(nonExistingId);
     doThrow(DataIntegrityViolationException.class).when(categoriaRepository).deleteById(dependentId);
+  }
+
+  @Test
+  @DisplayName("update should return CategoriaForm when id exists")
+  public void updateShouldReturnCategoriaFormWhenIdExists() {
+
+    CategoriaForm result = categoriaService.update(existingId, categoriaForm);
+
+    Assertions.assertNotNull(result);
+  }
+
+  @Test
+  @DisplayName("update should throw ResourceNotFoundException when id does not exist")
+  public void updateIdShouldThrowResourceNotFoundExceptionWhenIdDosNotExists() {
+    when(categoriaRepository.findById(nonExistingId)).thenThrow(EntityNotFoundException.class);
+    Assertions.assertThrows(ResourceNotFoundException.class, () -> {
+      categoriaService.update(nonExistingId, categoriaForm);
+    });
+  }
+
+  @Test
+  @DisplayName("findById should return CategoriaDTO when id exists")
+  public void findByIdShouldReturnCategoriaFormWhenIdExists() {
+
+    CategoriaForm result = categoriaService.findById(existingId);
+
+    Assertions.assertNotNull(result);
+    verify(categoriaRepository, Mockito.times(1)).findById(existingId);
+  }
+
+  @Test
+  @DisplayName("findById should throw ResourceNotFoundException when id does not exist")
+  public void findByIdShouldThrowResourceNotFoundExceptionWhenIdDosNotExists() {
+
+    Assertions.assertThrows(ResourceNotFoundException.class, () -> {
+      categoriaService.findById(nonExistingId);
+    });
+  }
+
+  @Test
+  @DisplayName("findAllPaged should return page")
+  public void findAllPagedShouldReturnPage() {
+
+    Pageable pageable = PageRequest.of(0, 10);
+
+    Page<CategoriaForm> result = categoriaService.findAllPaged(pageable);
+
+    Assertions.assertNotNull(result);
+    verify(categoriaRepository, Mockito.times(1)).findAll(pageable);
   }
 
   @Test

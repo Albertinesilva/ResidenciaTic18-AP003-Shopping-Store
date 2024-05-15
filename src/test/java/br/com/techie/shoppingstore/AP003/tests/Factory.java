@@ -1,6 +1,6 @@
 package br.com.techie.shoppingstore.AP003.tests;
 
-import br.com.techie.shoppingstore.AP003.dto.form.CategoriaDTO;
+import br.com.techie.shoppingstore.AP003.dto.form.CategoriaForm;
 import br.com.techie.shoppingstore.AP003.model.Categoria;
 
 public class Factory {
@@ -10,8 +10,8 @@ public class Factory {
 		return categoria;		
 	}
 	
-	public static CategoriaDTO createProductDTO() {
+	public static CategoriaForm createCategoriaForm() {
 		Categoria categoria = createCategoria();
-		return new CategoriaDTO(categoria);
+		return new CategoriaForm(categoria);
 	}
 }

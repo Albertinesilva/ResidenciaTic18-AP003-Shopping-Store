@@ -12,13 +12,13 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class CategoriaDTO implements Serializable {
+public class CategoriaForm implements Serializable {
   private static final long serialVersionUID = 1L;
 
   private Long id;
   private String nome;
 
-  public CategoriaDTO(Categoria entity) {
+  public CategoriaForm(Categoria entity) {
     this.id = entity.getId();
     this.nome = entity.getNome();
   }
