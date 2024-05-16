@@ -2,3 +2,7 @@
  Residência em Software Módulo JAVA Avançado</h1>
 
  ## Objetivo da Avaliação
+
+ Esta avaliação tem como objetivo principal avaliar e aprimorar os conhecimentos e
+ habilidades dos residentes em Java, aplicando-os na atualização, adaptação e
+ otimização de um e-commerce desenvolvido há cinco anos
