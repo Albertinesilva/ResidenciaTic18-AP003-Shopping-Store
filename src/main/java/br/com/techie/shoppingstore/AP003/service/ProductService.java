@@ -9,45 +9,46 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.techie.shoppingstore.AP003.dto.form.ProductFORM;
 import br.com.techie.shoppingstore.AP003.model.Produto;
 import br.com.techie.shoppingstore.AP003.repository.ProdutoRepository;
 import br.com.techie.shoppingstore.AP003.service.exception.DatabaseException;
 import br.com.techie.shoppingstore.AP003.service.exception.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
 
-public class ProdutoService {
+public class ProductService {
 
   @Autowired
-  private ProdutoRepository repository;
+  private ProductRepository productRepository;
 
   @Transactional(readOnly = true)
-  public Page<ProdutoForm> findAllPaged(Pageable pageable) {
-    Page<Produto> list = repository.findAll(pageable);
-    return list.map(x -> new ProdutoForm(x));
+  public Page<ProductFORM> findAllPaged(Pageable pageable) {
+    Page<Product> list = productRepository.findAll(pageable);
+    return list.map(x -> new ProductFORM(x));
   }
 
   @Transactional(readOnly = true)
-  public ProdutoForm findById(Long id) {
-    Optional<Produto> obj = repository.findById(id);
+  public ProductFORM findById(Long id) {
+    Optional<Product> obj = productRepository.findById(id);
     Produto entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
-    return new ProdutoForm(entity);
+    return new ProductFORM(entity);
   }
 
   @Transactional
-  public ProdutoForm insert(ProdutoForm dto) {
+  public ProductFORM insert(ProductFORM dto) {
     Produto entity = new Produto();
     copyDtoToEntity(dto, entity);
-    entity = repository.save(entity);
-    return new ProdutoForm(entity);
+    entity = productRepository.save(entity);
+    return new ProductFORM(entity);
   }
 
   @Transactional
-  public ProdutoForm update(Long id, ProdutoForm dto) {
+  public ProductFORM update(Long id, ProductFORM dto) {
     try {
-      Produto entity = repository.findById(id).get();
+      Product entity = productRepository.findById(id).get();
       copyDtoToEntity(dto, entity);
-      entity = repository.save(entity);
-      return new ProdutoForm(entity);
+      entity = productRepository.save(entity);
+      return new ProductFORM(entity);
 
     } catch (EntityNotFoundException e) {
       throw new ResourceNotFoundException("Id not found " + id);
@@ -56,7 +57,7 @@ public class ProdutoService {
 
   public void delete(Long id) {
     try {
-      repository.deleteById(id);
+      productRepository.deleteById(id);
     } catch (EmptyResultDataAccessException e) {
       throw new ResourceNotFoundException("Id not found " + id);
 
@@ -65,14 +66,14 @@ public class ProdutoService {
     }
   }
 
-  private void copyDtoToEntity(ProdutoForm dto, Produto entity) {
-    entity.setNome(dto.getNome());
-    entity.setPreco(dto.getPreco());
-    entity.setDescricao(dto.getDescricao());
-    entity.setQtd_estoque(dto.getQtd_estoque());
-    entity.setUrl_imagem(dto.getUrl_imagem());
-    entity.setAtributosServidor(dto.getAtributosServidor());
-    entity.setItemCarrinho(dto.getItemCarrinho());
-    entity.setCategoria(dto.getCategoria());
+  private void copyDtoToEntity(ProductFORM dto, Produto entity) {
+    entity.setNome(dto.name());
+    entity.setPreco(dto.price());
+    entity.setDescricao(dto.description());
+    entity.setQtd_estoque(dto.stock());
+    entity.setUrl_imagem(dto.url_image());
+    entity.setAtributosServidor(dto.chassis());
+    entity.setItemCarrinho(dto);
+    entity.setCategoria(dto.category());
   }
 }
