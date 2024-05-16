@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import br.com.techie.shoppingstore.AP003.model.Categoria;
 
-@Repository
 public interface CategoriaRepository extends JpaRepository <Categoria, Long> {
 
 }
