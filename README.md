@@ -7,4 +7,4 @@ Este repositório contém o projeto desenvolvido pela equipe durante a Avaliaç�
 
 ## Objetivo da Avaliação
 
-O objetivo primordial desta atividade é avaliar e fortalecer os conhecimentos e habilidades dos residentes em Java, aplicando-os na modernização do e-commerce. Espera-se que os participantes demonstrem proficiência em conceitos avançados de JAVA, adotem boas práticas de desenvolvimento e apresentem capacidade para responder às novas demandas tecnológicas.
+O objetivo primordial desta atividade é avaliar e fortalecer os conhecimentos e habilidades dos residentes em Java, aplicando-os na modernização do e-commerce. Espera-se que os participantes demonstrem proficiência em conceitos avançados de JAVA, adotem boas práticas de desenvolvimento e apresentem capacidade para responder às novas demandas tecnológicas. Além disso, a atividade visa desenvolver habilidades de gestão de projetos e trabalho em equipe, preparando os participantes para enfrentar os desafios do ambiente profissional de forma eficaz.
