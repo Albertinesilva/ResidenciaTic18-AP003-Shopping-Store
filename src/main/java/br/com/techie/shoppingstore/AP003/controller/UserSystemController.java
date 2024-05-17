@@ -16,10 +16,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import br.com.techie.shoppingstore.AP003.controller.exceptions.ErrorMessage;
 import br.com.techie.shoppingstore.AP003.dto.UserSystemCreateDto;
 import br.com.techie.shoppingstore.AP003.dto.UserSystemResponseDto;
 import br.com.techie.shoppingstore.AP003.dto.UserSystemSenhaDto;
+import br.com.techie.shoppingstore.AP003.infra.exception.ErrorMessage;
 import br.com.techie.shoppingstore.AP003.mapper.UserSystemMapper;
 import br.com.techie.shoppingstore.AP003.model.UserSystem;
 import br.com.techie.shoppingstore.AP003.service.EmailService;

@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.techie.shoppingstore.AP003.controller.exceptions.ErrorMessage;
 import br.com.techie.shoppingstore.AP003.dto.UserSystemLoginDto;
 import br.com.techie.shoppingstore.AP003.dto.UserSystemResponseDto;
+import br.com.techie.shoppingstore.AP003.infra.exception.ErrorMessage;
 import br.com.techie.shoppingstore.AP003.infra.jwt.JwtToken;
 import br.com.techie.shoppingstore.AP003.infra.jwt.JwtUserDetailsService;
 

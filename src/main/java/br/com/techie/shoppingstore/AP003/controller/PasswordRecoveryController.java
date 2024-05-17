@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.techie.shoppingstore.AP003.controller.exceptions.ErrorMessage;
 import br.com.techie.shoppingstore.AP003.dto.TokenResponseDto;
 import br.com.techie.shoppingstore.AP003.dto.UserSystemResponseDto;
 import br.com.techie.shoppingstore.AP003.dto.UserSystemUsername;
+import br.com.techie.shoppingstore.AP003.infra.exception.ErrorMessage;
 import br.com.techie.shoppingstore.AP003.mapper.TokenMapper;
 import br.com.techie.shoppingstore.AP003.model.Token;
 import br.com.techie.shoppingstore.AP003.model.UserSystem;

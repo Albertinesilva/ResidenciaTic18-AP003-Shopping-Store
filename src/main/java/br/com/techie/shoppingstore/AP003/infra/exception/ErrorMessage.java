@@ -1,4 +1,4 @@
-package br.com.techie.shoppingstore.AP003.controller.exceptions;
+package br.com.techie.shoppingstore.AP003.infra.exception;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.servlet.http.HttpServletRequest;
