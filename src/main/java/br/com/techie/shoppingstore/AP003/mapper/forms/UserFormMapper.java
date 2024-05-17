@@ -10,11 +10,10 @@ public class UserFormMapper implements Mapper<UserFORM, User> {
         return new User(
                 null,
                 i.email(),
-                null, // TODO Retirar Username da entidade
+                i.username(),
                 i.password(),
                 i.passwordConfirm(),
-                true,
-                null // TODO Retirar referência à entidade carrinho
+                true
         );
     }
 }

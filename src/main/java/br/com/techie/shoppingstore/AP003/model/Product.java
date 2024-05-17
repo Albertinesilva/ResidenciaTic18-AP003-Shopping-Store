@@ -34,6 +34,22 @@ public class Product {
 
     private String urlImage;
 
+    private String chassis;
+
+    private String cpu;
+
+    private String operationalSystem;
+
+    private String chipset;
+
+    private String memory;
+
+    private String slots;
+
+    private String storage;
+
+    private String network;
+
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;

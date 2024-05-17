@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "User")
+@Entity(name = "UserSystem")
 public class User {
 
     @Id
@@ -22,7 +22,6 @@ public class User {
 
     private String email;
 
-    // TODO Retirar username se não utilizar
     private String username;
 
     private String password;

@@ -10,6 +10,11 @@ public record UserFORM(
         @Size(max = 50, message = "Email must be less than 50 characters!")
         String email,
 
+        @NotBlank(message = "Username is required!")
+        @Size(min = 3, max = 20, message = "Username must be between 3 and 20 characters!")
+        @Pattern(regexp = "^[a-zA-Z]*$", message = "Username must contain only letters!")
+        String username,
+
         @NotBlank(message = "Password is required!")
         @Size(min = 8, message = "Password must be at least 8 characters long!")
         @Pattern(regexp = "^(?=.*[a-z]).*$", message = "Password must contain at least one lowercase letter!")

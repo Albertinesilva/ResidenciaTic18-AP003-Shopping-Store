@@ -26,5 +26,12 @@ public record ProductUpdateFORM(
         @Min(value = 0, message = "Stock must be greater than or equal to 0")
         Integer stock,
         String url_image,
-        ServerAttributeFORM attributes
+        String chassis,
+        String cpu,
+        String operational_system,
+        String chipset,
+        String memory,
+        String slots,
+        String storage,
+        String network
 ) { }

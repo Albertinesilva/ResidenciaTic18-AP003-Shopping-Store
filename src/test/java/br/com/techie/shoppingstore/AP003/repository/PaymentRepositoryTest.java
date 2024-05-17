@@ -3,8 +3,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
+import br.com.techie.shoppingstore.AP003.enums.PaymentStatusEnum;
+import br.com.techie.shoppingstore.AP003.enums.PaymentTypeEnum;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +40,7 @@ public class PaymentRepositoryTest {
         faker = new Faker();
         cart = criaCarrinho();
         Payment payment = new Payment();
-        payment.setDt_pagamento(null);
-        payment.setCart(cart);
+        payment.setPaymentType(PaymentTypeEnum.MONEY);
         return payment;
     }
 
@@ -46,13 +48,12 @@ public class PaymentRepositoryTest {
 
         faker = new Faker();
         Cart cart = new Cart();
-        cart.setItem_carrinho_id(null);
         cart.setPayment(null);
         cart.setUser(null);
-        cart.setPreco_total(faker.number().randomNumber());
-        cart.setQtd_itens(faker.number().randomDigit());
-        cart.setDt_pedido(null);
-        cart.setStatus(faker.bool().bool());
+        cart.setTotalItems(faker.random().nextInt(1, 100));
+        cart.setTotalPrice(BigDecimal.valueOf(faker.random().nextDouble()));
+        cart.setPurchaseDate(null);
+        cart.setStatus(PaymentStatusEnum.PENDING);
         
         return cart;
     }

@@ -6,12 +6,9 @@ import br.com.techie.shoppingstore.AP003.dto.view.ProductVIEW;
 import br.com.techie.shoppingstore.AP003.mapper.forms.ProductFormMapper;
 import br.com.techie.shoppingstore.AP003.mapper.updates.ProductUpdateMapper;
 import br.com.techie.shoppingstore.AP003.mapper.views.ProductViewMapper;
-import br.com.techie.shoppingstore.AP003.mapper.forms.ServerAttributeFormMapper;
 import br.com.techie.shoppingstore.AP003.model.Product;
-import br.com.techie.shoppingstore.AP003.model.ServerAttribute;
 import br.com.techie.shoppingstore.AP003.repository.CategoryRepository;
 import br.com.techie.shoppingstore.AP003.repository.ProductRepository;
-import br.com.techie.shoppingstore.AP003.repository.ServerAttributeRepository;
 import br.com.techie.shoppingstore.AP003.service.exception.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +24,6 @@ public class ProductService {
   private ProductRepository productRepository;
 
   @Autowired
-  private ServerAttributeRepository serverAttributeRepository;
-
-  @Autowired
   private CategoryRepository categoryRepository;
 
   @Autowired
@@ -41,9 +35,6 @@ public class ProductService {
   @Autowired
   private ProductUpdateMapper productUpdateMapper;
 
-  @Autowired
-  private ServerAttributeFormMapper serverAttributeFormMapper;
-
   @Transactional(readOnly = true)
   public Page<ProductVIEW> findAllPaged(Pageable pageable) {
     return productRepository.findAll(pageable).map(x -> productViewMapper.map(x));
@@ -53,18 +44,15 @@ public class ProductService {
   public ProductVIEW findById(Long id) {
     Optional<Product> obj = productRepository.findById(id);
     Product entity = obj.orElseThrow(() -> new ResourceNotFoundException("Product not found"));
-    ServerAttribute attributes =  serverAttributeRepository.findByProductId(id).orElseThrow(() -> new EntityNotFoundException("Attributes not found"));
-    return productViewMapper.map(entity, attributes);
+    return productViewMapper.map(entity);
   }
 
   @Transactional
   public ProductVIEW insert(ProductFORM dto) {
     Product entity = productFormMapper.map(dto);
     entity.setCategory(categoryRepository.findById(dto.category_id()).orElseThrow(() -> new EntityNotFoundException("Category not found!")));
-    ServerAttribute attributes = serverAttributeFormMapper.map(dto, entity);
     productRepository.save(entity);
-    serverAttributeRepository.save(attributes);
-    return productViewMapper.map(entity, attributes);
+    return productViewMapper.map(entity);
   }
 
   @Transactional
@@ -73,8 +61,6 @@ public class ProductService {
     entity.setCategory(categoryRepository.findById(dto.category_id()).orElseThrow(() -> new EntityNotFoundException("Category not found!")));
     entity = productUpdateMapper.map(dto, entity);
     productRepository.save(entity);
-
-
     return productViewMapper.map(entity);
   }
 

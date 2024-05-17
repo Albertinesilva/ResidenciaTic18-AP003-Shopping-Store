@@ -8,6 +8,9 @@ import static org.mockito.Mockito.when;
 import java.util.List;
 import java.util.Optional;
 
+import br.com.techie.shoppingstore.AP003.dto.form.CategoryFORM;
+import br.com.techie.shoppingstore.AP003.dto.form.CategoryUpdateFORM;
+import br.com.techie.shoppingstore.AP003.dto.view.CategoryVIEW;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -46,15 +49,17 @@ public class CategoryServiceTests {
   private long dependentId;
   private PageImpl<Category> page;
   private Category category;
-  CategoriaForm categoriaForm;
+  CategoryFORM categoriaForm;
+  CategoryUpdateFORM categoriaUpdateForm;
 
   @BeforeEach
   void setUp() throws Exception {
     existingId = 1L;
     nonExistingId = 2L;
     dependentId = 3L;
-    category = Factory.createCategoria();
-    categoriaForm = Factory.createCategoriaForm();
+    category = Factory.createCategory();
+    categoriaForm = Factory.createCategoryForm();
+    categoriaUpdateForm = Factory.createCategoryUpdateForm();
     page = new PageImpl<>(List.of(category));
 
     when(categoryRepository.findAll((Pageable) ArgumentMatchers.any())).thenReturn(page);
@@ -73,7 +78,7 @@ public class CategoryServiceTests {
   @DisplayName("update should return CategoriaForm when id exists")
   public void updateShouldReturnCategoriaFormWhenIdExists() {
 
-    CategoriaForm result = categoriaService.update(existingId, categoriaForm);
+    CategoryVIEW result = categoriaService.update(categoriaUpdateForm);
 
     Assertions.assertNotNull(result);
   }
@@ -83,7 +88,7 @@ public class CategoryServiceTests {
   public void updateIdShouldThrowResourceNotFoundExceptionWhenIdDosNotExists() {
     when(categoryRepository.findById(nonExistingId)).thenThrow(EntityNotFoundException.class);
     Assertions.assertThrows(ResourceNotFoundException.class, () -> {
-      categoriaService.update(nonExistingId, categoriaForm);
+      categoriaService.update(categoriaUpdateForm);
     });
   }
 
@@ -91,7 +96,7 @@ public class CategoryServiceTests {
   @DisplayName("findById should return CategoriaDTO when id exists")
   public void findByIdShouldReturnCategoriaFormWhenIdExists() {
 
-    CategoriaForm result = categoriaService.findById(existingId);
+    CategoryVIEW result = categoriaService.findById(existingId);
 
     Assertions.assertNotNull(result);
     verify(categoryRepository, Mockito.times(1)).findById(existingId);
@@ -112,7 +117,7 @@ public class CategoryServiceTests {
 
     Pageable pageable = PageRequest.of(0, 10);
 
-    Page<CategoriaForm> result = categoriaService.findAllPaged(pageable);
+    Page<CategoryVIEW> result = categoriaService.findAllPaged(pageable);
 
     Assertions.assertNotNull(result);
     verify(categoryRepository, Mockito.times(1)).findAll(pageable);

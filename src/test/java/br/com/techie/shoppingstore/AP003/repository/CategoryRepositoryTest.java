@@ -35,9 +35,8 @@ public class CategoryRepositoryTest {
 
         faker = new Faker();
         Category category = new Category();
-        category.setNome(faker.commerce().material());
-        category.setProdutos(null);
-        
+        category.setName(faker.commerce().material());
+
         return category;
     }
 

@@ -3,6 +3,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -33,14 +34,12 @@ public class ProductRepositoryTest {
 
         faker = new Faker();
         Product product = new Product();
-        product.setServerAttribute(null);
         product.setCategory(null);
-        product.setDescricao(null);
-        product.setCartItem(null);
-        product.setNome(faker.funnyName().name());
-        product.setPreco(faker.number().randomNumber());
-        product.setQtd_estoque(faker.number().randomDigit());
-        product.setUrl_imagem(faker.internet().image());
+        product.setDescription(null);
+        product.setName(faker.funnyName().name());
+        product.setPrice(BigDecimal.valueOf(faker.random().nextDouble()));
+        product.setStock(faker.number().randomDigit());
+        product.setUrlImage(faker.internet().image());
         return product;
     }
 

@@ -34,10 +34,9 @@ public class UserRepositoryTest {
         
         faker = new Faker();
         User user = new User();
-        user.setAtivo(faker.bool().bool());
-        user.setCart(null);
-        user.setSenha("@Test123");
-        user.setConfirmacao_senha("@Test123");
+        user.setActive(faker.bool().bool());
+        user.setPassword("@Test123");
+        user.setPasswordConfirm("@Test123");
         user.setEmail(faker.internet().emailAddress());
         user.setUsername(faker.name().username());
         return user;
