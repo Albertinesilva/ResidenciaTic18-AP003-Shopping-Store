@@ -37,7 +37,7 @@ import jakarta.persistence.EntityNotFoundException;
 public class CategoriaServiceTests {
 
   @InjectMocks
-  private CategoriaService categoriaService;
+  private CategoryService categoriaService;
 
   @Mock
   private CategoriaRepository categoriaRepository;

@@ -17,37 +17,37 @@ import br.com.techie.shoppingstore.AP003.service.exception.ResourceNotFoundExcep
 import jakarta.persistence.EntityNotFoundException;
 
 @Service
-public class CarrinhoService {
+public class CartService {
 
   @Autowired
-  private CarrinhoRepository carrinhoRepository;
+  private CartRepository cartRepository;
 
   @Transactional(readOnly = true)
-  public Page<CarrinhoForm> findAllPaged(Pageable pageable) {
-    Page<Carrinho> list = carrinhoRepository.findAll(pageable);
-    return list.map(x -> new CarrinhoForm(x));
+  public Page<CartForm> findAllPaged(Pageable pageable) {
+    Page<Cart> list = cartRepository.findAll(pageable);
+    return list.map(x -> new CartForm(x));
   }
 
   @Transactional(readOnly = true)
-  public CarrinhoForm findById(Long id) {
-    Optional<Carrinho> obj = carrinhoRepository.findById(id);
+  public CartForm findById(Long id) {
+    Optional<Cart> obj = cartRepository.findById(id);
     Carrinho entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
-    return new CarrinhoForm(entity);
+    return new CartForm(entity);
   }
 
   @Transactional
-  public CarrinhoForm insert(CarrinhoForm dto) {
-    Carrinho entity = new Carrinho();
+  public CartForm insert(CartForm dto) {
+    Cart entity = new Carrinho();
     copyDtoToEntity(dto, entity);
-    entity = carrinhoRepository.save(entity);
-    return new CarrinhoForm(entity);
+    entity = cartRepository.save(entity);
+    return new CartForm(entity);
   }
 
   @Transactional
   public Carrinho update(Long id, Carrinho dto) {
     try {
-      Carrinho entity = carrinhoRepository.findById(id).get();
-      return new CarrinhoForm(entity);
+      Cart entity = cartRepository.findById(id).get();
+      return new CartForm(entity);
 
     } catch (EntityNotFoundException e) {
       throw new ResourceNotFoundException("Id not found " + id);
@@ -56,7 +56,7 @@ public class CarrinhoService {
 
   public void delete(Long id) {
     try {
-      carrinhoRepository.deleteById(id);
+      cartRepository.deleteById(id);
     } catch (EmptyResultDataAccessException e) {
       throw new ResourceNotFoundException("Id not found " + id);
 
@@ -65,7 +65,7 @@ public class CarrinhoService {
     }
   }
 
-  private void copyDtoToEntity(CarrinhoForm dto, Carrinho entity) {
+  private void copyDtoToEntity(CartForm dto, Cart entity) {
     entity.setUsuario(dto.getUsuario());
     entity.setPagamento(dto.getPagamento());
     entity.setItem_carrinho_id(dto.getItem_carrinho_id());
