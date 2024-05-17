@@ -1,21 +1,22 @@
 package br.com.techie.shoppingstore.AP003.service;
 
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import br.com.techie.shoppingstore.AP003.dto.form.CategoryFORM;
+import br.com.techie.shoppingstore.AP003.dto.form.CategoryUpdateFORM;
+import br.com.techie.shoppingstore.AP003.dto.view.CategoryVIEW;
+import br.com.techie.shoppingstore.AP003.mapper.forms.CategoryFormMapper;
+import br.com.techie.shoppingstore.AP003.mapper.updates.CategoryUpdateMapper;
+import br.com.techie.shoppingstore.AP003.mapper.views.CategoryViewMapper;
+import br.com.techie.shoppingstore.AP003.model.Category;
+import br.com.techie.shoppingstore.AP003.repository.CategoryRepository;
+import br.com.techie.shoppingstore.AP003.service.exception.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.techie.shoppingstore.AP003.dto.form.CategoryFORM;
-import br.com.techie.shoppingstore.AP003.model.Categoria;
-import br.com.techie.shoppingstore.AP003.repository.CategoriaRepository;
-import br.com.techie.shoppingstore.AP003.service.exception.DatabaseException;
-import br.com.techie.shoppingstore.AP003.service.exception.ResourceNotFoundException;
+import java.util.Optional;
 
 @Service
 public class CategoryService {
@@ -23,49 +24,43 @@ public class CategoryService {
   @Autowired
   private CategoryRepository categoryRepository;
 
+  @Autowired
+  private CategoryFormMapper categoryFormMapper;
+
+  @Autowired
+  private CategoryViewMapper categoryViewMapper;
+
+  @Autowired
+  private CategoryUpdateMapper categoryUpdateMapper;
+
   @Transactional(readOnly = true)
-  public Page<CategoryFORM> findAllPaged(Pageable pageable) {
-    Page<Category> list = categoryRepository.findAll(pageable);
-    return list.map(x -> new CategoryFORM(x));
+  public Page<CategoryVIEW> findAllPaged(Pageable pageable) {
+    return categoryRepository.findAll(pageable).map(x -> categoryViewMapper.map(x));
   }
 
   @Transactional(readOnly = true)
-  public CategoryFORM findById(Long id) {
+  public CategoryVIEW findById(Long id) {
     Optional<Category> obj = categoryRepository.findById(id);
-    Category entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
-    return new CategoryFORM(entity);
+    Category entity = obj.orElseThrow(() -> new ResourceNotFoundException("Category not found"));
+    return categoryViewMapper.map(entity);
   }
 
   @Transactional
-	public CategoryFORM insert(CategoryFORM dto) {
-		Category entity = new Categoria();
-		entity.setNome(dto.name());
-		entity = categoryRepository.save(entity);
-		return new CategoryForm(entity);
+	public CategoryVIEW insert(CategoryFORM dto) {
+		Category entity = categoryFormMapper.map(dto);
+		categoryRepository.save(entity);
+		return categoryViewMapper.map(entity);
 	}
 
   @Transactional
-	public CategoryFORM update(Long id, CategoryFORM dto) {
-		try {
-			Category entity = categoryRepository.findById(id).get();
-			entity.setNome(dto.name());
-			entity = categoryRepository.save(entity);
-			return new CategoryFORM(entity);
-		}
-		catch (EntityNotFoundException e) {
-			throw new ResourceNotFoundException("Id not found " + id);
-		}		
+	public CategoryVIEW update(CategoryUpdateFORM dto) {
+	  Category entity = categoryRepository.findById(dto.category_id()).orElseThrow(() -> new EntityNotFoundException("Category not found!"));
+	  entity = categoryUpdateMapper.map(dto, entity);
+	  categoryRepository.save(entity);
+	  return categoryViewMapper.map(entity);
 	}
 
-  public void delete(Long id) {
-		try {
-			categoryRepository.deleteById(id);
-		}
-		catch (EmptyResultDataAccessException e) {
-			throw new ResourceNotFoundException("Id not found " + id);
-		}
-		catch (DataIntegrityViolationException e) {
-			throw new DatabaseException("Integrity violation");
-		}
+	public void delete(Long id) {
+	  categoryRepository.deleteById(id);
 	}
 }

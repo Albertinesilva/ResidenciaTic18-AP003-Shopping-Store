@@ -1,79 +1,84 @@
 package br.com.techie.shoppingstore.AP003.service;
 
-import java.util.Optional;
-
+import br.com.techie.shoppingstore.AP003.dto.form.ProductFORM;
+import br.com.techie.shoppingstore.AP003.dto.form.ProductUpdateFORM;
+import br.com.techie.shoppingstore.AP003.dto.view.ProductVIEW;
+import br.com.techie.shoppingstore.AP003.mapper.forms.ProductFormMapper;
+import br.com.techie.shoppingstore.AP003.mapper.updates.ProductUpdateMapper;
+import br.com.techie.shoppingstore.AP003.mapper.views.ProductViewMapper;
+import br.com.techie.shoppingstore.AP003.mapper.forms.ServerAttributeFormMapper;
+import br.com.techie.shoppingstore.AP003.model.Product;
+import br.com.techie.shoppingstore.AP003.model.ServerAttribute;
+import br.com.techie.shoppingstore.AP003.repository.CategoryRepository;
+import br.com.techie.shoppingstore.AP003.repository.ProductRepository;
+import br.com.techie.shoppingstore.AP003.repository.ServerAttributeRepository;
+import br.com.techie.shoppingstore.AP003.service.exception.ResourceNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.techie.shoppingstore.AP003.dto.form.ProductFORM;
-import br.com.techie.shoppingstore.AP003.model.Produto;
-import br.com.techie.shoppingstore.AP003.repository.ProdutoRepository;
-import br.com.techie.shoppingstore.AP003.service.exception.DatabaseException;
-import br.com.techie.shoppingstore.AP003.service.exception.ResourceNotFoundException;
-import jakarta.persistence.EntityNotFoundException;
+import java.util.Optional;
 
 public class ProductService {
 
   @Autowired
   private ProductRepository productRepository;
 
+  @Autowired
+  private ServerAttributeRepository serverAttributeRepository;
+
+  @Autowired
+  private CategoryRepository categoryRepository;
+
+  @Autowired
+  private ProductFormMapper productFormMapper;
+
+  @Autowired
+  private ProductViewMapper productViewMapper;
+
+  @Autowired
+  private ProductUpdateMapper productUpdateMapper;
+
+  @Autowired
+  private ServerAttributeFormMapper serverAttributeFormMapper;
+
   @Transactional(readOnly = true)
-  public Page<ProductFORM> findAllPaged(Pageable pageable) {
-    Page<Product> list = productRepository.findAll(pageable);
-    return list.map(x -> new ProductFORM(x));
+  public Page<ProductVIEW> findAllPaged(Pageable pageable) {
+    return productRepository.findAll(pageable).map(x -> productViewMapper.map(x));
   }
 
   @Transactional(readOnly = true)
-  public ProductFORM findById(Long id) {
+  public ProductVIEW findById(Long id) {
     Optional<Product> obj = productRepository.findById(id);
-    Produto entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
-    return new ProductFORM(entity);
+    Product entity = obj.orElseThrow(() -> new ResourceNotFoundException("Product not found"));
+    ServerAttribute attributes =  serverAttributeRepository.findByProductId(id).orElseThrow(() -> new EntityNotFoundException("Attributes not found"));
+    return productViewMapper.map(entity, attributes);
   }
 
   @Transactional
-  public ProductFORM insert(ProductFORM dto) {
-    Produto entity = new Produto();
-    copyDtoToEntity(dto, entity);
-    entity = productRepository.save(entity);
-    return new ProductFORM(entity);
+  public ProductVIEW insert(ProductFORM dto) {
+    Product entity = productFormMapper.map(dto);
+    entity.setCategory(categoryRepository.findById(dto.category_id()).orElseThrow(() -> new EntityNotFoundException("Category not found!")));
+    ServerAttribute attributes = serverAttributeFormMapper.map(dto, entity);
+    productRepository.save(entity);
+    serverAttributeRepository.save(attributes);
+    return productViewMapper.map(entity, attributes);
   }
 
   @Transactional
-  public ProductFORM update(Long id, ProductFORM dto) {
-    try {
-      Product entity = productRepository.findById(id).get();
-      copyDtoToEntity(dto, entity);
-      entity = productRepository.save(entity);
-      return new ProductFORM(entity);
+  public ProductVIEW update(ProductUpdateFORM dto) {
+    Product entity = productRepository.findById(dto.product_id()).orElseThrow(() -> new EntityNotFoundException("Product not found!"));
+    entity.setCategory(categoryRepository.findById(dto.category_id()).orElseThrow(() -> new EntityNotFoundException("Category not found!")));
+    entity = productUpdateMapper.map(dto, entity);
+    productRepository.save(entity);
 
-    } catch (EntityNotFoundException e) {
-      throw new ResourceNotFoundException("Id not found " + id);
-    }
+
+    return productViewMapper.map(entity);
   }
 
   public void delete(Long id) {
-    try {
-      productRepository.deleteById(id);
-    } catch (EmptyResultDataAccessException e) {
-      throw new ResourceNotFoundException("Id not found " + id);
-
-    } catch (DataIntegrityViolationException e) {
-      throw new DatabaseException("Integrity violation");
-    }
-  }
-
-  private void copyDtoToEntity(ProductFORM dto, Produto entity) {
-    entity.setNome(dto.name());
-    entity.setPreco(dto.price());
-    entity.setDescricao(dto.description());
-    entity.setQtd_estoque(dto.stock());
-    entity.setUrl_imagem(dto.url_image());
-    entity.setAtributosServidor(dto.chassis());
-    entity.setItemCarrinho(dto);
-    entity.setCategoria(dto.category());
+    productRepository.deleteById(id);
   }
 }

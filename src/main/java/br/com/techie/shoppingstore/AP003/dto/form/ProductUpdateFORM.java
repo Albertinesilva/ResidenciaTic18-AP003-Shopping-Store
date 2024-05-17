@@ -1,6 +1,5 @@
 package br.com.techie.shoppingstore.AP003.dto.form;
 
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -8,7 +7,10 @@ import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
 
-public record ProductFORM(
+public record ProductUpdateFORM(
+        @NotNull(message = "Product ID is required!")
+        Long product_id,
+
         @NotBlank(message = "Name is required!")
         String name,
 
@@ -24,12 +26,5 @@ public record ProductFORM(
         @Min(value = 0, message = "Stock must be greater than or equal to 0")
         Integer stock,
         String url_image,
-        String chassis,
-        String cpu,
-        String operational_system,
-        String chipset,
-        String memory,
-        String slots,
-        String storage,
-        String network
+        ServerAttributeFORM attributes
 ) { }

@@ -8,5 +8,13 @@ public record ProductVIEW(
         String category,
         BigDecimal price,
         String description,
-        Integer stock
+        Integer stock,
+        String chassis,
+        String cpu,
+        String operational_system,
+        String chipset,
+        String memory,
+        String slots,
+        String storage,
+        String network
 ) { }

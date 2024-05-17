@@ -4,9 +4,7 @@ import java.math.BigDecimal;
 
 public record CartItemVIEW(
         Long id,
-        Long product_id,
-        String product,
+        ProductVIEW product,
         BigDecimal price,
         Integer quantity
-) {
-}
+) { }
