@@ -1,6 +1,5 @@
 package br.com.techie.shoppingstore.AP003.model;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,11 +14,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "produto")
-public class Produto {
+@Entity(name = "product")
+public class Product {
 
     @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nome;
@@ -32,17 +31,14 @@ public class Produto {
 
     private String url_imagem;
 
-    @OneToOne(mappedBy = "produto")
+    @OneToOne(mappedBy = "product")
     private AtributosServidor atributosServidor;
 
-    @OneToOne(mappedBy = "produto")
+    @OneToOne(mappedBy = "product")
     private ItemCarrinho itemCarrinho;
 
     @ManyToOne
-    @JoinColumn(name = "categoria_id")
-    private Categoria categoria;
-
-    
-
+    @JoinColumn(name = "category_id")
+    private Category category;
 
 }

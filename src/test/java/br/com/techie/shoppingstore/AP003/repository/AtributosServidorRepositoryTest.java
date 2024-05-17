@@ -20,7 +20,7 @@ public class AtributosServidorRepositoryTest {
 
     @Autowired
     private AtributosServidorRepository atributosServidorRepository;
-    
+
     @Autowired
     private TestEntityManager entityManager;
 
@@ -39,7 +39,7 @@ public class AtributosServidorRepositoryTest {
         atributosServidor.setSlots(faker.lorem().word());
         atributosServidor.setArmazenamento(faker.lorem().word());
         atributosServidor.setRede(faker.lorem().word());
-        atributosServidor.setProduto(null); // You might want to adjust this based on your application logic
+        atributosServidor.setProduct(null); // You might want to adjust this based on your application logic
         return atributosServidor;
     }
 
@@ -55,15 +55,13 @@ public class AtributosServidorRepositoryTest {
         // Given
         AtributosServidor newAtributosServidor = criaAtributosServidor();
 
-        //When
+        // When
         AtributosServidor savedAtributosServidor = atributosServidorRepository.save(newAtributosServidor);
 
         // Then
         assertThat(savedAtributosServidor).isNotNull();
         assertThat(savedAtributosServidor.getId()).isGreaterThan(0);
 
-
-        
     }
 
     @Test
@@ -72,16 +70,12 @@ public class AtributosServidorRepositoryTest {
         AtributosServidor savedAtributosServidor = atributosServidorRepository.save(atributosServidor);
 
         // When
-        Optional<AtributosServidor> retrievedAtributosServidor = atributosServidorRepository.findById(savedAtributosServidor.getId());
+        Optional<AtributosServidor> retrievedAtributosServidor = atributosServidorRepository
+                .findById(savedAtributosServidor.getId());
 
         // Then
         assertEquals(atributosServidor, retrievedAtributosServidor.get());
         assertTrue(retrievedAtributosServidor.isPresent());
     }
 
-   
-
-    
-
-    
 }

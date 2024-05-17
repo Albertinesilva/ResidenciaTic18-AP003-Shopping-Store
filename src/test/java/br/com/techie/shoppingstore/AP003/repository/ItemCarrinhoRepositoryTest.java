@@ -1,4 +1,5 @@
 package br.com.techie.shoppingstore.AP003.repository;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -14,7 +15,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import com.github.javafaker.Faker;
 
 import br.com.techie.shoppingstore.AP003.model.ItemCarrinho;
-
 
 @DataJpaTest
 public class ItemCarrinhoRepositoryTest {
@@ -35,12 +35,11 @@ public class ItemCarrinhoRepositoryTest {
         ItemCarrinho itemCarrinho = new ItemCarrinho();
         itemCarrinho.setPreco(faker.number().randomNumber());
         itemCarrinho.setQtd(faker.number().randomDigit());
-        itemCarrinho.setProduto(null);
+        itemCarrinho.setProduct(null);
         itemCarrinho.setCarrinho(null);
-        
+
         return itemCarrinho;
     }
-
 
     @BeforeEach
     public void setUp() {
@@ -49,28 +48,27 @@ public class ItemCarrinhoRepositoryTest {
         entityManager.persistAndFlush(itemCarrinho);
     }
 
-
     @Test
-    public void testSave(){
+    public void testSave() {
 
-        //Given
+        // Given
         ItemCarrinho newItemCarrinho = criaItemCarrinho();
 
-        //When
+        // When
         ItemCarrinho savedItemCarrinho = itemCarrinhoRepository.save(newItemCarrinho);
 
-        //Then
+        // Then
         assertThat(savedItemCarrinho).isNotNull();
         assertThat(savedItemCarrinho.getId()).isGreaterThan(0);
 
     }
 
     @Test
-    public void testFindById(){
-        //  Given
+    public void testFindById() {
+        // Given
         ItemCarrinho savedItemCarrinho = itemCarrinhoRepository.save(itemCarrinho);
 
-        //  When
+        // When
         Optional<ItemCarrinho> retrievedItemCarrinho = itemCarrinhoRepository.findById(savedItemCarrinho.getId());
 
         // Then
@@ -78,8 +76,5 @@ public class ItemCarrinhoRepositoryTest {
         assertTrue(retrievedItemCarrinho.isPresent());
 
     }
-
-
-
 
 }

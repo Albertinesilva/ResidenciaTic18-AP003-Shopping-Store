@@ -19,20 +19,19 @@ import lombok.NoArgsConstructor;
 public class ItemCarrinho {
 
     @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private int qtd;
 
     private Long preco;
 
-    @OneToOne (cascade  = CascadeType.ALL)
-    @JoinColumn(name = "produto_id", referencedColumnName = "id")
-    private Produto produto;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id", referencedColumnName = "id")
+    private Product product;
 
     @ManyToOne
     @JoinColumn(name = "item_carrinho_id")
     private Carrinho carrinho;
-
 
 }

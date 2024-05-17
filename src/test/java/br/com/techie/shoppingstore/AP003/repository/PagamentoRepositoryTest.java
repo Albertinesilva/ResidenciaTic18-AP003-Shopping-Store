@@ -48,7 +48,7 @@ public class PagamentoRepositoryTest {
         Carrinho carrinho = new Carrinho();
         carrinho.setItem_carrinho_id(null);
         carrinho.setPagamento(null);
-        carrinho.setUsuario(null);
+        carrinho.setUserSystem(null);
         carrinho.setPreco_total(faker.number().randomNumber());
         carrinho.setQtd_itens(faker.number().randomDigit());
         carrinho.setDt_pedido(null);

@@ -19,9 +19,8 @@ import lombok.NoArgsConstructor;
 @Table(name = "ATRIBUTOS_SERVIDOR")
 public class AtributosServidor {
 
-
     @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String chassi;
@@ -40,9 +39,8 @@ public class AtributosServidor {
 
     private String rede;
 
-    @OneToOne (cascade  = CascadeType.ALL)
-    @JoinColumn(name = "produto_id", referencedColumnName = "id")
-    private Produto produto;
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id", referencedColumnName = "id")
+    private Product product;
 
 }
