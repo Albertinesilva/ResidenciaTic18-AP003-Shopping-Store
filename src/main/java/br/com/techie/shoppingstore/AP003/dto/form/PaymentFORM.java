@@ -1,5 +1,7 @@
 package br.com.techie.shoppingstore.AP003.dto.form;
 
+import br.com.techie.shoppingstore.AP003.enums.PaymentStatusEnum;
+import br.com.techie.shoppingstore.AP003.enums.PaymentTypeEnum;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.DecimalMin;
@@ -16,12 +18,14 @@ public record PaymentFORM(
 
         @NotNull(message = "Payment date is required!")
         @Future(message = "Payment date must be in the future!")
-        @JsonAlias({"date", "datePayment", "paymentDay"})
+        @JsonAlias({"date", "datePayment", "dayPayment", "paymentDate", "paymentDay"})
         @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
         LocalDateTime payday,
 
         @NotNull(message = "Payment amount is required!")
         @DecimalMin(value = "0.01", message = "Payment amount must be greater than or equal to 0.01")
-        BigDecimal amount
-) {
-}
+        BigDecimal amount,
+
+        @NotNull(message = "Payment type is required!")
+        PaymentTypeEnum payment_type
+) { }

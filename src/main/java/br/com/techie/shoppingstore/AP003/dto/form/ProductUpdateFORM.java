@@ -1,6 +1,5 @@
 package br.com.techie.shoppingstore.AP003.dto.form;
 
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -8,7 +7,10 @@ import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
 
-public record ProductFORM(
+public record ProductUpdateFORM(
+        @NotNull(message = "Product ID is required!")
+        Long product_id,
+
         @NotBlank(message = "Name is required!")
         String name,
 
