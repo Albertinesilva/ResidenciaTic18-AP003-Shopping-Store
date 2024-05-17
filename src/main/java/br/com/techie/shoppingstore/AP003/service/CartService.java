@@ -5,6 +5,7 @@ import java.util.Optional;
 import br.com.techie.shoppingstore.AP003.dto.form.CartFORM;
 import br.com.techie.shoppingstore.AP003.dto.form.CartUpdateFORM;
 import br.com.techie.shoppingstore.AP003.dto.view.CartVIEW;
+import br.com.techie.shoppingstore.AP003.infra.exception.ResourceNotFoundException;
 import br.com.techie.shoppingstore.AP003.mapper.forms.CartFormMapper;
 import br.com.techie.shoppingstore.AP003.mapper.updates.CartUpdateMapper;
 import br.com.techie.shoppingstore.AP003.mapper.views.CartViewMapper;
@@ -16,7 +17,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.techie.shoppingstore.AP003.model.Cart;
-import br.com.techie.shoppingstore.AP003.service.exception.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
 
 @Service

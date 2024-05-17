@@ -11,6 +11,8 @@ import java.util.Optional;
 import br.com.techie.shoppingstore.AP003.dto.form.CategoryFORM;
 import br.com.techie.shoppingstore.AP003.dto.form.CategoryUpdateFORM;
 import br.com.techie.shoppingstore.AP003.dto.view.CategoryVIEW;
+import br.com.techie.shoppingstore.AP003.infra.exception.DatabaseException;
+import br.com.techie.shoppingstore.AP003.infra.exception.ResourceNotFoundException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -30,8 +32,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import br.com.techie.shoppingstore.AP003.model.Category;
 import br.com.techie.shoppingstore.AP003.repository.CategoryRepository;
-import br.com.techie.shoppingstore.AP003.service.exception.DatabaseException;
-import br.com.techie.shoppingstore.AP003.service.exception.ResourceNotFoundException;
 import br.com.techie.shoppingstore.AP003.tests.Factory;
 import jakarta.persistence.EntityNotFoundException;
 
