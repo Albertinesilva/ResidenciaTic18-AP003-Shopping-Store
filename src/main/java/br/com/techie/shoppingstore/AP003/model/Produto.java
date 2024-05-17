@@ -24,6 +24,7 @@ public class Produto {
 
     private String nome;
 
+    // TODO Mudar para BigDecimal
     private Long preco;
 
     private String descricao;
@@ -35,9 +36,11 @@ public class Produto {
     @OneToOne(mappedBy = "produto")
     private AtributosServidor atributosServidor;
 
+    // TODO Remover essa relacao com o item carrinho
     @OneToOne(mappedBy = "produto")
     private ItemCarrinho itemCarrinho;
 
+    // TODO Adicionar categoria do produto no service
     @ManyToOne
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;

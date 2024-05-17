@@ -23,9 +23,11 @@ public class Categoria {
 
     private String nome;
 
+    // TODO Remover relação com produto
     @OneToMany(mappedBy = "categoria")
     private Set<Produto> produtos;
 
+    // TODO Remover construtor
     public Categoria(Long id, String nome) {
         this.id = id;
         this.nome = nome;

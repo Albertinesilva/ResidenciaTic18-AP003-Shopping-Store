@@ -1,5 +1,6 @@
 package br.com.techie.shoppingstore.AP003.model;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
@@ -23,8 +24,13 @@ public class Pagamento {
 
     private LocalDateTime dt_pagamento;
 
+    // TODO Remover referência a Carrinho
     @OneToOne(mappedBy = "pagamento")
     private Carrinho carrinho;
 
+    // TODO Adicionar forma de pagamento como String
+    private String forma_pagamento;
 
+    // TODO Adicionar valor pago como BigDecimal
+    private BigDecimal valor_pago;
 }

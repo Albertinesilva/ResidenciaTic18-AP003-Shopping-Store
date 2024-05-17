@@ -24,12 +24,14 @@ public class ItemCarrinho {
 
     private int qtd;
 
+    // TODO Mudar para BigDecimal
     private Long preco;
 
     @OneToOne (cascade  = CascadeType.ALL)
     @JoinColumn(name = "produto_id", referencedColumnName = "id")
     private Produto produto;
 
+    // TODO Alterar o nome da coluna para carrinho_id
     @ManyToOne
     @JoinColumn(name = "item_carrinho_id")
     private Carrinho carrinho;

@@ -25,6 +25,7 @@ public class Carrinho {
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Long id;
 
+    // TODO Remover essa relação com item carrinho
     @OneToMany(mappedBy = "carrinho")
     private Set<ItemCarrinho> item_carrinho_id;
 
@@ -36,12 +37,14 @@ public class Carrinho {
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private Usuario usuario;
 
+    // TODO Mudar para BigDecimal
     private Long preco_total;
 
     private int qtd_itens;
 
     private LocalDateTime dt_pedido;
 
+    // TODO Alterar para Enum de status do pagamento
     private boolean status;
 
 

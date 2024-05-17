@@ -21,6 +21,7 @@ public class Usuario {
 
     private String email;
 
+    // TODO Retirar username
     private String username;
 
     private String senha;
@@ -29,6 +30,7 @@ public class Usuario {
 
     private boolean ativo;
 
+    // TODO Remover referência ao Carrinho
     @OneToOne(mappedBy = "usuario")
     private Carrinho carrinho;
 
