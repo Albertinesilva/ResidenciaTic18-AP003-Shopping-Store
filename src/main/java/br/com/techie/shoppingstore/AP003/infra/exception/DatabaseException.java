@@ -1,4 +1,4 @@
-package br.com.techie.shoppingstore.AP003.service.exception;
+package br.com.techie.shoppingstore.AP003.infra.exception;
 
 public class DatabaseException extends RuntimeException {
   private static final long serialVersionUID = 1L;

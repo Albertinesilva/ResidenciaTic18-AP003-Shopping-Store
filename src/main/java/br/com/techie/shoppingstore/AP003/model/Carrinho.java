@@ -34,7 +34,7 @@ public class Carrinho {
 
     @OneToOne (cascade  = CascadeType.ALL)
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
-    private Usuario usuario;
+    private UserSystem usuario;
 
     private Long preco_total;
 
