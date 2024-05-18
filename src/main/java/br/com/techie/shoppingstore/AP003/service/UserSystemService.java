@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import br.com.techie.shoppingstore.AP003.infra.exception.AccessDeniedException;
 import br.com.techie.shoppingstore.AP003.infra.exception.EntityNotFoundException;
 import br.com.techie.shoppingstore.AP003.infra.exception.PasswordInvalidException;
+import br.com.techie.shoppingstore.AP003.infra.exception.EmailUniqueViolationException;
 import br.com.techie.shoppingstore.AP003.model.Token;
 
 import java.util.Base64;
@@ -35,11 +36,25 @@ public class UserSystemService {
   @Autowired
   private UserViewMapper userViewMapper;
 
+  // @Transactional
+  // public UserVIEW save(UserFORM dto) {
+  // User entity = userFormMapper.map(dto);
+  // userRepository.save(entity);
+  // return userViewMapper.map(entity);
+  // }
+
   @Transactional
   public UserVIEW save(UserFORM dto) {
-    User entity = userFormMapper.map(dto);
-    userRepository.save(entity);
-    return userViewMapper.map(entity);
+    try {
+      User entity = userFormMapper.map(dto);
+      // dto.setPassword(passwordEncoder.encode(dto.password()));
+      userRepository.save(entity);
+      return userViewMapper.map(entity);
+
+    } catch (org.springframework.dao.DataIntegrityViolationException ex) {
+      throw new EmailUniqueViolationException(
+          String.format("Email: %s já cadastrado: ", dto.email()));
+    }
   }
 
   @Transactional(readOnly = true)
@@ -56,12 +71,12 @@ public class UserSystemService {
 
     User user = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("User not found!"));
     // if (!passwordEncoder.matches(currentPassword, user.getPassword())) {
-    //   throw new PasswordInvalidException("Incorrect password!");
+    // throw new PasswordInvalidException("Incorrect password!");
     // }
 
     // user.setPassword(passwordEncoder.encode(newPassword));
 
-    if(!currentPassword.equals(user.getPassword())) {
+    if (!currentPassword.equals(user.getPassword())) {
       throw new PasswordInvalidException("Incorrect password!");
     }
 
@@ -101,7 +116,8 @@ public class UserSystemService {
   @Transactional(readOnly = false)
   public void activateUserRegistration(String code) {
     String username = new String(Base64.getDecoder().decode(code));
-    User user = userRepository.findByUsername(username).orElseThrow(() -> new EntityNotFoundException("User not found!"));
+    User user = userRepository.findByUsername(username)
+        .orElseThrow(() -> new EntityNotFoundException("User not found!"));
 
     if (user.hasNotId()) {
       throw new AccessDeniedException("Unable to activate registration. Contact support.");
