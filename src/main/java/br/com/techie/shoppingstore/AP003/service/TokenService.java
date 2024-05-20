@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.techie.shoppingstore.AP003.dto.UserSystemAlterarSenhaDto;
+import br.com.techie.shoppingstore.AP003.dto.form.PasswordResetFORM;
 import br.com.techie.shoppingstore.AP003.infra.jwt.JwtToken;
 import br.com.techie.shoppingstore.AP003.infra.jwt.JwtUserDetailsService;
 import br.com.techie.shoppingstore.AP003.infra.jwt.JwtUtils;
@@ -36,20 +36,20 @@ public class TokenService {
   @Transactional(readOnly = false)
   public Token requestPasswordReset(UserSystem usuario) throws MessagingException {
 
-    JwtToken token = jwtUserDetailsService.getTokenAuthenticated(usuario.getUsername());
+    JwtToken token = jwtUserDetailsService.getTokenAuthenticated(usuario.getEmail());
 
     String verificador = token.getToken();
     LocalDateTime dataCriacao = LocalDateTime.now();
-    usuario.setCodeverifier(verificador);
+    usuario.setCodeVerifier(verificador);
     Token tokenEntity = new Token(verificador, dataCriacao, usuario);
     tokenRepository.save(tokenEntity);
 
-    emailService.sendOrderResetPassword(usuario.getUsername(), verificador);
-    log.info("Token criado para o usuário {}", usuario.getUsername());
+    emailService.sendOrderResetPassword(usuario.getEmail(), verificador);
+    log.info("Token criado para o usuário {}", usuario.getEmail());
     return tokenEntity;
   }
 
-  public ResponseEntity<Void> validarTokenECodeVerifier(String token, UserSystemAlterarSenhaDto dto) {
+  public ResponseEntity<Void> validarTokenECodeVerifier(String token, PasswordResetFORM dto) {
     // Verifica se o token é válido
     if (!JwtUtils.isTokenValid(token)) {
       log.error("Token inválido" + token);
@@ -65,7 +65,7 @@ public class TokenService {
 
     // Verifica se o código verificador é válido
     Token tokenEncontrado = tokenDoUsuario.get();
-    if (!dto.getCodeverifier().equals(tokenEncontrado.getToken())) {
+    if (!dto.codeVerifier().equals(tokenEncontrado.getToken())) {
       log.error("Código de verificação inválido para o token {}", tokenEncontrado);
       return ResponseEntity.badRequest().build();
     }

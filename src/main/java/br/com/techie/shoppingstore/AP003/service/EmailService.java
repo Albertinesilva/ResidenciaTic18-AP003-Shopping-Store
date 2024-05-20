@@ -23,12 +23,12 @@ public class EmailService {
   @Autowired
   private SpringTemplateEngine templateEngine;
 
-  public void RegistrationConfirmationEmail(String username) throws MessagingException {
+  public void RegistrationConfirmationEmail(String email) throws MessagingException {
     // Alguns servidores de e-mail aceitam caracteres especias que podem acabar
-    // calsando problemas na URL por esse motivo é necessário codificar o username
+    // calsando problemas na URL por esse motivo é necessário codificar o email
     // para base64.
-    String codigo = Base64.getEncoder().encodeToString(username.getBytes());
-    sendRegistrationConfirmationRequest(username, codigo);
+    String codigo = Base64.getEncoder().encodeToString(email.getBytes());
+    sendRegistrationConfirmationRequest(email, codigo);
   }
 
   public void sendRegistrationConfirmationRequest(String destino, String codigo) throws MessagingException {

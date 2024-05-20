@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.techie.shoppingstore.AP003.dto.UserSystemAlterarSenhaDto;
+import br.com.techie.shoppingstore.AP003.dto.form.PasswordResetFORM;
 import br.com.techie.shoppingstore.AP003.infra.exception.ErrorMessage;
 import br.com.techie.shoppingstore.AP003.model.Token;
 import br.com.techie.shoppingstore.AP003.service.TokenService;
@@ -38,14 +38,14 @@ public class PasswordResetController {
       @ApiResponse(responseCode = "422", description = "Campos invalidos ou formatados incorretamente.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
   })
   @PatchMapping("/{token}")
-  public ResponseEntity<Void> passwordresetconfirmation(@PathVariable String token, @Valid @RequestBody UserSystemAlterarSenhaDto dto) {
+  public ResponseEntity<Void> passwordresetconfirmation(@PathVariable String token, @Valid @RequestBody PasswordResetFORM dto) {
     ResponseEntity<Void> response = tokenService.validarTokenECodeVerifier(token, dto);
     if (response != null) {
       return response;
     }
     Token tokenEncontrado = tokenService.findByToken(token).get();
-    usuarioService.changePassword(tokenEncontrado, dto.getNewPassword(), dto.getConfirmPassword());
-    log.info("Senha do usuário alterada com sucesso. Usuário: {}", tokenEncontrado.getUserSystem().getUsername());
+    usuarioService.changePassword(tokenEncontrado, dto.new_password(), dto.confirm_password());
+    log.info("Senha do usuário alterada com sucesso. Usuário: {}", tokenEncontrado.getUserSystem().getEmail());
     tokenService.deleteToken(tokenEncontrado);
     return ResponseEntity.noContent().build();
 

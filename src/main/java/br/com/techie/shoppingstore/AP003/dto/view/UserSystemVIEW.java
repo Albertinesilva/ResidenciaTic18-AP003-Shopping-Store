@@ -1,6 +1,6 @@
 package br.com.techie.shoppingstore.AP003.dto.view;
 
-public record UserVIEW(
+public record UserSystemVIEW(
         Long id,
         String username,
         String email

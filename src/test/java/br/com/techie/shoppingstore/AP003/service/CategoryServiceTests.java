@@ -1,45 +1,45 @@
-package br.com.techie.shoppingstore.AP003.service;
+// package br.com.techie.shoppingstore.AP003.service;
 
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.doThrow;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+// import static org.mockito.Mockito.doNothing;
+// import static org.mockito.Mockito.doThrow;
+// import static org.mockito.Mockito.verify;
+// import static org.mockito.Mockito.when;
 
-import java.util.List;
-import java.util.Optional;
+// import java.util.List;
+// import java.util.Optional;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentMatchers;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
+// import org.junit.jupiter.api.Assertions;
+// import org.junit.jupiter.api.BeforeEach;
+// import org.junit.jupiter.api.DisplayName;
+// import org.junit.jupiter.api.Test;
+// import org.junit.jupiter.api.extension.ExtendWith;
+// import org.mockito.ArgumentMatchers;
+// import org.mockito.InjectMocks;
+// import org.mockito.Mock;
+// import org.mockito.Mockito;
+// import org.springframework.dao.DataIntegrityViolationException;
+// import org.springframework.dao.EmptyResultDataAccessException;
+// import org.springframework.data.domain.Page;
+// import org.springframework.data.domain.PageImpl;
+// import org.springframework.data.domain.PageRequest;
+// import org.springframework.data.domain.Pageable;
+// import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import br.com.techie.shoppingstore.AP003.infra.exception.DatabaseException;
-import br.com.techie.shoppingstore.AP003.infra.exception.ResourceNotFoundException;
-import br.com.techie.shoppingstore.AP003.model.Category;
-import br.com.techie.shoppingstore.AP003.repository.CategoryRepository;
-import br.com.techie.shoppingstore.AP003.tests.Factory;
-import jakarta.persistence.EntityNotFoundException;
+// import br.com.techie.shoppingstore.AP003.infra.exception.DatabaseException;
+// import br.com.techie.shoppingstore.AP003.infra.exception.ResourceNotFoundException;
+// import br.com.techie.shoppingstore.AP003.model.Category;
+// import br.com.techie.shoppingstore.AP003.repository.CategoryRepository;
+// import br.com.techie.shoppingstore.AP003.tests.Factory;
+// import jakarta.persistence.EntityNotFoundException;
 
-@ExtendWith(SpringExtension.class)
-public class CategoryServiceTests {
+// @ExtendWith(SpringExtension.class)
+// public class CategoryServiceTests {
 
-  @InjectMocks
-  private CategoryService categoryService;
+//   @InjectMocks
+//   private CategoryService categoryService;
 
-  @Mock
-  private CategoryRepository categoryRepository;
+//   @Mock
+//   private CategoryRepository categoryRepository;
 
   // private long existingId;
   // private long nonExistingId;
@@ -150,4 +150,3 @@ public class CategoryServiceTests {
 
   //   verify(categoryRepository, Mockito.times(1)).deleteById(dependentId);
   // }
-}

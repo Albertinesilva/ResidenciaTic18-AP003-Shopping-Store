@@ -8,11 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.techie.shoppingstore.AP003.dto.TokenResponseDto;
-import br.com.techie.shoppingstore.AP003.dto.UserSystemResponseDto;
-import br.com.techie.shoppingstore.AP003.dto.UserSystemUsername;
+import br.com.techie.shoppingstore.AP003.dto.form.UserSystemEmailFORM;
+import br.com.techie.shoppingstore.AP003.dto.view.UserSystemVIEW;
 import br.com.techie.shoppingstore.AP003.infra.exception.ErrorMessage;
-import br.com.techie.shoppingstore.AP003.mapper.TokenMapper;
 import br.com.techie.shoppingstore.AP003.model.Token;
 import br.com.techie.shoppingstore.AP003.model.UserSystem;
 import br.com.techie.shoppingstore.AP003.service.TokenService;
@@ -37,21 +35,22 @@ public class PasswordRecoveryController {
   private final TokenService tokenService;
   private final UserSystemService userService;
 
-  @Operation(summary = "Redefinir senha pelo username", description = "Recurso para redefinir senha pelo username", responses = {
-      @ApiResponse(responseCode = "204", description = "Pedido de redefinição de senha enviado com sucesso", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UserSystemResponseDto.class))),
+  @Operation(summary = "Redefinir senha pelo email", description = "Recurso para redefinir senha pelo email", responses = {
+      @ApiResponse(responseCode = "204", description = "Pedido de redefinição de senha enviado com sucesso", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UserSystemVIEW.class))),
       @ApiResponse(responseCode = "404", description = "Recurso não encontrado.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
       @ApiResponse(responseCode = "401", description = "Usuário não autorizado.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
   })
   @PostMapping
-  public ResponseEntity<TokenResponseDto> redefinepassword(@RequestBody @Valid UserSystemUsername dto) throws MessagingException {
+  public ResponseEntity<?> redefinepassword(@RequestBody @Valid UserSystemEmailFORM dto)
+      throws MessagingException {
 
-    UserSystem user = userService.searchByUsername(dto.getUsername());
-    Optional<Token> tokenExistenteOptional = tokenService.findByToken(user.getCodeverifier());
+    UserSystem user = userService.searchByEmail(dto.email());
+    Optional<Token> tokenExistenteOptional = tokenService.findByToken(user.getCodeVerifier());
     tokenExistenteOptional.ifPresent(token -> tokenService.deleteToken(token));
 
     Token token = tokenService.requestPasswordReset(user);
-    log.info("Token criado para o usuário {}", dto.getUsername());
-    return ResponseEntity.ok(TokenMapper.toDto(token));
+    log.info("Token criado para o usuário {}", dto.email());
+    return ResponseEntity.ok(token);
   }
 
 }

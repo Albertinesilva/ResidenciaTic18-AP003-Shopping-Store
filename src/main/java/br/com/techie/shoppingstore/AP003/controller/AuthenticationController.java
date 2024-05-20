@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.techie.shoppingstore.AP003.dto.UserSystemLoginDto;
-import br.com.techie.shoppingstore.AP003.dto.UserSystemResponseDto;
+import br.com.techie.shoppingstore.AP003.dto.form.UserSystemLoginFORM;
+import br.com.techie.shoppingstore.AP003.dto.view.UserSystemVIEW;
 import br.com.techie.shoppingstore.AP003.infra.exception.ErrorMessage;
 import br.com.techie.shoppingstore.AP003.infra.jwt.JwtToken;
 import br.com.techie.shoppingstore.AP003.infra.jwt.JwtUserDetailsService;
@@ -36,25 +36,25 @@ public class AuthenticationController {
     private final AuthenticationManager authenticationManager;
 
     @Operation(summary = "Autenticar na API", description = "Recurso de autenticação na API", responses = {
-            @ApiResponse(responseCode = "200", description = "Autenticação realizada com sucesso e retorno de um bearer token", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UserSystemResponseDto.class))),
+            @ApiResponse(responseCode = "200", description = "Autenticação realizada com sucesso e retorno de um bearer token", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UserSystemVIEW.class))),
             @ApiResponse(responseCode = "400", description = "Credenciais inválidas", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
             @ApiResponse(responseCode = "422", description = "Campo(s) Inválido(s)", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
     })
     @PostMapping("/auth")
-    public ResponseEntity<?> authenticate(@RequestBody @Valid UserSystemLoginDto dto, HttpServletRequest request) {
+    public ResponseEntity<?> authenticate(@RequestBody @Valid UserSystemLoginFORM dto, HttpServletRequest request) {
 
-        log.info("Processo de autenticação pelo login {}", dto.getUsername());
+        log.info("Processo de autenticação pelo login {}", dto.email());
         try {
             UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
-                    dto.getUsername(), dto.getPassword());
+                    dto.email(), dto.password());
 
             authenticationManager.authenticate(authenticationToken);
 
-            JwtToken token = detailsService.getTokenAuthenticated(dto.getUsername());
+            JwtToken token = detailsService.getTokenAuthenticated(dto.email());
 
             return ResponseEntity.ok(token);
         } catch (AuthenticationException ex) {
-            log.warn("Bad Credentials from username '{}'", dto.getUsername());
+            log.warn("Bad Credentials from email '{}'", dto.email());
         }
         return ResponseEntity
                 .badRequest()

@@ -1,5 +1,10 @@
 package br.com.techie.shoppingstore.AP003.controller;
 
+import br.com.techie.shoppingstore.AP003.dto.form.PasswordUpdateFORM;
+import br.com.techie.shoppingstore.AP003.dto.form.UserSystemFORM;
+import br.com.techie.shoppingstore.AP003.dto.view.UserSystemVIEW;
+import br.com.techie.shoppingstore.AP003.infra.exception.ErrorMessage;
+import br.com.techie.shoppingstore.AP003.service.UserSystemService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -7,95 +12,79 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
-import br.com.techie.shoppingstore.AP003.dto.UserSystemCreateDto;
-import br.com.techie.shoppingstore.AP003.dto.UserSystemResponseDto;
-import br.com.techie.shoppingstore.AP003.dto.UserSystemSenhaDto;
-import br.com.techie.shoppingstore.AP003.infra.exception.ErrorMessage;
-import br.com.techie.shoppingstore.AP003.mapper.UserSystemMapper;
-import br.com.techie.shoppingstore.AP003.model.UserSystem;
-import br.com.techie.shoppingstore.AP003.service.EmailService;
-import br.com.techie.shoppingstore.AP003.service.UserSystemService;
 
 import java.util.List;
 
-@Tag(name = "Usuarios", description = "Contém todas as operações aos recursos para cadastro, edição e leitura de um usuário.")
+@Tag(name = "Users", description = "Contains all operations to resources for registering, editing and reading a user.")
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/v1/usuarios")
+@RequestMapping("/api/v1/users")
 public class UserSystemController {
 
-        private final UserSystemService userService;
-        private final EmailService emailService;
+  private final UserSystemService userService;
+  // private final EmailService emailService;
 
-        @Operation(summary = "Cria um novo usuário", description = "Recurso para criar um novo usuário no sistema.", responses = {
-                        @ApiResponse(responseCode = "201", description = "Usuário criado com sucesso.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UserSystemResponseDto.class))),
-                        @ApiResponse(responseCode = "409", description = "Usuário e-mail já cadastrado no sistema.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
-                        @ApiResponse(responseCode = "422", description = "Recursos não processados por dados de entrada invalidos.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
-        })
-        @PostMapping
-        public ResponseEntity<UserSystemResponseDto> create(@Valid @RequestBody UserSystemCreateDto createDto) throws MessagingException {
-                UserSystem user = userService.save(UserSystemMapper.toUserSystem(createDto));
-                emailService.RegistrationConfirmationEmail(user.getUsername());
-                return ResponseEntity.status(HttpStatus.CREATED).body(UserSystemMapper.toDto(user));
-        }
+  @Operation(summary = "Create a new user", description = "Feature to create a new user in the system.", responses = {
+      @ApiResponse(responseCode = "201", description = "User created successfully.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UserSystemVIEW.class))),
+      @ApiResponse(responseCode = "409", description = "Email user already registered in the system.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
+      @ApiResponse(responseCode = "422", description = "Resources not processed due to invalid input data.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
+  })
+  @PostMapping
+  public ResponseEntity<UserSystemVIEW> create(@Valid @RequestBody UserSystemFORM createDto) {
+    UserSystemVIEW view = userService.save(createDto);
+    // emailService.RegistrationConfirmationEmail(user.getEmail());
+    return ResponseEntity.status(HttpStatus.CREATED).body(view);
+  }
 
-        @Operation(summary = "Recuperar um usuário pelo id", description = "Requisição exige um Bearer Token. Acesso restrito a ADMIN OU CLIENTE logado",
-        security = @SecurityRequirement(name = "security"), 
-                responses = {
-                        @ApiResponse(responseCode = "200", description = "Recurso recuperado com sucesso.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UserSystemResponseDto.class))),
-                        @ApiResponse(responseCode = "403", description = "Usuário sem permissão para acessar esse recurso.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
-                        @ApiResponse(responseCode = "404", description = "Recurso não encontrado.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
-                        
-        })
-        @GetMapping("/{id}")
-        @PreAuthorize("hasRole('ADMIN') OR ( hasRole('CLIENTE') AND #id == authentication.principal.id )")
-        public ResponseEntity<UserSystemResponseDto> getById(@PathVariable Long id) {
-                UserSystem user = userService.searchById(id);
-                return ResponseEntity.ok(UserSystemMapper.toDto(user));
-        }
+  @Operation(summary = "Retrieve a user by id", description = "Request requires a Bearer Token. Access restricted to logged in ADMIN OR CLIENT", security = @SecurityRequirement(name = "security"), responses = {
+      @ApiResponse(responseCode = "200", description = "Resource retrieved successfully.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UserSystemVIEW.class))),
+      @ApiResponse(responseCode = "403", description = "User without permission to access this resource.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
+      @ApiResponse(responseCode = "404", description = "Resource not found.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
 
-        @Operation(summary = "Atualizar senha", description = "Requisição exige um Bearer Token. Acesso restrito a ADMIN OU CLIENTE logado", 
-                security = @SecurityRequirement(name = "security"),
-                responses = {
-                        @ApiResponse(responseCode = "204", description = "Senha atualizada com sucesso."),
-                        @ApiResponse(responseCode = "400", description = "Senha não confere.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
-                        @ApiResponse(responseCode = "403", description = "Usuário sem permissão para acessar esse recurso.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
-                        @ApiResponse(responseCode = "422", description = "Campos invalidos ou formatados incorretamente.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
-        })
-        @PatchMapping("/{id}")
-        @PreAuthorize("hasAnyRole('ADMIN', 'CLIENTE') AND (#id == authentication.principal.id)")
-        public ResponseEntity<Void> updatePassword(@PathVariable Long id, @Valid @RequestBody UserSystemSenhaDto dto) {
-                userService.editPassword(id, dto.getCurrentpassword(), dto.getNewPassword(), dto.getConfirmPassword());
-                return ResponseEntity.noContent().build();
-        }
+  })
+  @GetMapping("/{id}")
+  // @PreAuthorize("hasRole('ADMIN') OR ( hasRole('CLIENT') AND #id ==
+  // authentication.principal.id )")
+  public ResponseEntity<UserSystemVIEW> getById(@PathVariable Long id) {
+    UserSystemVIEW view = userService.searchById(id);
+    return ResponseEntity.ok(view);
+  }
 
-        @Operation(summary = "Listar todos os usuarios cadastratos", description = "Requisição exige um Bearer Token. Acesso restrito a ADMIN logado", 
-                security = @SecurityRequirement(name = "security"),
-                responses = {
-                        @ApiResponse(responseCode = "200", description = "Lista com todos os usuarios cadastrados", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = UserSystemResponseDto.class)))),
-                        @ApiResponse(responseCode = "403", description = "Usuário sem permissão para acessar esse recurso.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
-        })
-        @GetMapping
-        @PreAuthorize("hasRole('ADMIN')")
-        public ResponseEntity<List<UserSystemResponseDto>> getAll() {
-                List<UserSystem> users = userService.searchAll();
-                return ResponseEntity.ok(UserSystemMapper.toListDto(users));
-        }
+  @Operation(summary = "Update password", description = "Request requires a Bearer Token. Access restricted to logged in ADMIN OR CLIENT", security = @SecurityRequirement(name = "security"), responses = {
+      @ApiResponse(responseCode = "204", description = "Password updated successfully."),
+      @ApiResponse(responseCode = "400", description = "Password does not match.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
+      @ApiResponse(responseCode = "403", description = "User without permission to access this resource.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
+      @ApiResponse(responseCode = "422", description = "Invalid or incorrectly formatted fields.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
+  })
+  @PatchMapping("/{id}")
+  // @PreAuthorize("hasAnyRole('ADMIN', 'CLIENT') AND (#id ==
+  // authentication.principal.id)")
+  public ResponseEntity<Void> updatePassword(@PathVariable Long id, @Valid @RequestBody PasswordUpdateFORM dto) {
+    userService.editPassword(id, dto.old_password(), dto.new_password(), dto.confirm_password());
+    return ResponseEntity.noContent().build();
+  }
 
-        @GetMapping("/confirmacao/cadastro")
-        @PreAuthorize("hasRole('ADMIN')")
-        public ResponseEntity<Void> Registrationconfirmationresponse(@RequestParam("codigo") String codigo) {
-                userService.activateUserRegistration(codigo);
-                return ResponseEntity.noContent().build();
-        }
+  @Operation(summary = "List all registered users", description = "Request requires a Bearer Token. Access restricted to logged in ADMIN", security = @SecurityRequirement(name = "security"), responses = {
+      @ApiResponse(responseCode = "200", description = "List of all registered users", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = UserSystemVIEW.class)))),
+      @ApiResponse(responseCode = "403", description = "User without permission to access this resource.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
+  })
+  @GetMapping
+  // @PreAuthorize("hasRole('ADMIN')")
+  public ResponseEntity<List<UserSystemVIEW>> getAll() {
+    List<UserSystemVIEW> users = userService.searchAll();
+    return ResponseEntity.ok(users);
+  }
+
+  @GetMapping("/confirm/register")
+  // @PreAuthorize("hasRole('ADMIN')")
+  public ResponseEntity<Void> Registrationconfirmationresponse(@RequestParam("code") String code) {
+    userService.activateUserRegistration(code);
+    return ResponseEntity.noContent().build();
+  }
 
 }

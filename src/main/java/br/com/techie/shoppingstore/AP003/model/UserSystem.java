@@ -1,9 +1,9 @@
 package br.com.techie.shoppingstore.AP003.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -14,11 +14,10 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-@Getter
-@Setter
+@Data
+@AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "usuarios")
+@Entity(name = "UserSystem")
 @EntityListeners(AuditingEntityListener.class)
 public class UserSystem implements Serializable {
 
@@ -27,12 +26,15 @@ public class UserSystem implements Serializable {
   @Column(name = "id")
   private Long id;
 
+  @Column(name = "email", nullable = false, unique = true)
+  private String email;
+
   @Column(name = "username", nullable = false, unique = true)
   private String username;
 
-  private String email;
-
   private String password;
+
+  private String passwordConfirm;
 
   @Enumerated(EnumType.STRING)
   @Column(name = "role", nullable = false, length = 25)
@@ -58,7 +60,7 @@ public class UserSystem implements Serializable {
   private boolean active;
 
   @Column(name = "code_verifier", length = 200)
-  private String codeverifier;
+  private String codeVerifier;
 
   public boolean hasNotId() {
     return id == null;
@@ -91,4 +93,5 @@ public class UserSystem implements Serializable {
   public String toString() {
     return "Usuario{" + "id=" + id + '}';
   }
+
 }
