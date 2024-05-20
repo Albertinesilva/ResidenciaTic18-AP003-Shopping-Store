@@ -14,6 +14,9 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -75,8 +78,8 @@ public class UserSystemController {
   })
   @GetMapping
   // @PreAuthorize("hasRole('ADMIN')")
-  public ResponseEntity<List<UserVIEW>> getAll() {
-    List<UserVIEW> users = userService.searchAll();
+  public ResponseEntity<Page<UserVIEW>> getAll(@PageableDefault Pageable pageable) {
+    Page<UserVIEW> users = userService.searchAll(pageable);
     return ResponseEntity.ok(users);
   }
 

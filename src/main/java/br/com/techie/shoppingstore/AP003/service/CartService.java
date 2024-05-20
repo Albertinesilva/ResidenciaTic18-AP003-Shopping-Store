@@ -47,8 +47,8 @@ public class CartService {
   }
 
   @Transactional
-  public CartVIEW insert(CartFORM dto) {
-    Cart entity = cartFormMapper.map(dto);
+  public CartVIEW insert(CartFORM cartForm) {
+    Cart entity = cartFormMapper.map(cartForm);
     cartRepository.save(entity);
     return cartViewMapper.map(entity);
   }

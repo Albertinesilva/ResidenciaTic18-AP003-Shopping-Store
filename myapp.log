@@ -1676,3 +1676,59 @@ br.com.techie.shoppingstore.AP003.infra.exception.PasswordInvalidException: Inco
 2024-05-18T11:01:59.555-03:00 DEBUG 9256 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [ErrorMessage(path=/api/v1/users/1, method=PATCH, status=400, statusText=Bad Request, message=Incorre (truncated)...]
 2024-05-18T11:01:59.558-03:00  WARN 9256 --- [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [br.com.techie.shoppingstore.AP003.infra.exception.PasswordInvalidException: Incorrect password!]
 2024-05-18T11:01:59.559-03:00 DEBUG 9256 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2024-05-19T21:59:53.048-03:00  INFO 21516 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Starting Ap003Application using Java 17.0.10 with PID 21516 (C:\repositorios\AP003\target\classes started by OutLaio in C:\repositorios\AP003)
+2024-05-19T21:59:53.052-03:00  INFO 21516 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : No active profile set, falling back to 1 default profile: "default"
+2024-05-19T21:59:56.440-03:00  WARN 21516 --- [restartedMain] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 16.3 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2024-05-19T21:59:56.511-03:00  WARN 21516 --- [restartedMain] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2024-05-19T21:59:59.505-03:00  WARN 21516 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'productController': Unsatisfied dependency expressed through field 'productService': No qualifying bean of type 'br.com.techie.shoppingstore.AP003.service.ProductService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2024-05-19T21:59:59.568-03:00 ERROR 21516 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field productService in br.com.techie.shoppingstore.AP003.controller.ProductController required a bean of type 'br.com.techie.shoppingstore.AP003.service.ProductService' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'br.com.techie.shoppingstore.AP003.service.ProductService' in your configuration.
+
+2024-05-19T22:00:28.071-03:00  INFO 18732 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Starting Ap003Application using Java 17.0.10 with PID 18732 (C:\repositorios\AP003\target\classes started by OutLaio in C:\repositorios\AP003)
+2024-05-19T22:00:28.076-03:00  INFO 18732 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : No active profile set, falling back to 1 default profile: "default"
+2024-05-19T22:00:30.970-03:00  WARN 18732 --- [restartedMain] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 16.3 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2024-05-19T22:00:31.022-03:00  WARN 18732 --- [restartedMain] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2024-05-19T22:00:34.195-03:00  WARN 18732 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'productController': Unsatisfied dependency expressed through field 'productService': No qualifying bean of type 'br.com.techie.shoppingstore.AP003.service.ProductService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2024-05-19T22:00:34.266-03:00 ERROR 18732 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field productService in br.com.techie.shoppingstore.AP003.controller.ProductController required a bean of type 'br.com.techie.shoppingstore.AP003.service.ProductService' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'br.com.techie.shoppingstore.AP003.service.ProductService' in your configuration.
+
+2024-05-19T22:01:10.190-03:00  INFO 19556 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Starting Ap003Application using Java 17.0.10 with PID 19556 (C:\repositorios\AP003\target\classes started by OutLaio in C:\repositorios\AP003)
+2024-05-19T22:01:10.194-03:00  INFO 19556 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : No active profile set, falling back to 1 default profile: "default"
+2024-05-19T22:01:13.074-03:00  WARN 19556 --- [restartedMain] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 16.3 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2024-05-19T22:01:13.107-03:00  WARN 19556 --- [restartedMain] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2024-05-19T22:01:16.254-03:00  WARN 19556 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-19T22:01:16.410-03:00 DEBUG 19556 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 26 mappings in 'requestMappingHandlerMapping'
+2024-05-19T22:01:16.530-03:00 DEBUG 19556 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-05-19T22:01:16.592-03:00 DEBUG 19556 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-05-19T22:01:16.652-03:00 DEBUG 19556 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-05-19T22:01:17.056-03:00  INFO 19556 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Started Ap003Application in 7.392 seconds (process running for 8.017)
