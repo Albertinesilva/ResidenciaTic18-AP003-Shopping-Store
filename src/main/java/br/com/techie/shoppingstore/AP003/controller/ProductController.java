@@ -32,9 +32,9 @@ public class ProductController {
     @Autowired
     private ProductService productService;
     
-    @Operation(summary = "Listar todos os produtos", description = "Recupera uma lista paginada de todos os produtos.", 
+    @Operation(summary = "List all products", description = "Retrieve a paginated list of all products.",
             responses = {
-	     @ApiResponse(responseCode = "200", description = "Lista de produtos recuperada com sucesso.", 
+	     @ApiResponse(responseCode = "200", description = "Product list successfully retrieved.",
 	                  content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = ProductVIEW.class)))),
 	 })
     @GetMapping
@@ -43,11 +43,11 @@ public class ProductController {
         return ResponseEntity.ok().body(products);
     }
     
-    @Operation(summary = "Recuperar produto pelo ID", description = "Recupera os detalhes de um produto específico pelo seu ID.", 
+    @Operation(summary = "Retrieve product by ID", description = "Retrieves the details of a specific product by its ID.",
             responses = {
-	     @ApiResponse(responseCode = "200", description = "Produto recuperado com sucesso.", 
+	     @ApiResponse(responseCode = "200", description = "Product successfully recovered.",
 	                  content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProductVIEW.class))),
-	     @ApiResponse(responseCode = "404", description = "Produto não encontrado.", 
+	     @ApiResponse(responseCode = "404", description = "Product not found.",
 	                  content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
 	 })
     @GetMapping("/{id}")
@@ -56,38 +56,38 @@ public class ProductController {
         return ResponseEntity.ok().body(product);
     }
     
-    @Operation(summary = "Criar um novo produto", description = "Cria um novo produto com os detalhes fornecidos.", 
+    @Operation(summary = "Create a new product", description = "Create a new product with the provided details.",
             responses = {
-	     @ApiResponse(responseCode = "201", description = "Produto criado com sucesso.", 
+	     @ApiResponse(responseCode = "201", description = "Product created successfully.",
 	                  content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProductVIEW.class))),
-	     @ApiResponse(responseCode = "422", description = "Dados de entrada inválidos.", 
+	     @ApiResponse(responseCode = "422", description = "Invalid input data.",
 	                  content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
 	 })
     @PostMapping
-    public ResponseEntity<ProductVIEW> criate(@RequestBody ProductFORM productForm) {
-        ProductVIEW novoProduto = productService.insert(productForm);
-        return ResponseEntity.status(HttpStatus.CREATED).body(novoProduto);
+    public ResponseEntity<ProductVIEW> create(@RequestBody ProductFORM productForm) {
+        ProductVIEW newProduct = productService.insert(productForm);
+        return ResponseEntity.status(HttpStatus.CREATED).body(newProduct);
     }
     
-    @Operation(summary = "Atualizar produto", description = "Atualiza os detalhes de um produto existente.", 
+    @Operation(summary = "Update product", description = "Updates the details of an existing product.",
             responses = {
-	     @ApiResponse(responseCode = "200", description = "Produto atualizado com sucesso.", 
+	     @ApiResponse(responseCode = "200", description = "Product updated successfully.",
 	                  content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProductVIEW.class))),
-	     @ApiResponse(responseCode = "404", description = "Produto não encontrado.", 
+	     @ApiResponse(responseCode = "404", description = "Product not found.",
 	                  content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
-	     @ApiResponse(responseCode = "422", description = "Dados de entrada inválidos ou formatados incorretamente.", 
+	     @ApiResponse(responseCode = "422", description = "Invalid or incorrectly formatted input data.",
 	                  content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
 	 })
     @PutMapping("/{id}")
     public ResponseEntity<ProductVIEW> update(@PathVariable Long id, @RequestBody ProductUpdateFORM productUpdateForm) {
-        ProductVIEW produtoAtualizado = productService.update(productUpdateForm);
-        return ResponseEntity.ok().body(produtoAtualizado);
+        ProductVIEW product = productService.update(productUpdateForm);
+        return ResponseEntity.ok().body(product);
     }
     
-    @Operation(summary = "Deletar produto", description = "Deleta um produto existente pelo seu ID.", 
+    @Operation(summary = "Delete product", description = "Delete an existing product by its ID.",
             responses = {
-	     @ApiResponse(responseCode = "204", description = "Produto deletado com sucesso."),
-	     @ApiResponse(responseCode = "404", description = "Produto não encontrado.", 
+	     @ApiResponse(responseCode = "204", description = "Product deleted successfully."),
+	     @ApiResponse(responseCode = "404", description = "Product not found.",
 	                  content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
 	 })
     @DeleteMapping("/{id}")

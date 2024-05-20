@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import br.com.techie.shoppingstore.AP003.dto.form.CartFORM;
 import br.com.techie.shoppingstore.AP003.dto.form.CartUpdateFORM;
 import br.com.techie.shoppingstore.AP003.dto.view.CartVIEW;
-import br.com.techie.shoppingstore.AP003.dto.view.UserSystemVIEW;
 import br.com.techie.shoppingstore.AP003.infra.exception.ErrorMessage;
 import br.com.techie.shoppingstore.AP003.service.CartService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -21,7 +20,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
-@Tag(name = "carts", description = "Contém todas as operações para cadastro, edição e leitura de carrinhos de compras.")
+@Tag(name = "carts", description = "Contains all operations for registering, editing and reading shopping carts.")
 @RestController
 @RequestMapping("/carts")
 public class CartController {
@@ -29,9 +28,9 @@ public class CartController {
     @Autowired
     private CartService cartService;
     
-    @Operation(summary = "Listar todos os carrinhos de compras", description = "Recupera uma lista paginada de todos os carrinhos de compras.", 
+    @Operation(summary = "List all shopping carts", description = "Retrieve a paginated list of all shopping carts.",
             security = @SecurityRequirement(name = "security"), responses = {
-	     @ApiResponse(responseCode = "200", description = "Lista de carrinhos recuperada com sucesso.", 
+	     @ApiResponse(responseCode = "200", description = "Cart list successfully retrieved.",
 	                  content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = CartVIEW.class)))),
     })
     @GetMapping
@@ -40,13 +39,13 @@ public class CartController {
         return ResponseEntity.ok().body(carts);
     }
     
-    @Operation(summary = "Recuperar carrinho pelo ID", description = "Recupera os detalhes de um carrinho específico pelo seu ID.", 
+    @Operation(summary = "Recover cart by ID", description = "Retrieves the details of a specific cart by its ID.",
             security = @SecurityRequirement(name = "security"), responses = {
-	     @ApiResponse(responseCode = "200", description = "Carrinho recuperado com sucesso.", 
+	     @ApiResponse(responseCode = "200", description = "Cart successfully recovered.",
 	                  content = @Content(mediaType = "application/json", schema = @Schema(implementation = CartVIEW.class))),
-	     @ApiResponse(responseCode = "403", description = "Usuário sem permissão para acessar este recurso.", 
+	     @ApiResponse(responseCode = "403", description = "User without permission to access this resource.",
 	                  content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
-	     @ApiResponse(responseCode = "404", description = "Carrinho não encontrado.", 
+	     @ApiResponse(responseCode = "404", description = "Cart not found.",
                   content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
     })
     @GetMapping("/{id}")
@@ -55,10 +54,10 @@ public class CartController {
         return ResponseEntity.ok().body(cart);
     }
     
-    @Operation(summary = "Criar um novo carrinho", description = "Cria um novo carrinho de compras com os detalhes fornecidos.", responses = {
-        @ApiResponse(responseCode = "201", description = "Carrinho criado com sucesso.", 
+    @Operation(summary = "Create a new cart", description = "Create a new shopping cart with the details provided.", responses = {
+        @ApiResponse(responseCode = "201", description = "Cart created successfully.",
                      content = @Content(mediaType = "application/json", schema = @Schema(implementation = CartVIEW.class))),
-        @ApiResponse(responseCode = "422", description = "Dados de entrada inválidos.", 
+        @ApiResponse(responseCode = "422", description = "Invalid input data.",
                      content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
     })
     @PostMapping
@@ -67,27 +66,27 @@ public class CartController {
         return ResponseEntity.status(HttpStatus.CREATED).body(novoCart);
     }
     
-    @Operation(summary = "Atualizar carrinho", description = "Atualiza os detalhes de um carrinho existente.", 
+    @Operation(summary = "Update Cart", description = "Updates the details of an existing cart.",
             security = @SecurityRequirement(name = "security"), responses = {
-	     @ApiResponse(responseCode = "200", description = "Carrinho atualizado com sucesso.", 
+	     @ApiResponse(responseCode = "200", description = "Cart updated successfully.",
 	                  content = @Content(mediaType = "application/json", schema = @Schema(implementation = CartVIEW.class))),
-	     @ApiResponse(responseCode = "403", description = "Usuário sem permissão para acessar este recurso.", 
+	     @ApiResponse(responseCode = "403", description = "User not allowed to access this feature.",
 	                  content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
-	     @ApiResponse(responseCode = "422", description = "Dados de entrada inválidos ou formatados incorretamente.", 
+	     @ApiResponse(responseCode = "422", description = "Invalid or incorrectly formatted input data.",
 	                  content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
 	 })
     @PutMapping("/{id}")
     public ResponseEntity<CartVIEW> update(@PathVariable Long id, @RequestBody CartUpdateFORM cartUpdateForm) {
-        CartVIEW cartAtualizado = cartService.update(cartUpdateForm);
-        return ResponseEntity.ok().body(cartAtualizado);
+        CartVIEW cart = cartService.update(cartUpdateForm);
+        return ResponseEntity.ok().body(cart);
     }
     
-    @Operation(summary = "Deletar carrinho", description = "Deleta um carrinho existente pelo seu ID.", 
+    @Operation(summary = "Delete Cart", description = "Delete an existing cart by its ID.",
             security = @SecurityRequirement(name = "security"), responses = {
-	     @ApiResponse(responseCode = "204", description = "Carrinho deletado com sucesso."),
-	     @ApiResponse(responseCode = "403", description = "Usuário sem permissão para acessar este recurso.", 
+	     @ApiResponse(responseCode = "204", description = "Cart deleted successfully."),
+	     @ApiResponse(responseCode = "403", description = "User not allowed to access this feature.",
 	                  content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
-	     @ApiResponse(responseCode = "422", description = "Dados de entrada inválidos ou formatados incorretamente.", 
+	     @ApiResponse(responseCode = "422", description = "Invalid or incorrectly formatted input data.",
 	                  content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
 	 })
     @DeleteMapping("/{id}")

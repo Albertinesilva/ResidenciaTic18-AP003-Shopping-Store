@@ -16,6 +16,7 @@ public class ProductViewMapper implements Mapper<Product, ProductVIEW> {
                 i.getCategory().getName(),
                 i.getPrice(),
                 i.getDescription(),
+                i.getUrlImage(),
                 i.getStock(),
                 i.getChassis(),
                 i.getCpu(),

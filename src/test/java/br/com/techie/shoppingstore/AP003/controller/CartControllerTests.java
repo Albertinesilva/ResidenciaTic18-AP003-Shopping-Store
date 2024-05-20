@@ -1,7 +1,9 @@
 package br.com.techie.shoppingstore.AP003.controller;
 
 import br.com.techie.shoppingstore.AP003.dto.form.CartFORM;
+import br.com.techie.shoppingstore.AP003.dto.form.CartItemFORM;
 import br.com.techie.shoppingstore.AP003.dto.form.CartUpdateFORM;
+import br.com.techie.shoppingstore.AP003.dto.form.PaymentFORM;
 import br.com.techie.shoppingstore.AP003.dto.view.*;
 import br.com.techie.shoppingstore.AP003.enums.PaymentStatusEnum;
 import br.com.techie.shoppingstore.AP003.enums.PaymentTypeEnum;
@@ -57,17 +59,22 @@ class CartControllerTests {
         MockitoAnnotations.openMocks(this);
         mockMvc = MockMvcBuilders.standaloneSetup(cartController).build();
 
-        ProductVIEW productView = new ProductVIEW(1L, "Product Name", "Description", BigDecimal.valueOf(100), "url");
+        ProductVIEW productView = new ProductVIEW(1L, "Product Name", "Product Category", BigDecimal.valueOf(150.00), "Product Description", "http://image.url" ,10, "chassis", "cpu", "OS", "chipset", "memory", "slots", "storage", "network");
         CartItemVIEW cartItemView = new CartItemVIEW(1L, productView, BigDecimal.valueOf(100), 1);
-        Set<CartItemVIEW> cartItems = new HashSet<>();
-        cartItems.add(cartItemView);
+        Set<CartItemVIEW> cartItemsView = new HashSet<>();
+        cartItemsView.add(cartItemView);
+
+        CartItemFORM cartItemForm = new CartItemFORM(1L, 1);
+        Set<CartItemFORM> cartItemsForm = new HashSet<>();
+        cartItemsForm.add(cartItemForm);
 
         PaymentVIEW paymentView = new PaymentVIEW(1L, LocalDateTime.now(), BigDecimal.valueOf(100), PaymentTypeEnum.CREDIT_CARD);
+        PaymentFORM paymentForm = new PaymentFORM(1L, LocalDateTime.now(), BigDecimal.valueOf(150.00), PaymentTypeEnum.MONEY);
         UserVIEW userView = new UserVIEW(1L, "user@example.com", "User Name");
 
         cartView = new CartVIEW(
                 1L,
-                cartItems,
+                cartItemsView,
                 paymentView,
                 userView,
                 BigDecimal.valueOf(100),
@@ -76,8 +83,8 @@ class CartControllerTests {
                 PaymentStatusEnum.PAID
         );
 
-        cartForm = new CartFORM(userView, paymentView, cartItems);
-        cartUpdateForm = new CartUpdateFORM(1L, cartItems, paymentView, LocalDateTime.now(), PaymentStatusEnum.PAID);
+        cartForm = new CartFORM(userView.id(), cartItemsForm);
+        cartUpdateForm = new CartUpdateFORM(1L, cartItemsForm, paymentForm, LocalDateTime.now(), PaymentStatusEnum.PAID);
 
         page = new PageImpl<>(Collections.singletonList(cartView));
 

@@ -28,7 +28,8 @@ import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-class ProductControllerTest {
+class
+ProductControllerTest {
 
     @InjectMocks
     private ProductController productController;
@@ -52,7 +53,7 @@ class ProductControllerTest {
         MockitoAnnotations.openMocks(this);
         mockMvc = MockMvcBuilders.standaloneSetup(productController).build();
 
-        productView = new ProductVIEW(1L, "Product Name", "Product Description", BigDecimal.valueOf(100.00), "http://image.url");
+        productView = new ProductVIEW(1L, "Product Name", "Product Category", BigDecimal.valueOf(150.00), "Product Description", "http://image.url" ,10, "chassis", "cpu", "OS", "chipset", "memory", "slots", "storage", "network");
         productForm = new ProductFORM("Product Name", 1L, BigDecimal.valueOf(100.00), "Product Description", 10, "http://image.url", "chassis", "cpu", "OS", "chipset", "memory", "slots", "storage", "network");
         productUpdateForm = new ProductUpdateFORM(1L, "Updated Product Name", 1L, BigDecimal.valueOf(150.00), "Updated Product Description", 5, "http://updated.image.url", "updated chassis", "updated cpu", "updated OS", "updated chipset", "updated memory", "updated slots", "updated storage", "updated network");
 

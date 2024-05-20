@@ -10,6 +10,8 @@ import br.com.techie.shoppingstore.AP003.repository.UserRepository;
 
 // import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -98,8 +100,8 @@ public class UserSystemService {
   }
 
   @Transactional(readOnly = true)
-  public List<UserVIEW> searchAll() {
-    return userRepository.findAll().stream().map(x -> userViewMapper.map(x)).toList();
+  public Page<UserVIEW> searchAll(Pageable pageable) {
+    return userRepository.findAll(pageable).map(x -> userViewMapper.map(x));
   }
 
   @Transactional(readOnly = true)

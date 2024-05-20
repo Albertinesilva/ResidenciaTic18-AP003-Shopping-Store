@@ -32,9 +32,9 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
     
-    @Operation(summary = "Listar todas as categorias", description = "Recupera uma lista paginada de todas as categorias.", 
+    @Operation(summary = "List all categories", description = "Retrieve a paginated list of all categories.",
             responses = {
-	     @ApiResponse(responseCode = "200", description = "Lista de categorias recuperada com sucesso.", 
+	     @ApiResponse(responseCode = "200", description = "Category list retrieved successfully.",
 	                  content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = CategoryVIEW.class)))),
 	 })
     @GetMapping
@@ -43,11 +43,11 @@ public class CategoryController {
         return ResponseEntity.ok().body(categories);
     }
     
-    @Operation(summary = "Recuperar categoria pelo ID", description = "Recupera os detalhes de uma categoria específica pelo seu ID.", 
+    @Operation(summary = "Retrieve category by ID", description = "Retrieves the details of a specific category by its ID.",
             responses = {
-	     @ApiResponse(responseCode = "200", description = "Categoria recuperada com sucesso.", 
+	     @ApiResponse(responseCode = "200", description = "Category successfully recovered.",
 	                  content = @Content(mediaType = "application/json", schema = @Schema(implementation = CategoryVIEW.class))),
-	     @ApiResponse(responseCode = "404", description = "Categoria não encontrada.", 
+	     @ApiResponse(responseCode = "404", description = "Category not found.",
 	                  content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
 	 })
     @GetMapping("/{id}")
@@ -56,37 +56,37 @@ public class CategoryController {
         return ResponseEntity.ok().body(category);
     }
     
-    @Operation(summary = "Criar uma nova categoria", description = "Cria uma nova categoria com os detalhes fornecidos.", responses = {
-        @ApiResponse(responseCode = "201", description = "Categoria criada com sucesso.", 
+    @Operation(summary = "Create a new category", description = "Creates a new category with the provided details.", responses = {
+        @ApiResponse(responseCode = "201", description = "Category created successfully.",
                      content = @Content(mediaType = "application/json", schema = @Schema(implementation = CategoryVIEW.class))),
-        @ApiResponse(responseCode = "422", description = "Dados de entrada inválidos.", 
+        @ApiResponse(responseCode = "422", description = "Invalid input data.",
                      content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
     })
     @PostMapping
     public ResponseEntity<CategoryVIEW> create(@RequestBody CategoryFORM categoryForm) {
-        CategoryVIEW novaCategoria = categoryService.insert(categoryForm);
-        return ResponseEntity.status(HttpStatus.CREATED).body(novaCategoria);
+        CategoryVIEW category = categoryService.insert(categoryForm);
+        return ResponseEntity.status(HttpStatus.CREATED).body(category);
     }
     
-    @Operation(summary = "Atualizar categoria", description = "Atualiza os detalhes de uma categoria existente.", 
+    @Operation(summary = "Update category", description = "Updates the details of an existing category.",
             responses = {
-	     @ApiResponse(responseCode = "200", description = "Categoria atualizada com sucesso.", 
+	     @ApiResponse(responseCode = "200", description = "Category updated successfully.",
 	                  content = @Content(mediaType = "application/json", schema = @Schema(implementation = CategoryVIEW.class))),
-	     @ApiResponse(responseCode = "404", description = "Categoria não encontrada.", 
+	     @ApiResponse(responseCode = "404", description = "Category not found.",
 	                  content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
-	     @ApiResponse(responseCode = "422", description = "Dados de entrada inválidos ou formatados incorretamente.", 
+	     @ApiResponse(responseCode = "422", description = "Invalid or incorrectly formatted input data.",
 	                  content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
 	 })
     @PutMapping("/{id}")
     public ResponseEntity<CategoryVIEW> update(@PathVariable Long id, @RequestBody CategoryUpdateFORM categoryUpdateForm) {
-        CategoryVIEW categoriaAtualizada = categoryService.update(categoryUpdateForm);
-        return ResponseEntity.ok().body(categoriaAtualizada);
+        CategoryVIEW category = categoryService.update(categoryUpdateForm);
+        return ResponseEntity.ok().body(category);
     }
     
-    @Operation(summary = "Deletar categoria", description = "Deleta uma categoria existente pelo seu ID.", 
+    @Operation(summary = "Delete category", description = "Delete an existing category by its ID.",
             responses = {
-	     @ApiResponse(responseCode = "204", description = "Categoria deletada com sucesso."),
-	     @ApiResponse(responseCode = "404", description = "Categoria não encontrada.", 
+	     @ApiResponse(responseCode = "204", description = "Category deleted successfully."),
+	     @ApiResponse(responseCode = "404", description = "Category not found.",
 	                  content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
 	 })
     @DeleteMapping("/{id}")
