@@ -17,7 +17,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "Users")
-public class User {
+public class UserSystem {
 
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
@@ -71,7 +71,7 @@ public class User {
             return true;
         if (o == null || getClass() != o.getClass())
             return false;
-        User user = (User) o;
+        UserSystem user = (UserSystem) o;
         return Objects.equals(id, user.id);
     }
 

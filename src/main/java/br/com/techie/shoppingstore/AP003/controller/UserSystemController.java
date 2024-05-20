@@ -1,8 +1,8 @@
 package br.com.techie.shoppingstore.AP003.controller;
 
 import br.com.techie.shoppingstore.AP003.dto.form.PasswordUpdateFORM;
-import br.com.techie.shoppingstore.AP003.dto.form.UserFORM;
-import br.com.techie.shoppingstore.AP003.dto.view.UserVIEW;
+import br.com.techie.shoppingstore.AP003.dto.form.UserSystemFORM;
+import br.com.techie.shoppingstore.AP003.dto.view.UserSystemVIEW;
 import br.com.techie.shoppingstore.AP003.infra.exception.ErrorMessage;
 import br.com.techie.shoppingstore.AP003.service.UserSystemService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -33,19 +33,19 @@ public class UserSystemController {
   // private final EmailService emailService;
 
   @Operation(summary = "Create a new user", description = "Feature to create a new user in the system.", responses = {
-      @ApiResponse(responseCode = "201", description = "User created successfully.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UserVIEW.class))),
+      @ApiResponse(responseCode = "201", description = "User created successfully.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UserSystemVIEW.class))),
       @ApiResponse(responseCode = "409", description = "Email user already registered in the system.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
       @ApiResponse(responseCode = "422", description = "Resources not processed due to invalid input data.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
   })
   @PostMapping
-  public ResponseEntity<UserVIEW> create(@Valid @RequestBody UserFORM createDto) {
-    UserVIEW view = userService.save(createDto);
+  public ResponseEntity<UserSystemVIEW> create(@Valid @RequestBody UserSystemFORM createDto) {
+    UserSystemVIEW view = userService.save(createDto);
     // emailService.RegistrationConfirmationEmail(user.getUsername());
     return ResponseEntity.status(HttpStatus.CREATED).body(view);
   }
 
   @Operation(summary = "Retrieve a user by id", description = "Request requires a Bearer Token. Access restricted to logged in ADMIN OR CLIENT", security = @SecurityRequirement(name = "security"), responses = {
-      @ApiResponse(responseCode = "200", description = "Resource retrieved successfully.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UserVIEW.class))),
+      @ApiResponse(responseCode = "200", description = "Resource retrieved successfully.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UserSystemVIEW.class))),
       @ApiResponse(responseCode = "403", description = "User without permission to access this resource.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
       @ApiResponse(responseCode = "404", description = "Resource not found.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
 
@@ -53,8 +53,8 @@ public class UserSystemController {
   @GetMapping("/{id}")
   // @PreAuthorize("hasRole('ADMIN') OR ( hasRole('CLIENT') AND #id ==
   // authentication.principal.id )")
-  public ResponseEntity<UserVIEW> getById(@PathVariable Long id) {
-    UserVIEW view = userService.searchById(id);
+  public ResponseEntity<UserSystemVIEW> getById(@PathVariable Long id) {
+    UserSystemVIEW view = userService.searchById(id);
     return ResponseEntity.ok(view);
   }
 
@@ -73,13 +73,13 @@ public class UserSystemController {
   }
 
   @Operation(summary = "List all registered users", description = "Request requires a Bearer Token. Access restricted to logged in ADMIN", security = @SecurityRequirement(name = "security"), responses = {
-      @ApiResponse(responseCode = "200", description = "List of all registered users", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = UserVIEW.class)))),
+      @ApiResponse(responseCode = "200", description = "List of all registered users", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = UserSystemVIEW.class)))),
       @ApiResponse(responseCode = "403", description = "User without permission to access this resource.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
   })
   @GetMapping
   // @PreAuthorize("hasRole('ADMIN')")
-  public ResponseEntity<Page<UserVIEW>> getAll(@PageableDefault Pageable pageable) {
-    Page<UserVIEW> users = userService.searchAll(pageable);
+  public ResponseEntity<Page<UserSystemVIEW>> getAll(@PageableDefault Pageable pageable) {
+    Page<UserSystemVIEW> users = userService.searchAll(pageable);
     return ResponseEntity.ok(users);
   }
 

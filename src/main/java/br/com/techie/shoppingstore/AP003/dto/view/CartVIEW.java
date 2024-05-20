@@ -10,7 +10,7 @@ public record CartVIEW(
         Long id,
         Set<CartItemVIEW> cartItems,
         PaymentVIEW payment,
-        UserVIEW user,
+        UserSystemVIEW user,
         BigDecimal total_price,
         Integer total_items,
         LocalDateTime purchase_date,

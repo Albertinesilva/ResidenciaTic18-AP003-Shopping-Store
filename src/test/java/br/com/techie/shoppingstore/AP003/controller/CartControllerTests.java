@@ -70,7 +70,7 @@ class CartControllerTests {
 
         PaymentVIEW paymentView = new PaymentVIEW(1L, LocalDateTime.now(), BigDecimal.valueOf(100), PaymentTypeEnum.CREDIT_CARD);
         PaymentFORM paymentForm = new PaymentFORM(1L, LocalDateTime.now(), BigDecimal.valueOf(150.00), PaymentTypeEnum.MONEY);
-        UserVIEW userView = new UserVIEW(1L, "user@example.com", "User Name");
+        UserSystemVIEW userView = new UserSystemVIEW(1L, "user@example.com", "User Name");
 
         cartView = new CartVIEW(
                 1L,

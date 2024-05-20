@@ -1,15 +1,15 @@
 package br.com.techie.shoppingstore.AP003.mapper.views;
 
-import br.com.techie.shoppingstore.AP003.dto.view.UserVIEW;
+import br.com.techie.shoppingstore.AP003.dto.view.UserSystemVIEW;
 import br.com.techie.shoppingstore.AP003.mapper.Mapper;
-import br.com.techie.shoppingstore.AP003.model.User;
+import br.com.techie.shoppingstore.AP003.model.UserSystem;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserViewMapper implements Mapper<User, UserVIEW> {
+public class UserSystemViewMapper implements Mapper<UserSystem, UserSystemVIEW> {
     @Override
-    public UserVIEW map(User i) {
-        return new UserVIEW(
+    public UserSystemVIEW map(UserSystem i) {
+        return new UserSystemVIEW(
                 i.getId(),
                 i.getUsername(),
                 i.getEmail()

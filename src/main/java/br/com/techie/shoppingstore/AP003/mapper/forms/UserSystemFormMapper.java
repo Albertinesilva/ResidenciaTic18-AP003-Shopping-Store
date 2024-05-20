@@ -1,18 +1,18 @@
 package br.com.techie.shoppingstore.AP003.mapper.forms;
 
-import br.com.techie.shoppingstore.AP003.dto.form.UserFORM;
+import br.com.techie.shoppingstore.AP003.dto.form.UserSystemFORM;
 import br.com.techie.shoppingstore.AP003.enums.RoleEnum;
 import br.com.techie.shoppingstore.AP003.mapper.Mapper;
-import br.com.techie.shoppingstore.AP003.model.User;
+import br.com.techie.shoppingstore.AP003.model.UserSystem;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
 @Component
-public class UserFormMapper implements Mapper<UserFORM, User> {
+public class UserSystemFormMapper implements Mapper<UserSystemFORM, UserSystem> {
     @Override
-    public User map(UserFORM i) {
-        return new User(
+    public UserSystem map(UserSystemFORM i) {
+        return new UserSystem(
                 null,
                 i.email(),
                 i.username(),

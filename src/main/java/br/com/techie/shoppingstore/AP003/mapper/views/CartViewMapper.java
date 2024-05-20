@@ -17,7 +17,7 @@ public class CartViewMapper implements Mapper<Cart, CartVIEW> {
     private PaymentViewMapper paymentViewMapper;
 
     @Autowired
-    private UserViewMapper userViewMapper;
+    private UserSystemViewMapper userViewMapper;
 
     @Override
     public CartVIEW map(Cart i) {

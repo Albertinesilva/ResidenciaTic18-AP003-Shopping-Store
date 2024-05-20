@@ -1,12 +1,12 @@
 package br.com.techie.shoppingstore.AP003.service;
 
-import br.com.techie.shoppingstore.AP003.dto.form.UserFORM;
-import br.com.techie.shoppingstore.AP003.dto.view.UserVIEW;
+import br.com.techie.shoppingstore.AP003.dto.form.UserSystemFORM;
+import br.com.techie.shoppingstore.AP003.dto.view.UserSystemVIEW;
 import br.com.techie.shoppingstore.AP003.enums.RoleEnum;
-import br.com.techie.shoppingstore.AP003.mapper.forms.UserFormMapper;
-import br.com.techie.shoppingstore.AP003.mapper.views.UserViewMapper;
-import br.com.techie.shoppingstore.AP003.model.User;
-import br.com.techie.shoppingstore.AP003.repository.UserRepository;
+import br.com.techie.shoppingstore.AP003.mapper.forms.UserSystemFormMapper;
+import br.com.techie.shoppingstore.AP003.mapper.views.UserSystemViewMapper;
+import br.com.techie.shoppingstore.AP003.model.UserSystem;
+import br.com.techie.shoppingstore.AP003.repository.UserSystemRepository;
 
 // import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,15 +28,15 @@ import java.util.List;
 public class UserSystemService {
 
   @Autowired
-  private UserRepository userRepository;
+  private UserSystemRepository userRepository;
 
   // private final PasswordEncoder passwordEncoder;
 
   @Autowired
-  private UserFormMapper userFormMapper;
+  private UserSystemFormMapper userFormMapper;
 
   @Autowired
-  private UserViewMapper userViewMapper;
+  private UserSystemViewMapper userViewMapper;
 
   // @Transactional
   // public UserVIEW save(UserFORM dto) {
@@ -46,9 +46,9 @@ public class UserSystemService {
   // }
 
   @Transactional
-  public UserVIEW save(UserFORM dto) {
+  public UserSystemVIEW save(UserSystemFORM dto) {
     try {
-      User entity = userFormMapper.map(dto);
+      UserSystem entity = userFormMapper.map(dto);
       // dto.setPassword(passwordEncoder.encode(dto.password()));
       userRepository.save(entity);
       return userViewMapper.map(entity);
@@ -60,7 +60,7 @@ public class UserSystemService {
   }
 
   @Transactional(readOnly = true)
-  public UserVIEW searchById(Long id) {
+  public UserSystemVIEW searchById(Long id) {
     return userViewMapper.map(userRepository.findById(id).orElseThrow(
         () -> new EntityNotFoundException(String.format("User with id = %s not found!", id))));
   }
@@ -71,7 +71,7 @@ public class UserSystemService {
       throw new PasswordInvalidException("New password does not match password confirmation!");
     }
 
-    User user = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("User not found!"));
+    UserSystem user = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("User not found!"));
     // if (!passwordEncoder.matches(currentPassword, user.getPassword())) {
     // throw new PasswordInvalidException("Incorrect password!");
     // }
@@ -86,12 +86,12 @@ public class UserSystemService {
   }
 
   @Transactional(readOnly = false)
-  public UserVIEW changePassword(Token token, String newPassword, String confirmPassword) {
+  public UserSystemVIEW changePassword(Token token, String newPassword, String confirmPassword) {
     if (!newPassword.equals(confirmPassword)) {
       throw new PasswordInvalidException("New password does not match password confirmation!");
     }
 
-    User user = token.getUserSystem();
+    UserSystem user = token.getUserSystem();
     user.setCodeVerifier(null);
     // user.setPassword(passwordEncoder.encode(newPassword));
     user.setPassword(newPassword);
@@ -100,25 +100,25 @@ public class UserSystemService {
   }
 
   @Transactional(readOnly = true)
-  public Page<UserVIEW> searchAll(Pageable pageable) {
+  public Page<UserSystemVIEW> searchAll(Pageable pageable) {
     return userRepository.findAll(pageable).map(x -> userViewMapper.map(x));
   }
 
   @Transactional(readOnly = true)
-  public UserVIEW searchByUsername(String username) {
-    return userViewMapper.map(userRepository.findByUsername(username).orElseThrow(
+  public UserSystemVIEW searchByUsername(String username) {
+    return userViewMapper.map(userRepository.findByEmail(username).orElseThrow(
         () -> new EntityNotFoundException(String.format("User with username = %s not found!", username))));
   }
 
   @Transactional(readOnly = true)
   public RoleEnum searchRoleByUsername(String username) {
-    return userRepository.findRoleByUsername(username);
+    return userRepository.findRoleByEmail(username);
   }
 
   @Transactional(readOnly = false)
   public void activateUserRegistration(String code) {
     String username = new String(Base64.getDecoder().decode(code));
-    User user = userRepository.findByUsername(username)
+    UserSystem user = userRepository.findByEmail(username)
         .orElseThrow(() -> new EntityNotFoundException("User not found!"));
 
     if (user.hasNotId()) {

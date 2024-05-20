@@ -14,26 +14,26 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 import com.github.javafaker.Faker;
 
-import br.com.techie.shoppingstore.AP003.model.User;
+import br.com.techie.shoppingstore.AP003.model.UserSystem;
 
 
 @DataJpaTest
 public class UserRepositoryTest {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserSystemRepository userRepository;
 
     @Autowired
     private TestEntityManager entityManager;
 
-    private User user;
+    private UserSystem user;
 
     public Faker faker;
 
-    private User criaUsuario() {
+    private UserSystem criaUsuario() {
         
         faker = new Faker();
-        User user = new User();
+        UserSystem user = new UserSystem();
         user.setActive(faker.bool().bool());
         user.setPassword("@Test123");
         user.setPasswordConfirm("@Test123");
@@ -56,10 +56,10 @@ public class UserRepositoryTest {
     public void testSave(){
 
         //Given
-        User newUser = criaUsuario();
+        UserSystem newUser = criaUsuario();
 
         //When
-        User savedUser = userRepository.save(newUser);
+        UserSystem savedUser = userRepository.save(newUser);
 
         //Then
         assertThat(savedUser).isNotNull();
@@ -72,10 +72,10 @@ public class UserRepositoryTest {
     @Test
     public void testFindById(){
         //  Given
-        User savedUser = userRepository.save(user);
+        UserSystem savedUser = userRepository.save(user);
 
         //  When
-        Optional<User> retrievedUsuario = userRepository.findById(savedUser.getId());
+        Optional<UserSystem> retrievedUsuario = userRepository.findById(savedUser.getId());
 
         // Then
         assertEquals(user, retrievedUsuario.get());

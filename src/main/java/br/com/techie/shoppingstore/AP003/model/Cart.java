@@ -34,7 +34,7 @@ public class Cart {
 
     @OneToOne (cascade  = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user;
+    private UserSystem user;
 
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL)
     private Set<CartItem> items;
