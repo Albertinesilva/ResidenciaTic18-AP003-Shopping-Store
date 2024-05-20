@@ -19,7 +19,7 @@ public class UserFormMapper implements Mapper<UserSystemFORM, UserSystem> {
                 i.username(),
                 i.password(),
                 i.passwordConfirm(),
-                Role.ROLE_CLIENTE,
+                Role.ROLE_CLIENT,
                 LocalDateTime.now(),
                 LocalDateTime.now(),
                 i.username(),

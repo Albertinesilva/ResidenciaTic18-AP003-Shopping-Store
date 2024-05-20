@@ -34,18 +34,18 @@ public class TokenService {
   private EmailService emailService;
 
   @Transactional(readOnly = false)
-  public Token requestPasswordReset(UserSystem usuario) throws MessagingException {
+  public Token requestPasswordReset(UserSystem user) throws MessagingException {
 
-    JwtToken token = jwtUserDetailsService.getTokenAuthenticated(usuario.getEmail());
+    JwtToken token = jwtUserDetailsService.getTokenAuthenticated(user.getEmail());
 
     String verificador = token.getToken();
     LocalDateTime dataCriacao = LocalDateTime.now();
-    usuario.setCodeVerifier(verificador);
-    Token tokenEntity = new Token(verificador, dataCriacao, usuario);
+    user.setCodeVerifier(verificador);
+    Token tokenEntity = new Token(verificador, dataCriacao, user);
     tokenRepository.save(tokenEntity);
 
-    emailService.sendOrderResetPassword(usuario.getEmail(), verificador);
-    log.info("Token criado para o usuário {}", usuario.getEmail());
+    emailService.sendOrderResetPassword(user.getEmail(), verificador);
+    log.info("Token criado para o usuário {}", user.getEmail());
     return tokenEntity;
   }
 

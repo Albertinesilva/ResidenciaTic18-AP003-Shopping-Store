@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.techie.shoppingstore.AP003.dto.form.UserSystemEmailFORM;
+import br.com.techie.shoppingstore.AP003.dto.view.TokenVIEW;
 import br.com.techie.shoppingstore.AP003.dto.view.UserSystemVIEW;
 import br.com.techie.shoppingstore.AP003.infra.exception.ErrorMessage;
 import br.com.techie.shoppingstore.AP003.model.Token;
@@ -26,7 +27,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Tag(name = "Passwords Recovery", description = "Contém todas as operações aos recursos para receber um e-mail de recuperação de senha.")
+@Tag(name = "Password Recovery", description = "Contains all operations for resources to receive a password recovery email.")
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/password-recovery")
@@ -35,21 +36,23 @@ public class PasswordRecoveryController {
   private final TokenService tokenService;
   private final UserSystemService userService;
 
-  @Operation(summary = "Redefinir senha pelo email", description = "Recurso para redefinir senha pelo email", responses = {
-      @ApiResponse(responseCode = "204", description = "Pedido de redefinição de senha enviado com sucesso", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UserSystemVIEW.class))),
-      @ApiResponse(responseCode = "404", description = "Recurso não encontrado.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
-      @ApiResponse(responseCode = "401", description = "Usuário não autorizado.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
-  })
-  @PostMapping
-  public ResponseEntity<?> redefinepassword(@RequestBody @Valid UserSystemEmailFORM dto)
-      throws MessagingException {
+  @Operation(summary = "Reset password via email", description = "Resource to reset password via email", responses = {
+    @ApiResponse(responseCode = "204", description = "Password reset request successfully sent", content = @Content(mediaType = "application/json",
+    schema = @Schema(implementation = UserSystemVIEW.class))),
+    @ApiResponse(responseCode = "404", description = "Resource not found", content = @Content(mediaType = "application/json", 
+    schema = @Schema(implementation = ErrorMessage.class))),
+    @ApiResponse(responseCode = "401", description = "User not authorized", content = @Content(mediaType = "application/json", 
+    schema = @Schema(implementation = ErrorMessage.class)))
+})
 
+  @PostMapping
+  public ResponseEntity<Token> redefinepassword(@RequestBody @Valid UserSystemEmailFORM dto)throws MessagingException {
     UserSystem user = userService.searchByEmail(dto.email());
     Optional<Token> tokenExistenteOptional = tokenService.findByToken(user.getCodeVerifier());
     tokenExistenteOptional.ifPresent(token -> tokenService.deleteToken(token));
 
     Token token = tokenService.requestPasswordReset(user);
-    log.info("Token criado para o usuário {}", dto.email());
+    log.info("Token created for the user {}", dto.email());
     return ResponseEntity.ok(token);
   }
 

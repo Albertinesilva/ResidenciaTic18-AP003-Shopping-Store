@@ -38,6 +38,9 @@ public class UserSystemService {
 
     @Transactional
     public UserSystemVIEW save(UserSystemFORM dto) {
+        if (!dto.password().equals(dto.passwordConfirm())) {
+            throw new PasswordInvalidException("New password does not match password confirmation!");
+        }
         try {
             UserSystem entity = userFormMapper.map(dto);
             entity.setPassword(passwordEncoder.encode(dto.password()));

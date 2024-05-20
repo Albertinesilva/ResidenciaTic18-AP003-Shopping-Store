@@ -25,7 +25,7 @@ import br.com.techie.shoppingstore.AP003.infra.exception.ErrorMessage;
 import br.com.techie.shoppingstore.AP003.infra.jwt.JwtToken;
 import br.com.techie.shoppingstore.AP003.infra.jwt.JwtUserDetailsService;
 
-@Tag(name = "Autenticação", description = "Recurso para proceder com a autenticação na API")
+@Tag(name = "Authentication", description = "Resource for proceeding with API authentication")
 @Slf4j
 @RequiredArgsConstructor
 @RestController
@@ -35,29 +35,32 @@ public class AuthenticationController {
     private final JwtUserDetailsService detailsService;
     private final AuthenticationManager authenticationManager;
 
-    @Operation(summary = "Autenticar na API", description = "Recurso de autenticação na API", responses = {
-            @ApiResponse(responseCode = "200", description = "Autenticação realizada com sucesso e retorno de um bearer token", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UserSystemVIEW.class))),
-            @ApiResponse(responseCode = "400", description = "Credenciais inválidas", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
-            @ApiResponse(responseCode = "422", description = "Campo(s) Inválido(s)", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
+    @Operation(summary = "Authenticate with the API", description = "API authentication resource", responses = {
+        @ApiResponse(responseCode = "200", description = "Authentication successful, returning a bearer token", content = @Content(mediaType = "application/json", 
+        schema = @Schema(implementation = UserSystemVIEW.class))),
+        @ApiResponse(responseCode = "400", description = "Invalid credentials", content = @Content(mediaType = "application/json", 
+        schema = @Schema(implementation = ErrorMessage.class))),
+        @ApiResponse(responseCode = "422", description = "Invalid field(s)", content = @Content(mediaType = "application/json", 
+        schema = @Schema(implementation = ErrorMessage.class)))
     })
     @PostMapping("/auth")
     public ResponseEntity<?> authenticate(@RequestBody @Valid UserSystemLoginFORM dto, HttpServletRequest request) {
 
-        log.info("Processo de autenticação pelo login {}", dto.email());
+        log.info("Authentication process via login {}", dto.email());
         try {
-            UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
-                    dto.email(), dto.password());
+            UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(dto.email(), dto.password());
 
             authenticationManager.authenticate(authenticationToken);
 
             JwtToken token = detailsService.getTokenAuthenticated(dto.email());
 
             return ResponseEntity.ok(token);
+            
         } catch (AuthenticationException ex) {
             log.warn("Bad Credentials from email '{}'", dto.email());
         }
         return ResponseEntity
                 .badRequest()
-                .body(new ErrorMessage(request, HttpStatus.BAD_REQUEST, "Credenciais Inválidas"));
+                .body(new ErrorMessage(request, HttpStatus.BAD_REQUEST, "Invalid credentials"));
     }
 }

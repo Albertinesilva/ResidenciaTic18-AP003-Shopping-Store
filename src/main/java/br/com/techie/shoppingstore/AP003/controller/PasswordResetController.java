@@ -21,7 +21,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-@Tag(name = "Passwords Reset", description = "Contém todas as operações aos recursos para resetar a senha do usuário.")
+@Tag(name = "Password Reset", description = "Contains all operations for resources to reset the user's password.")
 @Slf4j
 @RequiredArgsConstructor
 @RestController
@@ -31,11 +31,15 @@ public class PasswordResetController {
   private final UserSystemService usuarioService;
   private final TokenService tokenService;
 
-  @Operation(summary = "Atualizar senha pelo token", description = "Recurso para atualizar a senha do usuário com token.", responses = {
-      @ApiResponse(responseCode = "204", description = "Senha atualizada com sucesso.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Void.class))),
-      @ApiResponse(responseCode = "400", description = "Senha não confere.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
-      @ApiResponse(responseCode = "404", description = "Recurso não encontrado.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
-      @ApiResponse(responseCode = "422", description = "Campos invalidos ou formatados incorretamente.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
+  @Operation(summary = "Update password using token", description = "Resource to update the user's password with a token", responses = {
+      @ApiResponse(responseCode = "204", description = "Password successfully updated", content = @Content(mediaType = "application/json",
+      schema = @Schema(implementation = Void.class))),
+      @ApiResponse(responseCode = "400", description = "Password does not match", content = @Content(mediaType = "application/json", 
+      schema = @Schema(implementation = ErrorMessage.class))),
+      @ApiResponse(responseCode = "404", description = "Resource not found", content = @Content(mediaType = "application/json", 
+      schema = @Schema(implementation = ErrorMessage.class))),
+      @ApiResponse(responseCode = "422", description = "Invalid or incorrectly formatted fields", content = @Content(mediaType = "application/json", 
+      schema = @Schema(implementation = ErrorMessage.class)))
   })
   @PatchMapping("/{token}")
   public ResponseEntity<Void> passwordresetconfirmation(@PathVariable String token, @Valid @RequestBody PasswordResetFORM dto) {
@@ -45,7 +49,7 @@ public class PasswordResetController {
     }
     Token tokenEncontrado = tokenService.findByToken(token).get();
     usuarioService.changePassword(tokenEncontrado, dto.new_password(), dto.confirm_password());
-    log.info("Senha do usuário alterada com sucesso. Usuário: {}", tokenEncontrado.getUserSystem().getEmail());
+    log.info("User password changed successfully. User: {}", tokenEncontrado.getUserSystem().getEmail());
     tokenService.deleteToken(tokenEncontrado);
     return ResponseEntity.noContent().build();
 
