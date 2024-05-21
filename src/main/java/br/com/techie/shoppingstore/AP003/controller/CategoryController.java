@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,6 +42,7 @@ public class CategoryController {
             @ApiResponse(responseCode = "422", description = "Invalid input data.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
     })
     @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<CategoryVIEW> create(@RequestBody CategoryFORM categoryForm) {
         CategoryVIEW category = categoryService.insert(categoryForm);
         return ResponseEntity.status(HttpStatus.CREATED).body(category);
@@ -50,6 +52,7 @@ public class CategoryController {
             @ApiResponse(responseCode = "200", description = "Category list retrieved successfully.", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = CategoryVIEW.class)))),
     })
     @GetMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'CLIENT')")
     public ResponseEntity<Page<CategoryVIEW>> getAll(Pageable pageable) {
         Page<CategoryVIEW> categories = categoryService.findAllPaged(pageable);
         return ResponseEntity.ok().body(categories);
@@ -60,6 +63,7 @@ public class CategoryController {
             @ApiResponse(responseCode = "404", description = "Category not found.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
     })
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'CLIENT')")
     public ResponseEntity<CategoryVIEW> getById(@PathVariable Long id) {
         CategoryVIEW category = categoryService.findById(id);
         return ResponseEntity.ok().body(category);
@@ -71,6 +75,7 @@ public class CategoryController {
             @ApiResponse(responseCode = "422", description = "Invalid or incorrectly formatted input data.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
     })
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<CategoryVIEW> update(@PathVariable Long id,
             @RequestBody CategoryUpdateFORM categoryUpdateForm) {
         CategoryVIEW category = categoryService.update(categoryUpdateForm);
@@ -82,6 +87,7 @@ public class CategoryController {
             @ApiResponse(responseCode = "404", description = "Category not found.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
     })
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         categoryService.delete(id);
         return ResponseEntity.noContent().build();

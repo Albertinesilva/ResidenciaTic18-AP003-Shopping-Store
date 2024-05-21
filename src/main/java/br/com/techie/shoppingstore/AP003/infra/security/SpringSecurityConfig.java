@@ -41,7 +41,7 @@ public class SpringSecurityConfig {
                                 .requestMatchers(HttpMethod.POST, "/api/v1/auth").permitAll()
                                 .requestMatchers(HttpMethod.PATCH, "/api/v1/password-reset").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/api/v1/password-recovery").permitAll()
-                                .requestMatchers(HttpMethod.POST, "/api/v1/categories").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/api/v1/categories").permitAll()
                                 .requestMatchers(DOCUMENTATION_OPENAPI).permitAll()
                                 .anyRequest().authenticated())
                         .sessionManagement(

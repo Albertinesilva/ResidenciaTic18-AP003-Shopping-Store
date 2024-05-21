@@ -12,6 +12,8 @@ import br.com.techie.shoppingstore.AP003.dto.form.UserSystemEmailFORM;
 import br.com.techie.shoppingstore.AP003.dto.view.TokenVIEW;
 import br.com.techie.shoppingstore.AP003.dto.view.UserSystemVIEW;
 import br.com.techie.shoppingstore.AP003.infra.exception.ErrorMessage;
+import br.com.techie.shoppingstore.AP003.mapper.forms.TokenFormMapper;
+import br.com.techie.shoppingstore.AP003.mapper.views.UserViewMapper;
 import br.com.techie.shoppingstore.AP003.model.Token;
 import br.com.techie.shoppingstore.AP003.model.UserSystem;
 import br.com.techie.shoppingstore.AP003.service.TokenService;
@@ -35,6 +37,8 @@ public class PasswordRecoveryController {
 
   private final TokenService tokenService;
   private final UserSystemService userService;
+  private final TokenFormMapper tokenFormMapper;
+  private final UserViewMapper userViewMapper;
 
   @Operation(summary = "Reset password via email", description = "Resource to reset password via email", responses = {
     @ApiResponse(responseCode = "204", description = "Password reset request successfully sent", content = @Content(mediaType = "application/json",
@@ -46,14 +50,15 @@ public class PasswordRecoveryController {
 })
 
   @PostMapping
-  public ResponseEntity<Token> redefinepassword(@RequestBody @Valid UserSystemEmailFORM dto)throws MessagingException {
+  public ResponseEntity<TokenVIEW> redefinepassword(@RequestBody @Valid UserSystemEmailFORM dto)throws MessagingException {
     UserSystem user = userService.searchByEmail(dto.email());
     Optional<Token> tokenExistenteOptional = tokenService.findByToken(user.getCodeVerifier());
     tokenExistenteOptional.ifPresent(token -> tokenService.deleteToken(token));
 
     Token token = tokenService.requestPasswordReset(user);
     log.info("Token created for the user {}", dto.email());
-    return ResponseEntity.ok(token);
+    TokenVIEW tokenVIEW = tokenFormMapper.map(token, userViewMapper.map(user));
+    return ResponseEntity.ok(tokenVIEW);
   }
 
 }

@@ -95,10 +95,6 @@ public class UserSystemService {
 
     @Transactional(readOnly = true)
     public UserSystem searchByEmail(String email) {
-        // return
-        // userViewMapper.map(userRepository.findByEmail(email).orElseThrow(
-        // () -> new EntityNotFoundException(String.format("User with email = %s not
-        // found!", email))));
         return userRepository.findByEmail(email).orElseThrow(
                 () -> new EntityNotFoundException(
                         String.format(String.format("User with email = %s not found!", email))));
