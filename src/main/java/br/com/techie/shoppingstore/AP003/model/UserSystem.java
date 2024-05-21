@@ -17,7 +17,7 @@ import java.util.Objects;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "UserSystem")
+@Entity(name = "users")
 @EntityListeners(AuditingEntityListener.class)
 public class UserSystem implements Serializable {
 

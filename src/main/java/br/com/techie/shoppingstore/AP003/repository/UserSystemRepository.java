@@ -13,6 +13,6 @@ public interface UserSystemRepository extends JpaRepository<UserSystem, Long> {
     
     Optional<UserSystem> findByEmail(String email);
 
-    @Query("select u.role from UserSystem u where u.email like :email")
+    @Query("select u.role from users u where u.email like :email")
     UserSystem.Role findRoleByEmail(String email);
 }

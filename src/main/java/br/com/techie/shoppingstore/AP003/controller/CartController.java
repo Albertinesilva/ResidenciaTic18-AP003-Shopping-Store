@@ -23,11 +23,24 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Tag(name = "carts", description = "Contains all operations for registering, editing and reading shopping carts.")
 @RestController
-@RequestMapping("/carts")
+@RequestMapping("/api/v1/carts")
 public class CartController {
 
     @Autowired
     private CartService cartService;
+
+    @Operation(summary = "Create a new cart", description = "Create a new shopping cart with the details provided.", responses = {
+        @ApiResponse(responseCode = "201", description = "Cart created successfully.",
+                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = CartVIEW.class))),
+        @ApiResponse(responseCode = "422", description = "Invalid input data.",
+                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
+    })
+    @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'CLIENT')")
+    public ResponseEntity<CartVIEW> create(@RequestBody CartFORM cartForm) {
+        CartVIEW novoCart = cartService.insert(cartForm);
+        return ResponseEntity.status(HttpStatus.CREATED).body(novoCart);
+    }
     
     @Operation(summary = "List all shopping carts", description = "Retrieve a paginated list of all shopping carts.",
             security = @SecurityRequirement(name = "security"), responses = {
@@ -55,19 +68,6 @@ public class CartController {
     public ResponseEntity<CartVIEW> getById(@PathVariable Long id) {
         CartVIEW cart = cartService.findById(id);
         return ResponseEntity.ok().body(cart);
-    }
-    
-    @Operation(summary = "Create a new cart", description = "Create a new shopping cart with the details provided.", responses = {
-        @ApiResponse(responseCode = "201", description = "Cart created successfully.",
-                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = CartVIEW.class))),
-        @ApiResponse(responseCode = "422", description = "Invalid input data.",
-                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
-    })
-    @PostMapping
-    @PreAuthorize("hasAnyRole('ADMIN', 'CLIENT')")
-    public ResponseEntity<CartVIEW> create(@RequestBody CartFORM cartForm) {
-        CartVIEW novoCart = cartService.insert(cartForm);
-        return ResponseEntity.status(HttpStatus.CREATED).body(novoCart);
     }
     
     @Operation(summary = "Update Cart", description = "Updates the details of an existing cart.",

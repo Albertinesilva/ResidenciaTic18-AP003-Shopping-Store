@@ -39,8 +39,8 @@ public class SpringSecurityConfig {
                         .authorizeHttpRequests((authorize) -> authorize
                                 .requestMatchers(HttpMethod.POST, "/api/v1/users").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/api/v1/auth").permitAll()
-                                .requestMatchers(HttpMethod.PATCH, "/api/v1/password-reset").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/api/v1/password-recovery").permitAll()
+                                .requestMatchers(HttpMethod.PATCH, "/api/v1/password-reset").permitAll()
                                 .requestMatchers(DOCUMENTATION_OPENAPI).permitAll()
                                 .anyRequest().authenticated())
                         .sessionManagement(
