@@ -1,6 +1,6 @@
 package br.com.techie.shoppingstore.AP003.dto.form;
 
-import jakarta.validation.Valid;
+
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;

@@ -22,7 +22,6 @@ import br.com.techie.shoppingstore.AP003.infra.exception.EmailUniqueViolationExc
 import br.com.techie.shoppingstore.AP003.model.Token;
 
 import java.util.Base64;
-import java.util.List;
 
 @Service
 public class UserSystemService {
