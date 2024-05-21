@@ -25,6 +25,7 @@ import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1/products")
@@ -72,9 +73,9 @@ public class ProductController {
             @ApiResponse(responseCode = "404", description = "Product not found.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
             @ApiResponse(responseCode = "422", description = "Invalid or incorrectly formatted input data.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
     })
-    @PutMapping("/{id}")
+    @PutMapping
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<ProductVIEW> update(@PathVariable Long id, @RequestBody ProductUpdateFORM productUpdateForm) {
+    public ResponseEntity<ProductVIEW> update(@RequestBody @Valid ProductUpdateFORM productUpdateForm) {
         ProductVIEW product = productService.update(productUpdateForm);
         return ResponseEntity.ok().body(product);
     }

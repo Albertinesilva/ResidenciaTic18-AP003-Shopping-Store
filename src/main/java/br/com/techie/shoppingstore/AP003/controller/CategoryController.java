@@ -26,6 +26,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @Tag(name = "Categories", description = "Contains all operations for registering, editing, and reading a category.")
@@ -74,10 +75,9 @@ public class CategoryController {
             @ApiResponse(responseCode = "404", description = "Category not found.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
             @ApiResponse(responseCode = "422", description = "Invalid or incorrectly formatted input data.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
     })
-    @PutMapping("/{id}")
+    @PutMapping
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<CategoryVIEW> update(@PathVariable Long id,
-            @RequestBody CategoryUpdateFORM categoryUpdateForm) {
+    public ResponseEntity<CategoryVIEW> update(@RequestBody @Valid CategoryUpdateFORM categoryUpdateForm) {
         CategoryVIEW category = categoryService.update(categoryUpdateForm);
         return ResponseEntity.ok().body(category);
     }

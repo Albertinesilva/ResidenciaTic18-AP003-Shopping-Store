@@ -3,7 +3,7 @@ package br.com.techie.shoppingstore.AP003.service;
 import br.com.techie.shoppingstore.AP003.dto.form.UserSystemFORM;
 import br.com.techie.shoppingstore.AP003.dto.view.UserSystemVIEW;
 import br.com.techie.shoppingstore.AP003.mapper.forms.UserFormMapper;
-import br.com.techie.shoppingstore.AP003.mapper.views.UserViewMapper;
+import br.com.techie.shoppingstore.AP003.mapper.views.UserSystemViewMapper;
 import br.com.techie.shoppingstore.AP003.model.UserSystem;
 import br.com.techie.shoppingstore.AP003.repository.UserSystemRepository;
 
@@ -34,7 +34,7 @@ public class UserSystemService {
     private UserFormMapper userFormMapper;
 
     @Autowired
-    private UserViewMapper userViewMapper;
+    private UserSystemViewMapper userViewMapper;
 
     @Transactional
     public UserSystemVIEW save(UserSystemFORM dto) {

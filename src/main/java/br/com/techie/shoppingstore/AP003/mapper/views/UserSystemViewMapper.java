@@ -6,13 +6,12 @@ import br.com.techie.shoppingstore.AP003.model.UserSystem;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserViewMapper implements Mapper<UserSystem, UserSystemVIEW> {
+public class UserSystemViewMapper implements Mapper<UserSystem, UserSystemVIEW> {
     @Override
     public UserSystemVIEW map(UserSystem i) {
         return new UserSystemVIEW(
                 i.getId(),
                 i.getUsername(),
-                i.getEmail()
-        );
+                i.getEmail());
     }
 }

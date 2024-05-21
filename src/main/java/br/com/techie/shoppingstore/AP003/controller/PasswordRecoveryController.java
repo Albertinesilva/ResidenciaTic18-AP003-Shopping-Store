@@ -13,7 +13,7 @@ import br.com.techie.shoppingstore.AP003.dto.view.TokenVIEW;
 import br.com.techie.shoppingstore.AP003.dto.view.UserSystemVIEW;
 import br.com.techie.shoppingstore.AP003.infra.exception.ErrorMessage;
 import br.com.techie.shoppingstore.AP003.mapper.forms.TokenFormMapper;
-import br.com.techie.shoppingstore.AP003.mapper.views.UserViewMapper;
+import br.com.techie.shoppingstore.AP003.mapper.views.UserSystemViewMapper;
 import br.com.techie.shoppingstore.AP003.model.Token;
 import br.com.techie.shoppingstore.AP003.model.UserSystem;
 import br.com.techie.shoppingstore.AP003.service.TokenService;
@@ -38,7 +38,7 @@ public class PasswordRecoveryController {
   private final TokenService tokenService;
   private final UserSystemService userService;
   private final TokenFormMapper tokenFormMapper;
-  private final UserViewMapper userViewMapper;
+  private final UserSystemViewMapper userViewMapper;
 
   @Operation(summary = "Reset password via email", description = "Resource to reset password via email", responses = {
     @ApiResponse(responseCode = "204", description = "Password reset request successfully sent", content = @Content(mediaType = "application/json",
