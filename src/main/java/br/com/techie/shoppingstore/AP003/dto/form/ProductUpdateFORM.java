@@ -14,7 +14,7 @@ public record ProductUpdateFORM(
         @NotBlank(message = "Name is required!")
         String name,
 
-        @NotBlank(message = "Category ID is required!")
+        @NotNull(message = "Category ID is required!")
         Long category_id,
 
         @NotNull(message = "Price is required!")
