@@ -12,9 +12,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -28,8 +31,9 @@ import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-class
-ProductControllerTest {
+@SpringBootTest
+@AutoConfigureMockMvc
+class ProductControllerTests {
 
     @InjectMocks
     private ProductController productController;
@@ -51,11 +55,13 @@ ProductControllerTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        mockMvc = MockMvcBuilders.standaloneSetup(productController).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(productController)
+                .setCustomArgumentResolvers(new PageableHandlerMethodArgumentResolver())
+                .build();
 
-        productView = new ProductVIEW(1L, "Product Name", "Product Category", BigDecimal.valueOf(150.00), "Product Description", "http://image.url" ,10, "chassis", "cpu", "OS", "chipset", "memory", "slots", "storage", "network");
-        productForm = new ProductFORM("Product Name", 1L, BigDecimal.valueOf(100.00), "Product Description", 10, "http://image.url", "chassis", "cpu", "OS", "chipset", "memory", "slots", "storage", "network");
-        productUpdateForm = new ProductUpdateFORM(1L, "Updated Product Name", 1L, BigDecimal.valueOf(150.00), "Updated Product Description", 5, "http://updated.image.url", "updated chassis", "updated cpu", "updated OS", "updated chipset", "updated memory", "updated slots", "updated storage", "updated network");
+        productView = new ProductVIEW(1L, "Product Name", "Product Category", BigDecimal.valueOf(150.00), "Product Description", "http://image.url", 10, "chassis", "cpu", "OS", "chipset", "memory", "slots", "storage", "network");
+        productForm = new ProductFORM("Product Name", 1L, BigDecimal.valueOf(150.00), "Product Description", 10, "http://image.url", "chassis", "cpu", "OS", "chipset", "memory", "slots", "storage", "network");
+        productUpdateForm = new ProductUpdateFORM(1L, "Updated Product Name", 2L, BigDecimal.valueOf(199.99), "Updated Product Description", 20, "http://newimage.url", "new chassis", "new cpu", "new OS", "new chipset", "new memory", "new slots", "new storage", "new network");
 
         page = new PageImpl<>(Collections.singletonList(productView));
 
@@ -69,6 +75,8 @@ ProductControllerTest {
     @DisplayName("Get all products")
     void getAllProducts() throws Exception {
         mockMvc.perform(get("/products")
+                .param("page", "0")
+                .param("size", "10")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.content").exists());

@@ -12,9 +12,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -27,6 +30,8 @@ import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+@SpringBootTest
+@AutoConfigureMockMvc
 class CategoryControllerTests {
 
     @InjectMocks
@@ -49,11 +54,13 @@ class CategoryControllerTests {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        mockMvc = MockMvcBuilders.standaloneSetup(categoryController).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(categoryController)
+                .setCustomArgumentResolvers(new PageableHandlerMethodArgumentResolver())
+                .build();
 
-        categoryView = new CategoryVIEW(1L, "Electronics");
-        categoryForm = new CategoryFORM("Electronics");
-        categoryUpdateForm = new CategoryUpdateFORM(1L, "Electronics");
+        categoryView = new CategoryVIEW(1L, "Category Name");
+        categoryForm = new CategoryFORM("Category Name");
+        categoryUpdateForm = new CategoryUpdateFORM(1L, "Updated Category Name");
 
         page = new PageImpl<>(Collections.singletonList(categoryView));
 
@@ -67,6 +74,8 @@ class CategoryControllerTests {
     @DisplayName("Get all categories")
     void getAllCategories() throws Exception {
         mockMvc.perform(get("/categories")
+                .param("page", "0")
+                .param("size", "10")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.content").exists());
