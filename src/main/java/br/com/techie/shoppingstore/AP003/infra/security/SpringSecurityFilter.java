@@ -20,7 +20,7 @@ import br.com.techie.shoppingstore.AP003.infra.jwt.JwtAuthorizationFilter;
 @EnableMethodSecurity
 @EnableWebMvc
 @Configuration
-public class SpringSecurityConfig {
+public class SpringSecurityFilter {
 
         private static final String[] DOCUMENTATION_OPENAPI = {
                         "/docs/index.html",

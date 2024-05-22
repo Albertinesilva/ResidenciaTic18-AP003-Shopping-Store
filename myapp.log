@@ -30,3 +30,19 @@
 2024-05-21T22:57:37.643-03:00 DEBUG 15564 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
 2024-05-21T22:57:37.643-03:00 DEBUG 15564 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [br.com.techie.shoppingstore.AP003.infra.jwt.JwtToken@6c6a9435]
 2024-05-21T22:57:37.643-03:00 DEBUG 15564 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-21T23:06:38.899-03:00  INFO 6780 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Starting Ap003Application using Java 17.0.1 with PID 6780 (C:\Users\alber\OneDrive\Documentos\ProjetosResidencia\AP003\target\classes started by alber in C:\Users\alber\OneDrive\Documentos\ProjetosResidencia\AP003)
+2024-05-21T23:06:38.906-03:00  INFO 6780 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : No active profile set, falling back to 1 default profile: "default"
+2024-05-21T23:06:44.900-03:00  WARN 6780 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-21T23:06:45.028-03:00 DEBUG 6780 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 30 mappings in 'requestMappingHandlerMapping'
+2024-05-21T23:06:45.063-03:00 DEBUG 6780 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-05-21T23:06:45.125-03:00 DEBUG 6780 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-05-21T23:06:45.160-03:00 DEBUG 6780 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-05-21T23:06:48.624-03:00  INFO 6780 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Started Ap003Application in 10.153 seconds (process running for 10.951)
+2024-05-21T23:25:24.934-03:00  INFO 13676 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Starting Ap003Application using Java 17.0.1 with PID 13676 (C:\Users\alber\OneDrive\Documentos\ProjetosResidencia\AP003\target\classes started by alber in C:\Users\alber\OneDrive\Documentos\ProjetosResidencia\AP003)
+2024-05-21T23:25:24.937-03:00  INFO 13676 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : No active profile set, falling back to 1 default profile: "default"
+2024-05-21T23:25:30.320-03:00  WARN 13676 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-21T23:25:30.439-03:00 DEBUG 13676 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 30 mappings in 'requestMappingHandlerMapping'
+2024-05-21T23:25:30.475-03:00 DEBUG 13676 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-05-21T23:25:30.541-03:00 DEBUG 13676 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-05-21T23:25:30.602-03:00 DEBUG 13676 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-05-21T23:25:33.661-03:00  INFO 13676 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Started Ap003Application in 9.079 seconds (process running for 9.648)

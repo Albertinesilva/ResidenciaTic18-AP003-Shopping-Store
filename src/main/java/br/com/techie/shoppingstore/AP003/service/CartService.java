@@ -11,6 +11,7 @@ import br.com.techie.shoppingstore.AP003.mapper.updates.CartUpdateMapper;
 import br.com.techie.shoppingstore.AP003.mapper.views.CartViewMapper;
 import br.com.techie.shoppingstore.AP003.repository.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -34,6 +35,7 @@ public class CartService {
   @Autowired
   private CartUpdateMapper cartUpdateMapper;
 
+  @Cacheable("Carts")
   @Transactional(readOnly = true)
   public Page<CartVIEW> findAllPaged(Pageable pageable) {
     return cartRepository.findAll(pageable).map(x -> cartViewMapper.map(x));
