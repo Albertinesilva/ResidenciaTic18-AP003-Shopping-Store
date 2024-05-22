@@ -1,14 +1,22 @@
 package br.com.techie.shoppingstore.AP003.service;
 
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import br.com.techie.shoppingstore.AP003.dto.form.CartFORM;
+import br.com.techie.shoppingstore.AP003.dto.form.CartItemFORM;
 import br.com.techie.shoppingstore.AP003.dto.form.CartUpdateFORM;
 import br.com.techie.shoppingstore.AP003.dto.view.CartVIEW;
+import br.com.techie.shoppingstore.AP003.enums.PaymentStatusEnum;
 import br.com.techie.shoppingstore.AP003.infra.exception.ResourceNotFoundException;
 import br.com.techie.shoppingstore.AP003.mapper.forms.CartFormMapper;
+import br.com.techie.shoppingstore.AP003.mapper.forms.CartItemFormMapper;
 import br.com.techie.shoppingstore.AP003.mapper.updates.CartUpdateMapper;
 import br.com.techie.shoppingstore.AP003.mapper.views.CartViewMapper;
+import br.com.techie.shoppingstore.AP003.model.CartItem;
+import br.com.techie.shoppingstore.AP003.repository.CartItemRepository;
 import br.com.techie.shoppingstore.AP003.repository.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,7 +34,13 @@ public class CartService {
   private CartRepository cartRepository;
 
   @Autowired
+  private CartItemRepository cartItemRepository;
+
+  @Autowired
   private CartViewMapper cartViewMapper;
+
+  @Autowired
+  private CartItemFormMapper cartItemFormMapper;
 
   @Autowired
   private CartFormMapper cartFormMapper;
@@ -37,6 +51,16 @@ public class CartService {
   @Transactional(readOnly = true)
   public Page<CartVIEW> findAllPaged(Pageable pageable) {
     return cartRepository.findAll(pageable).map(x -> cartViewMapper.map(x));
+  }
+
+  @Transactional(readOnly = true)
+  public Page<CartVIEW> findAllPaidPaged(Pageable pageable) {
+    return cartRepository.findAllByStatus(PaymentStatusEnum.PAID, pageable).map(x -> cartViewMapper.map(x));
+  }
+
+  @Transactional(readOnly = true)
+  public Page<CartVIEW> findAllUnpaidPaged(Pageable pageable) {
+    return cartRepository.findAllByStatus(PaymentStatusEnum.PENDING, pageable).map(x -> cartViewMapper.map(x));
   }
 
   @Transactional(readOnly = true)
@@ -64,4 +88,5 @@ public class CartService {
   public void delete(Long id) {
     cartRepository.deleteById(id);
   }
+
 }

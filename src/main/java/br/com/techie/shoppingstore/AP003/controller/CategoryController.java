@@ -1,5 +1,6 @@
 package br.com.techie.shoppingstore.AP003.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -63,7 +64,7 @@ public class CategoryController {
                      content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
     })
     @PostMapping
-    public ResponseEntity<CategoryVIEW> create(@RequestBody CategoryFORM categoryForm) {
+    public ResponseEntity<CategoryVIEW> create(@RequestBody @Valid CategoryFORM categoryForm) {
         CategoryVIEW category = categoryService.insert(categoryForm);
         return ResponseEntity.status(HttpStatus.CREATED).body(category);
     }
@@ -77,8 +78,8 @@ public class CategoryController {
 	     @ApiResponse(responseCode = "422", description = "Invalid or incorrectly formatted input data.",
 	                  content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
 	 })
-    @PutMapping("/{id}")
-    public ResponseEntity<CategoryVIEW> update(@PathVariable Long id, @RequestBody CategoryUpdateFORM categoryUpdateForm) {
+    @PutMapping
+    public ResponseEntity<CategoryVIEW> update(@RequestBody @Valid CategoryUpdateFORM categoryUpdateForm) {
         CategoryVIEW category = categoryService.update(categoryUpdateForm);
         return ResponseEntity.ok().body(category);
     }

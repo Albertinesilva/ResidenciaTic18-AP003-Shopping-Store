@@ -22,10 +22,6 @@ public record PaymentFORM(
         @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
         LocalDateTime payday,
 
-        @NotNull(message = "Payment amount is required!")
-        @DecimalMin(value = "0.01", message = "Payment amount must be greater than or equal to 0.01")
-        BigDecimal amount,
-
         @NotNull(message = "Payment type is required!")
         PaymentTypeEnum payment_type
 ) { }

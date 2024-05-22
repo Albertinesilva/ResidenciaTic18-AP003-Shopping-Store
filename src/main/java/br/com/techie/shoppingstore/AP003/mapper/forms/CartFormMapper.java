@@ -9,6 +9,7 @@ import br.com.techie.shoppingstore.AP003.model.Cart;
 import br.com.techie.shoppingstore.AP003.model.CartItem;
 import br.com.techie.shoppingstore.AP003.model.Product;
 import br.com.techie.shoppingstore.AP003.model.UserSystem;
+import br.com.techie.shoppingstore.AP003.repository.CartItemRepository;
 import br.com.techie.shoppingstore.AP003.repository.ProductRepository;
 import br.com.techie.shoppingstore.AP003.repository.UserSystemRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -27,6 +28,9 @@ public class CartFormMapper implements Mapper<CartFORM, Cart> {
     private ProductRepository productRepository;
 
     @Autowired
+    private CartItemRepository cartItemRepository;
+
+    @Autowired
     private UserSystemRepository userRepository;
 
     @Autowired
@@ -43,6 +47,7 @@ public class CartFormMapper implements Mapper<CartFORM, Cart> {
 
         for (CartItemFORM item : i.items()){
             CartItem cartItem = cartItemFormMapper.map(item);
+            cartItemRepository.save(cartItem);
             items.add(cartItem);
             totalItems = totalItems + cartItem.getQuantity();
             totalPrice = totalPrice.add(cartItem.getPrice().multiply(BigDecimal.valueOf(cartItem.getQuantity())));

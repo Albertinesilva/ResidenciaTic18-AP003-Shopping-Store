@@ -1,5 +1,6 @@
 package br.com.techie.shoppingstore.AP003.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -38,6 +39,18 @@ public class CartController {
         Page<CartVIEW> carts = cartService.findAllPaged(pageable);
         return ResponseEntity.ok().body(carts);
     }
+
+    @GetMapping("/paid")
+    public ResponseEntity<Page<CartVIEW>> getAllPaid(Pageable pageable) {
+        Page<CartVIEW> carts = cartService.findAllPaidPaged(pageable);
+        return ResponseEntity.ok().body(carts);
+    }
+
+    @GetMapping("/unpaid")
+    public ResponseEntity<Page<CartVIEW>> getAllUnpaid(Pageable pageable) {
+        Page<CartVIEW> carts = cartService.findAllUnpaidPaged(pageable);
+        return ResponseEntity.ok().body(carts);
+    }
     
     @Operation(summary = "Recover cart by ID", description = "Retrieves the details of a specific cart by its ID.",
             security = @SecurityRequirement(name = "security"), responses = {
@@ -61,7 +74,7 @@ public class CartController {
                      content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
     })
     @PostMapping
-    public ResponseEntity<CartVIEW> create(@RequestBody CartFORM cartForm) {
+    public ResponseEntity<CartVIEW> create(@RequestBody @Valid CartFORM cartForm) {
         CartVIEW novoCart = cartService.insert(cartForm);
         return ResponseEntity.status(HttpStatus.CREATED).body(novoCart);
     }
@@ -75,8 +88,8 @@ public class CartController {
 	     @ApiResponse(responseCode = "422", description = "Invalid or incorrectly formatted input data.",
 	                  content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
 	 })
-    @PutMapping("/{id}")
-    public ResponseEntity<CartVIEW> update(@PathVariable Long id, @RequestBody CartUpdateFORM cartUpdateForm) {
+    @PutMapping
+    public ResponseEntity<CartVIEW> update(@RequestBody @Valid CartUpdateFORM cartUpdateForm) {
         CartVIEW cart = cartService.update(cartUpdateForm);
         return ResponseEntity.ok().body(cart);
     }

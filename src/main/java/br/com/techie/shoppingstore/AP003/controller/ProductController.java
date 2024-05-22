@@ -1,5 +1,6 @@
 package br.com.techie.shoppingstore.AP003.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -64,7 +65,7 @@ public class ProductController {
 	                  content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
 	 })
     @PostMapping
-    public ResponseEntity<ProductVIEW> create(@RequestBody ProductFORM productForm) {
+    public ResponseEntity<ProductVIEW> create(@RequestBody @Valid ProductFORM productForm) {
         ProductVIEW newProduct = productService.insert(productForm);
         return ResponseEntity.status(HttpStatus.CREATED).body(newProduct);
     }
@@ -78,8 +79,8 @@ public class ProductController {
 	     @ApiResponse(responseCode = "422", description = "Invalid or incorrectly formatted input data.",
 	                  content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
 	 })
-    @PutMapping("/{id}")
-    public ResponseEntity<ProductVIEW> update(@PathVariable Long id, @RequestBody ProductUpdateFORM productUpdateForm) {
+    @PutMapping
+    public ResponseEntity<ProductVIEW> update(@RequestBody @Valid ProductUpdateFORM productUpdateForm) {
         ProductVIEW product = productService.update(productUpdateForm);
         return ResponseEntity.ok().body(product);
     }
