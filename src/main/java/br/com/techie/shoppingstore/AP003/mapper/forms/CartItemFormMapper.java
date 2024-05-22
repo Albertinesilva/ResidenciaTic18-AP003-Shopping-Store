@@ -17,7 +17,8 @@ public class CartItemFormMapper implements Mapper<CartItemFORM, CartItem> {
     @Override
     public CartItem map(CartItemFORM i) {
         CartItem cartItem = new CartItem();
-        Product product = productRepository.findById(i.product_id()).orElseThrow(() -> new EntityNotFoundException("Product not found!"));
+        Product product = productRepository.findById(i.product_id())
+                .orElseThrow(() -> new EntityNotFoundException("Product not found!"));
 
         cartItem.setProduct(product);
         cartItem.setQuantity(i.quantity());

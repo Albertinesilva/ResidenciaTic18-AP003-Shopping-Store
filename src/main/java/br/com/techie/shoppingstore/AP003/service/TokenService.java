@@ -1,17 +1,21 @@
 package br.com.techie.shoppingstore.AP003.service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
-import br.com.techie.shoppingstore.AP003.dto.form.PasswordResetFORM;
-import br.com.techie.shoppingstore.AP003.dto.form.PasswordUpdateFORM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.techie.shoppingstore.AP003.dto.form.PasswordResetFORM;
+import br.com.techie.shoppingstore.AP003.infra.jwt.JwtToken;
+import br.com.techie.shoppingstore.AP003.infra.jwt.JwtUserDetailsService;
+import br.com.techie.shoppingstore.AP003.infra.jwt.JwtUtils;
 import br.com.techie.shoppingstore.AP003.model.Token;
+import br.com.techie.shoppingstore.AP003.model.UserSystem;
 import br.com.techie.shoppingstore.AP003.repository.TokenRepository;
-// import jakarta.mail.MessagingException;
+import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,50 +27,50 @@ public class TokenService {
   @Autowired
   private TokenRepository tokenRepository;
 
-  // @Autowired
-  // JwtUserDetailsService jwtUserDetailsService;
+  @Autowired
+  JwtUserDetailsService jwtUserDetailsService;
 
-  // @Autowired
-  // private EmailService emailService;
+  @Autowired
+  private EmailService emailService;
 
-  // @Transactional(readOnly = false)
-  // public Token requestPasswordReset(User user) throws MessagingException {
+  @Transactional(readOnly = false)
+  public Token requestPasswordReset(UserSystem user) throws MessagingException {
 
-  //   JwtToken token = jwtUserDetailsService.getTokenAuthenticated(user.getUsername());
+    JwtToken token = jwtUserDetailsService.getTokenAuthenticated(user.getEmail());
 
-  //   String verifier = token.getToken();
-  //   LocalDateTime dateCreation = LocalDateTime.now();
-  //   user.setCodeVerifier(verifier);
-  //   Token tokenEntity = new Token(verifier, dateCreation, user);
-  //   tokenRepository.save(tokenEntity);
+    String verificador = token.getToken();
+    LocalDateTime dataCriacao = LocalDateTime.now();
+    user.setCodeVerifier(verificador);
+    Token tokenEntity = new Token(verificador, dataCriacao, user);
+    tokenRepository.save(tokenEntity);
 
-  //   emailService.sendOrderResetPassword(user.getUsername(), verifier);
-  //   log.info("Token created for user {}", user.getUsername());
-  //   return tokenEntity;
-  // }
+    emailService.sendOrderResetPassword(user.getEmail(), verificador);
+    log.info("Token criado para o usuário {}", user.getEmail());
+    return tokenEntity;
+  }
 
-  public ResponseEntity<Void> validateTokenAndCodeVerifier(PasswordResetFORM dto) {
-    // Checks if the token is valid
-    // if (!JwtUtils.isTokenValid(dto.toke())) {
-    //   log.error("Invalid Token: " + token);
-    //   return ResponseEntity.badRequest().build();
-    // }
-
-    // Fetches user token by given token
-    Optional<Token> tokenOfUser = findByToken(dto.token());
-    if (tokenOfUser.isEmpty()) {
-      log.error("Token not found for token {}", dto.token());
-      return ResponseEntity.notFound().build();
-    }
-
-    // Checks whether the verification code is valid
-    Token tokenFound = tokenOfUser.get();
-    if (!dto.token().equals(tokenFound.getToken())) {
-      log.error("Invalid verification code for token {}", tokenFound);
+  public ResponseEntity<Void> validarTokenECodeVerifier(String token, PasswordResetFORM dto) {
+    // Verifica se o token é válido
+    if (!JwtUtils.isTokenValid(token)) {
+      log.error("Token inválido" + token);
       return ResponseEntity.badRequest().build();
     }
 
-    // If everything is valid, return null
+    // Busca o token do usuário pelo token fornecido
+    Optional<Token> tokenDoUsuario = findByToken(token);
+    if (tokenDoUsuario.isEmpty()) {
+      log.error("Token não encontrado para o token {}", token);
+      return ResponseEntity.notFound().build();
+    }
+
+    // Verifica se o código verificador é válido
+    Token tokenEncontrado = tokenDoUsuario.get();
+    if (!dto.codeVerifier().equals(tokenEncontrado.getToken())) {
+      log.error("Código de verificação inválido para o token {}", tokenEncontrado);
+      return ResponseEntity.badRequest().build();
+    }
+
+    // Se tudo estiver válido, retorna null
     return null;
   }
 

@@ -6,8 +6,6 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 public record PasswordResetFORM(
-        @NotBlank(message = "Token is required!")
-        String token,
 
         @NotBlank(message = "New password is required!")
         @Size(min = 8, message = "Password must be at least 8 characters long!")
@@ -21,6 +19,8 @@ public record PasswordResetFORM(
         @NotBlank(message = "Password confirmation is required!")
         @Size(min = 8, message = "Password confirmation must be at least 8 characters long!")
         @JsonAlias({"confirmPassword", "passwordConfirmation"})
-        String confirm_password
+        String confirm_password,
+
+        String codeVerifier
 ) {
 }

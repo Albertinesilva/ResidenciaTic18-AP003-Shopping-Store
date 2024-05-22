@@ -12,6 +12,7 @@ import br.com.techie.shoppingstore.AP003.repository.CategoryRepository;
 import br.com.techie.shoppingstore.AP003.repository.ProductRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,7 @@ public class ProductService {
   @Autowired
   private ProductUpdateMapper productUpdateMapper;
 
+  @Cacheable("products")
   @Transactional(readOnly = true)
   public Page<ProductVIEW> findAllPaged(Pageable pageable) {
     return productRepository.findAll(pageable).map(x -> productViewMapper.map(x));

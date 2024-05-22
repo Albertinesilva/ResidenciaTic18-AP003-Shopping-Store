@@ -26,109 +26,106 @@ import java.util.List;
 @Service
 public class UserSystemService {
 
-  @Autowired
-  private UserSystemRepository userRepository;
+    @Autowired
+    private UserSystemRepository userRepository;
 
-  @Autowired
-  private PasswordEncoder passwordEncoder;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
-  @Autowired
-  private UserFormMapper userFormMapper;
+    @Autowired
+    private UserFormMapper userFormMapper;
 
-  @Autowired
-  private UserSystemViewMapper userViewMapper;
+    @Autowired
+    private UserSystemViewMapper userViewMapper;
 
-  @Autowired
-  private UserSystemUpdateMapper userUpdateMapper;
+    @Autowired
+    private UserSystemUpdateMapper userUpdateMapper;
 
-  @Transactional
-  public UserSystemVIEW save(UserSystemFORM dto) {
-    if (!dto.password().equals(dto.passwordConfirm())) {
-      throw new PasswordInvalidException("New password does not match password confirmation!");
-    }
-    try {
-      UserSystem entity = userFormMapper.map(dto);
-      entity.setPassword(passwordEncoder.encode(dto.password()));
-      entity.setPasswordConfirm(passwordEncoder.encode(dto.passwordConfirm()));
-      userRepository.save(entity);
-      return userViewMapper.map(entity);
+    @Transactional
+    public UserSystemVIEW save(UserSystemFORM dto) {
+        if (!dto.password().equals(dto.passwordConfirm())) {
+            throw new PasswordInvalidException("New password does not match password confirmation!");
+        }
+        try {
+            UserSystem entity = userFormMapper.map(dto);
+            entity.setPassword(passwordEncoder.encode(dto.password()));
+            entity.setPasswordConfirm(passwordEncoder.encode(dto.passwordConfirm()));
+            userRepository.save(entity);
+            return userViewMapper.map(entity);
 
-    } catch (org.springframework.dao.DataIntegrityViolationException ex) {
-      throw new EmailUniqueViolationException(
-          String.format("Email: %s já cadastrado: ", dto.email()));
-    }
-  }
-
-  @Transactional(readOnly = true)
-  public UserSystemVIEW searchById(Long id) {
-    return userViewMapper.map(userRepository.findById(id).orElseThrow(
-        () -> new EntityNotFoundException(String.format("User with id = %s not found!", id))));
-  }
-
-  @Transactional
-  public void editPassword(Long id, String currentPassword, String newPassword, String confirmPassword) {
-    if (!newPassword.equals(confirmPassword)) {
-      throw new PasswordInvalidException("New password does not match password confirmation!");
+        } catch (org.springframework.dao.DataIntegrityViolationException ex) {
+            throw new EmailUniqueViolationException(
+                    String.format("Email: %s já cadastrado: ", dto.email()));
+        }
     }
 
-    UserSystem userSystem = userRepository.findById(id)
-        .orElseThrow(() -> new EntityNotFoundException("User not found!"));
-    if (!passwordEncoder.matches(currentPassword, userSystem.getPassword())) {
-      throw new PasswordInvalidException("Incorrect password!");
+    @Transactional(readOnly = true)
+    public UserSystemVIEW searchById(Long id) {
+        return userViewMapper.map(userRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException(String.format("User with id = %s not found!", id))));
     }
 
-    userSystem.setPassword(passwordEncoder.encode(newPassword));
+    @Transactional
+    public void editPassword(Long id, String currentPassword, String newPassword, String confirmPassword) {
+        if (!newPassword.equals(confirmPassword)) {
+            throw new PasswordInvalidException("New password does not match password confirmation!");
+        }
 
-  }
+        UserSystem userSystem = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("User not found!"));
+        if (!passwordEncoder.matches(currentPassword, userSystem.getPassword())) {
+            throw new PasswordInvalidException("Incorrect password!");
+        }
 
-  @Transactional(readOnly = false)
-  public UserSystemVIEW changePassword(Token token, String newPassword, String confirmPassword) {
-    if (!newPassword.equals(confirmPassword)) {
-      throw new PasswordInvalidException("New password does not match password confirmation!");
+        userSystem.setPassword(passwordEncoder.encode(newPassword));
+
     }
 
-    UserSystem user = token.getUserSystem();
-    user.setCodeVerifier(null);
-    user.setPassword(passwordEncoder.encode(newPassword));
+    @Transactional(readOnly = false)
+    public UserSystemVIEW changePassword(Token token, String newPassword, String confirmPassword) {
+        if (!newPassword.equals(confirmPassword)) {
+            throw new PasswordInvalidException("New password does not match password confirmation!");
+        }
 
-    return userViewMapper.map(userRepository.save(user));
-  }
+        UserSystem user = token.getUserSystem();
+        user.setCodeVerifier(null);
+        user.setPassword(passwordEncoder.encode(newPassword));
 
-  @Transactional
-  public UserSystemVIEW update(UserSystemUpdateFORM dto) {
-    UserSystem entity = userRepository.findById(dto.user_id())
-        .orElseThrow(() -> new EntityNotFoundException("User not found!"));
-    entity = userUpdateMapper.map(dto, entity);
-    userRepository.save(entity);
-    return userViewMapper.map(entity);
-  }
-
-  @Transactional(readOnly = true)
-  public List<UserSystemVIEW> searchAll() {
-    return userRepository.findAll().stream().map(x -> userViewMapper.map(x)).toList();
-  }
-
-  @Transactional(readOnly = true)
-  public UserSystem searchByEmail(String email) {
-    return userRepository.findByEmail(email).orElseThrow(() -> new EntityNotFoundException(
-        String.format(String.format("User with email = %s not found!", email))));
-  }
-
-  @Transactional(readOnly = true)
-  public UserSystem.Role searchRoleByEmail(String email) {
-    return userRepository.findRoleByEmail(email);
-  }
-
-  @Transactional(readOnly = false)
-  public void activateUserRegistration(String code) {
-    String email = new String(Base64.getDecoder().decode(code));
-    UserSystem user = userRepository.findByEmail(email)
-        .orElseThrow(() -> new EntityNotFoundException("User not found!"));
-
-    if (user.hasNotId()) {
-      throw new AccessDeniedException("Unable to activate registration. Contact support.");
+        return userViewMapper.map(userRepository.save(user));
     }
-    user.setActive(true);
-  }
+
+    @Transactional
+    public UserSystemVIEW update(UserSystemUpdateFORM dto) {
+        UserSystem entity = userRepository.findById(dto.user_id()).orElseThrow(() -> new EntityNotFoundException("User not found!"));
+        entity = userUpdateMapper.map(dto, entity);
+        userRepository.save(entity);
+        return userViewMapper.map(entity);
+    }
+
+    @Transactional(readOnly = true)
+    public List<UserSystemVIEW> searchAll() {
+        return userRepository.findAll().stream().map(x -> userViewMapper.map(x)).toList();
+    }
+
+    @Transactional(readOnly = true)
+    public UserSystem searchByEmail(String email) {
+        return userRepository.findByEmail(email).orElseThrow(() -> new EntityNotFoundException(
+                String.format(String.format("User with email = %s not found!", email))));
+    }
+
+    @Transactional(readOnly = true)
+    public UserSystem.Role searchRoleByEmail(String email) {
+        return userRepository.findRoleByEmail(email);
+    }
+
+    @Transactional(readOnly = false)
+    public void activateUserRegistration(String code) {
+        String email = new String(Base64.getDecoder().decode(code));
+        UserSystem user = userRepository.findByEmail(email).orElseThrow(() -> new EntityNotFoundException("User not found!"));
+
+        if (user.hasNotId()) {
+            throw new AccessDeniedException("Unable to activate registration. Contact support.");
+        }
+        user.setActive(true);
+    }
 
 }
