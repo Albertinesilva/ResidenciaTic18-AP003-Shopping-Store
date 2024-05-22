@@ -36,7 +36,8 @@ public class AuthenticationController {
     private final AuthenticationManager authenticationManager;
 
     @Operation(summary = "Authenticate with the API", description = "API authentication resource", responses = {
-        @ApiResponse(responseCode = "200", description = "Authentication successful, returning a bearer token", content = @Content(mediaType = "application/json", 
+        @ApiResponse(responseCode = "200", description = "Authentication successful, returning a bearer token", 
+        content = @Content(mediaType = "application/json", 
         schema = @Schema(implementation = UserSystemVIEW.class))),
         @ApiResponse(responseCode = "400", description = "Invalid credentials", content = @Content(mediaType = "application/json", 
         schema = @Schema(implementation = ErrorMessage.class))),

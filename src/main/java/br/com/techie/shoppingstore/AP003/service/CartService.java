@@ -5,6 +5,7 @@ import java.util.Optional;
 import br.com.techie.shoppingstore.AP003.dto.form.CartFORM;
 import br.com.techie.shoppingstore.AP003.dto.form.CartUpdateFORM;
 import br.com.techie.shoppingstore.AP003.dto.view.CartVIEW;
+import br.com.techie.shoppingstore.AP003.enums.PaymentStatusEnum;
 import br.com.techie.shoppingstore.AP003.infra.exception.ResourceNotFoundException;
 import br.com.techie.shoppingstore.AP003.mapper.forms.CartFormMapper;
 import br.com.techie.shoppingstore.AP003.mapper.updates.CartUpdateMapper;
@@ -42,6 +43,16 @@ public class CartService {
   }
 
   @Transactional(readOnly = true)
+  public Page<CartVIEW> findAllPaidPaged(Pageable pageable) {
+    return cartRepository.findAllByStatus(PaymentStatusEnum.PAID, pageable).map(x -> cartViewMapper.map(x));
+  }
+
+  @Transactional(readOnly = true)
+  public Page<CartVIEW> findAllUnpaidPaged(Pageable pageable) {
+    return cartRepository.findAllByStatus(PaymentStatusEnum.PENDING, pageable).map(x -> cartViewMapper.map(x));
+  }
+
+  @Transactional(readOnly = true)
   public CartVIEW findById(Long id) {
     Optional<Cart> obj = cartRepository.findById(id);
     Cart entity = obj.orElseThrow(() -> new ResourceNotFoundException("Cart not found"));
@@ -57,7 +68,8 @@ public class CartService {
 
   @Transactional
   public CartVIEW update(CartUpdateFORM dto) {
-    Cart entity = cartRepository.findById(dto.cart_id()).orElseThrow(() -> new EntityNotFoundException("Cart not found!"));
+    Cart entity = cartRepository.findById(dto.cart_id())
+        .orElseThrow(() -> new EntityNotFoundException("Cart not found!"));
     entity = cartUpdateMapper.map(dto, entity);
     cartRepository.save(entity);
     return cartViewMapper.map(entity);

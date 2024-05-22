@@ -39,8 +39,10 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @Operation(summary = "Create a new category", description = "Creates a new category with the provided details.", responses = {
-            @ApiResponse(responseCode = "201", description = "Category created successfully.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = CategoryVIEW.class))),
-            @ApiResponse(responseCode = "422", description = "Invalid input data.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
+            @ApiResponse(responseCode = "201", description = "Category created successfully.", 
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = CategoryVIEW.class))),
+            @ApiResponse(responseCode = "422", description = "Invalid input data.", 
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
     })
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
@@ -50,7 +52,8 @@ public class CategoryController {
     }
 
     @Operation(summary = "List all categories", description = "Retrieve a paginated list of all categories.", responses = {
-            @ApiResponse(responseCode = "200", description = "Category list retrieved successfully.", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = CategoryVIEW.class)))),
+            @ApiResponse(responseCode = "200", description = "Category list retrieved successfully.", 
+            content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = CategoryVIEW.class)))),
     })
     @GetMapping
     @PreAuthorize("hasAnyRole('ADMIN', 'CLIENT')")
@@ -60,8 +63,10 @@ public class CategoryController {
     }
 
     @Operation(summary = "Retrieve category by ID", description = "Retrieves the details of a specific category by its ID.", responses = {
-            @ApiResponse(responseCode = "200", description = "Category successfully recovered.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = CategoryVIEW.class))),
-            @ApiResponse(responseCode = "404", description = "Category not found.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
+            @ApiResponse(responseCode = "200", description = "Category successfully recovered.", 
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = CategoryVIEW.class))),
+            @ApiResponse(responseCode = "404", description = "Category not found.", 
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
     })
     @GetMapping("/{id}")
     @PreAuthorize("hasAnyRole('ADMIN', 'CLIENT')")
@@ -71,9 +76,12 @@ public class CategoryController {
     }
 
     @Operation(summary = "Update category", description = "Updates the details of an existing category.", responses = {
-            @ApiResponse(responseCode = "200", description = "Category updated successfully.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = CategoryVIEW.class))),
-            @ApiResponse(responseCode = "404", description = "Category not found.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
-            @ApiResponse(responseCode = "422", description = "Invalid or incorrectly formatted input data.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
+            @ApiResponse(responseCode = "200", description = "Category updated successfully.", 
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = CategoryVIEW.class))),
+            @ApiResponse(responseCode = "404", description = "Category not found.", 
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
+            @ApiResponse(responseCode = "422", description = "Invalid or incorrectly formatted input data.", 
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
     })
     @PutMapping
     @PreAuthorize("hasRole('ADMIN')")
@@ -84,7 +92,8 @@ public class CategoryController {
 
     @Operation(summary = "Delete category", description = "Delete an existing category by its ID.", responses = {
             @ApiResponse(responseCode = "204", description = "Category deleted successfully."),
-            @ApiResponse(responseCode = "404", description = "Category not found.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
+            @ApiResponse(responseCode = "404", description = "Category not found.", 
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
     })
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")

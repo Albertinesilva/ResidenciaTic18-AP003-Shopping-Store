@@ -34,12 +34,12 @@ public class UserSystemController {
   private final EmailService emailService;
 
   @Operation(summary = "Create a new user", description = "Feature to create a new user in the system.", responses = {
-      @ApiResponse(responseCode = "201", description = "User created successfully.", content = @Content(mediaType = "application/json", 
-      schema = @Schema(implementation = UserSystemVIEW.class))),
-      @ApiResponse(responseCode = "409", description = "Email user already registered in the system.", content = @Content(mediaType = "application/json", 
-      schema = @Schema(implementation = ErrorMessage.class))),
-      @ApiResponse(responseCode = "422", description = "Resources not processed due to invalid input data.", content = @Content(mediaType = "application/json", 
-      schema = @Schema(implementation = ErrorMessage.class))),
+      @ApiResponse(responseCode = "201", description = "User created successfully.", 
+      content = @Content(mediaType = "application/json", schema = @Schema(implementation = UserSystemVIEW.class))),
+      @ApiResponse(responseCode = "409", description = "Email user already registered in the system.", 
+      content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
+      @ApiResponse(responseCode = "422", description = "Resources not processed due to invalid input data.", 
+      content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
   })
   @PostMapping
   public ResponseEntity<UserSystemVIEW> create(@Valid @RequestBody UserSystemFORM createDto) throws MessagingException {
@@ -68,8 +68,8 @@ public class UserSystemController {
   @Operation(summary = "Update password", description = "Request requires a Bearer Token. Access restricted to logged in ADMIN OR CLIENT", 
   security = @SecurityRequirement(name = "security"), responses = {
       @ApiResponse(responseCode = "204", description = "Password updated successfully."),
-      @ApiResponse(responseCode = "400", description = "Password does not match.", content = @Content(mediaType = "application/json", 
-      schema = @Schema(implementation = ErrorMessage.class))),
+      @ApiResponse(responseCode = "400", description = "Password does not match.", 
+      content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
       @ApiResponse(responseCode = "403", description = "User without permission to access this resource.", 
       content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
       @ApiResponse(responseCode = "422", description = "Invalid or incorrectly formatted fields.", 
@@ -83,12 +83,12 @@ public class UserSystemController {
   }
 
   @Operation(summary = "Update user", description = "Updates the details of an existing user.", responses = {
-    @ApiResponse(responseCode = "200", description = "User updated successfully.", content = @Content(mediaType = "application/json", 
-    schema = @Schema(implementation = UserSystemVIEW.class))),
-    @ApiResponse(responseCode = "404", description = "User not found.", content = @Content(mediaType = "application/json", 
-    schema = @Schema(implementation = ErrorMessage.class))),
-    @ApiResponse(responseCode = "422", description = "Invalid or incorrectly formatted input data.", content = @Content(mediaType = "application/json", 
-    schema = @Schema(implementation = ErrorMessage.class)))
+      @ApiResponse(responseCode = "200", description = "User updated successfully.", 
+      content = @Content(mediaType = "application/json", schema = @Schema(implementation = UserSystemVIEW.class))),
+      @ApiResponse(responseCode = "404", description = "User not found.", content = @Content(mediaType = "application/json", 
+      schema = @Schema(implementation = ErrorMessage.class))),
+      @ApiResponse(responseCode = "422", description = "Invalid or incorrectly formatted input data.", 
+      content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
   })
   @PutMapping
   @PreAuthorize("hasAnyRole('ADMIN', 'CLIENT')")
@@ -97,10 +97,10 @@ public class UserSystemController {
     return ResponseEntity.ok().body(user);
   }
 
-  @Operation(summary = "List all registered users", description = "Request requires a Bearer Token. Access restricted to logged in ADMIN",
-   security = @SecurityRequirement(name = "security"), responses = {
-      @ApiResponse(responseCode = "200", description = "List of all registered users", content = @Content(mediaType = "application/json",
-      array = @ArraySchema(schema = @Schema(implementation = UserSystemVIEW.class)))),
+  @Operation(summary = "List all registered users", description = "Request requires a Bearer Token. Access restricted to logged in ADMIN", 
+  security = @SecurityRequirement(name = "security"), responses = {
+      @ApiResponse(responseCode = "200", description = "List of all registered users", 
+      content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = UserSystemVIEW.class)))),
       @ApiResponse(responseCode = "403", description = "User without permission to access this resource.", 
       content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
   })

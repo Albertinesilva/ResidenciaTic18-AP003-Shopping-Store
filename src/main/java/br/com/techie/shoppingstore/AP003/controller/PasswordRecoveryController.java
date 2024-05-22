@@ -41,14 +41,13 @@ public class PasswordRecoveryController {
   private final UserSystemViewMapper userViewMapper;
 
   @Operation(summary = "Reset password via email", description = "Resource to reset password via email", responses = {
-    @ApiResponse(responseCode = "204", description = "Password reset request successfully sent", content = @Content(mediaType = "application/json",
-    schema = @Schema(implementation = UserSystemVIEW.class))),
+    @ApiResponse(responseCode = "204", description = "Password reset request successfully sent", 
+    content = @Content(mediaType = "application/json", schema = @Schema(implementation = UserSystemVIEW.class))),
     @ApiResponse(responseCode = "404", description = "Resource not found", content = @Content(mediaType = "application/json", 
     schema = @Schema(implementation = ErrorMessage.class))),
     @ApiResponse(responseCode = "401", description = "User not authorized", content = @Content(mediaType = "application/json", 
     schema = @Schema(implementation = ErrorMessage.class)))
-})
-
+  })
   @PostMapping
   public ResponseEntity<TokenVIEW> redefinepassword(@RequestBody @Valid UserSystemEmailFORM dto)throws MessagingException {
     UserSystem user = userService.searchByEmail(dto.email());

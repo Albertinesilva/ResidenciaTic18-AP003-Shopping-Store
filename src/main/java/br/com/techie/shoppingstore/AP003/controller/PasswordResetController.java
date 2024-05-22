@@ -32,14 +32,14 @@ public class PasswordResetController {
   private final TokenService tokenService;
 
   @Operation(summary = "Update password using token", description = "Resource to update the user's password with a token", responses = {
-      @ApiResponse(responseCode = "204", description = "Password successfully updated", content = @Content(mediaType = "application/json",
-      schema = @Schema(implementation = Void.class))),
-      @ApiResponse(responseCode = "400", description = "Password does not match", content = @Content(mediaType = "application/json", 
-      schema = @Schema(implementation = ErrorMessage.class))),
-      @ApiResponse(responseCode = "404", description = "Resource not found", content = @Content(mediaType = "application/json", 
-      schema = @Schema(implementation = ErrorMessage.class))),
-      @ApiResponse(responseCode = "422", description = "Invalid or incorrectly formatted fields", content = @Content(mediaType = "application/json", 
-      schema = @Schema(implementation = ErrorMessage.class)))
+      @ApiResponse(responseCode = "204", description = "Password successfully updated", 
+      content = @Content(mediaType = "application/json", schema = @Schema(implementation = Void.class))),
+      @ApiResponse(responseCode = "400", description = "Password does not match", 
+      content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
+      @ApiResponse(responseCode = "404", description = "Resource not found", 
+      content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
+      @ApiResponse(responseCode = "422", description = "Invalid or incorrectly formatted fields", 
+      content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
   })
   @PatchMapping("/{token}")
   public ResponseEntity<Void> passwordresetconfirmation(@PathVariable String token, @Valid @RequestBody PasswordResetFORM dto) {
