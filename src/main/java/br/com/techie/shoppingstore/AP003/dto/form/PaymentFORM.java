@@ -1,6 +1,5 @@
 package br.com.techie.shoppingstore.AP003.dto.form;
 
-import br.com.techie.shoppingstore.AP003.enums.PaymentStatusEnum;
 import br.com.techie.shoppingstore.AP003.enums.PaymentTypeEnum;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonFormat;

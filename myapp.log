@@ -501,3 +501,19 @@
 2024-05-22T15:11:04.874-03:00 DEBUG 10836 --- [http-nio-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, */*] and supported [application/json]
 2024-05-22T15:11:04.890-03:00 DEBUG 10836 --- [http-nio-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Writing [{123, 34, 111, 112, 101, 110, 97, 112, 105, 34, 58, 34, 51, 46, 48, 46, 49, 34, 44, 34, 105, 110, 10 (truncated)...]
 2024-05-22T15:11:04.890-03:00 DEBUG 10836 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-22T15:39:06.603-03:00  INFO 15040 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Starting Ap003Application using Java 17.0.1 with PID 15040 (C:\Users\alber\OneDrive\Documentos\ProjetosResidencia\AP003\target\classes started by alber in C:\Users\alber\OneDrive\Documentos\ProjetosResidencia\AP003)
+2024-05-22T15:39:06.617-03:00  INFO 15040 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : No active profile set, falling back to 1 default profile: "default"
+2024-05-22T15:39:13.435-03:00  WARN 15040 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-05-22T15:39:13.435-03:00  WARN 15040 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "uk_5u2259cdj1s0g5m72vjdderms" of relation "cart" does not exist, skipping
+2024-05-22T15:39:13.453-03:00  WARN 15040 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-05-22T15:39:13.453-03:00  WARN 15040 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "uk_g7im3j7f0g31yhl6qco2iboy5" of relation "token" does not exist, skipping
+2024-05-22T15:39:13.467-03:00  WARN 15040 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-05-22T15:39:13.467-03:00  WARN 15040 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "uk_6dotkott2kjsp8vw4d0m25fb7" of relation "users" does not exist, skipping
+2024-05-22T15:39:13.478-03:00  WARN 15040 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-05-22T15:39:13.482-03:00  WARN 15040 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "uk_r43af9ap4edm43mmtq01oddj6" of relation "users" does not exist, skipping
+2024-05-22T15:39:15.450-03:00  WARN 15040 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-22T15:39:15.656-03:00 DEBUG 15040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 36 mappings in 'requestMappingHandlerMapping'
+2024-05-22T15:39:15.745-03:00 DEBUG 15040 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-05-22T15:39:15.867-03:00 DEBUG 15040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-05-22T15:39:16.003-03:00 DEBUG 15040 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-05-22T15:39:22.702-03:00  INFO 15040 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Started Ap003Application in 17.005 seconds (process running for 18.145)

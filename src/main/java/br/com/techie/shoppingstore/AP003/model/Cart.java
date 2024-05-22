@@ -32,10 +32,11 @@ public class Cart {
     @JoinColumn(name = "payment_id", referencedColumnName = "id")
     private Payment payment;
 
-    @OneToOne (cascade  = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name="user_id", nullable=false)
     private UserSystem user;
 
-    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL)
+    @OneToMany
+    @JoinColumn(name = "cart_id")
     private Set<CartItem> items;
 }
