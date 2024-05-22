@@ -2,6 +2,7 @@ package br.com.techie.shoppingstore.AP003.controller;
 
 import br.com.techie.shoppingstore.AP003.dto.form.PasswordUpdateFORM;
 import br.com.techie.shoppingstore.AP003.dto.form.UserSystemFORM;
+import br.com.techie.shoppingstore.AP003.dto.form.UserSystemUpdateFORM;
 import br.com.techie.shoppingstore.AP003.dto.view.UserSystemVIEW;
 import br.com.techie.shoppingstore.AP003.infra.exception.ErrorMessage;
 import br.com.techie.shoppingstore.AP003.service.EmailService;
@@ -79,6 +80,21 @@ public class UserSystemController {
   public ResponseEntity<Void> updatePassword(@PathVariable Long id, @Valid @RequestBody PasswordUpdateFORM dto) {
     userService.editPassword(id, dto.old_password(), dto.new_password(), dto.confirm_password());
     return ResponseEntity.noContent().build();
+  }
+
+  @Operation(summary = "Update user", description = "Updates the details of an existing user.", responses = {
+    @ApiResponse(responseCode = "200", description = "User updated successfully.", content = @Content(mediaType = "application/json", 
+    schema = @Schema(implementation = UserSystemVIEW.class))),
+    @ApiResponse(responseCode = "404", description = "User not found.", content = @Content(mediaType = "application/json", 
+    schema = @Schema(implementation = ErrorMessage.class))),
+    @ApiResponse(responseCode = "422", description = "Invalid or incorrectly formatted input data.", content = @Content(mediaType = "application/json", 
+    schema = @Schema(implementation = ErrorMessage.class)))
+  })
+  @PutMapping
+  @PreAuthorize("hasAnyRole('ADMIN', 'CLIENT')")
+  public ResponseEntity<UserSystemVIEW> update(@RequestBody @Valid UserSystemUpdateFORM userSystemUpdateForm) {
+    UserSystemVIEW user = userService.update(userSystemUpdateForm);
+    return ResponseEntity.ok().body(user);
   }
 
   @Operation(summary = "List all registered users", description = "Request requires a Bearer Token. Access restricted to logged in ADMIN",

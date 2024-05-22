@@ -1,8 +1,10 @@
 package br.com.techie.shoppingstore.AP003.service;
 
 import br.com.techie.shoppingstore.AP003.dto.form.UserSystemFORM;
+import br.com.techie.shoppingstore.AP003.dto.form.UserSystemUpdateFORM;
 import br.com.techie.shoppingstore.AP003.dto.view.UserSystemVIEW;
 import br.com.techie.shoppingstore.AP003.mapper.forms.UserFormMapper;
+import br.com.techie.shoppingstore.AP003.mapper.updates.UserSystemUpdateMapper;
 import br.com.techie.shoppingstore.AP003.mapper.views.UserSystemViewMapper;
 import br.com.techie.shoppingstore.AP003.model.UserSystem;
 import br.com.techie.shoppingstore.AP003.repository.UserSystemRepository;
@@ -36,6 +38,9 @@ public class UserSystemService {
     @Autowired
     private UserSystemViewMapper userViewMapper;
 
+    @Autowired
+    private UserSystemUpdateMapper userUpdateMapper;
+
     @Transactional
     public UserSystemVIEW save(UserSystemFORM dto) {
         if (!dto.password().equals(dto.passwordConfirm())) {
@@ -65,8 +70,7 @@ public class UserSystemService {
             throw new PasswordInvalidException("New password does not match password confirmation!");
         }
 
-        UserSystem userSystem = userRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("User not found!"));
+        UserSystem userSystem = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("User not found!"));
         if (!passwordEncoder.matches(currentPassword, userSystem.getPassword())) {
             throw new PasswordInvalidException("Incorrect password!");
         }
@@ -88,6 +92,14 @@ public class UserSystemService {
         return userViewMapper.map(userRepository.save(user));
     }
 
+    @Transactional
+    public UserSystemVIEW update(UserSystemUpdateFORM dto) {
+        UserSystem entity = userRepository.findById(dto.user_id()).orElseThrow(() -> new EntityNotFoundException("User not found!"));
+        entity = userUpdateMapper.map(dto, entity);
+        userRepository.save(entity);
+        return userViewMapper.map(entity);
+    }
+
     @Transactional(readOnly = true)
     public List<UserSystemVIEW> searchAll() {
         return userRepository.findAll().stream().map(x -> userViewMapper.map(x)).toList();
@@ -95,9 +107,8 @@ public class UserSystemService {
 
     @Transactional(readOnly = true)
     public UserSystem searchByEmail(String email) {
-        return userRepository.findByEmail(email).orElseThrow(
-                () -> new EntityNotFoundException(
-                        String.format(String.format("User with email = %s not found!", email))));
+        return userRepository.findByEmail(email).orElseThrow(() -> new EntityNotFoundException(
+                String.format(String.format("User with email = %s not found!", email))));
     }
 
     @Transactional(readOnly = true)
@@ -108,8 +119,7 @@ public class UserSystemService {
     @Transactional(readOnly = false)
     public void activateUserRegistration(String code) {
         String email = new String(Base64.getDecoder().decode(code));
-        UserSystem user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new EntityNotFoundException("User not found!"));
+        UserSystem user = userRepository.findByEmail(email).orElseThrow(() -> new EntityNotFoundException("User not found!"));
 
         if (user.hasNotId()) {
             throw new AccessDeniedException("Unable to activate registration. Contact support.");
