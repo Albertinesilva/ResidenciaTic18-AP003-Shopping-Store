@@ -1,24 +1,23 @@
 package br.com.techie.shoppingstore.AP003.service;
 
 import br.com.techie.shoppingstore.AP003.dto.form.UserSystemFORM;
+import br.com.techie.shoppingstore.AP003.dto.form.UserSystemUpdateFORM;
 import br.com.techie.shoppingstore.AP003.dto.view.UserSystemVIEW;
-import br.com.techie.shoppingstore.AP003.enums.RoleEnum;
-import br.com.techie.shoppingstore.AP003.mapper.forms.UserSystemFormMapper;
+import br.com.techie.shoppingstore.AP003.mapper.forms.UserFormMapper;
+import br.com.techie.shoppingstore.AP003.mapper.updates.UserSystemUpdateMapper;
 import br.com.techie.shoppingstore.AP003.mapper.views.UserSystemViewMapper;
 import br.com.techie.shoppingstore.AP003.model.UserSystem;
 import br.com.techie.shoppingstore.AP003.repository.UserSystemRepository;
 
-// import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.techie.shoppingstore.AP003.infra.exception.AccessDeniedException;
+import br.com.techie.shoppingstore.AP003.infra.exception.EmailUniqueViolationException;
 import br.com.techie.shoppingstore.AP003.infra.exception.EntityNotFoundException;
 import br.com.techie.shoppingstore.AP003.infra.exception.PasswordInvalidException;
-import br.com.techie.shoppingstore.AP003.infra.exception.EmailUniqueViolationException;
 import br.com.techie.shoppingstore.AP003.model.Token;
 
 import java.util.Base64;
@@ -30,26 +29,27 @@ public class UserSystemService {
   @Autowired
   private UserSystemRepository userRepository;
 
-  // private final PasswordEncoder passwordEncoder;
+  @Autowired
+  private PasswordEncoder passwordEncoder;
 
   @Autowired
-  private UserSystemFormMapper userFormMapper;
+  private UserFormMapper userFormMapper;
 
   @Autowired
   private UserSystemViewMapper userViewMapper;
 
-  // @Transactional
-  // public UserVIEW save(UserFORM dto) {
-  // User entity = userFormMapper.map(dto);
-  // userRepository.save(entity);
-  // return userViewMapper.map(entity);
-  // }
+  @Autowired
+  private UserSystemUpdateMapper userUpdateMapper;
 
   @Transactional
   public UserSystemVIEW save(UserSystemFORM dto) {
+    if (!dto.password().equals(dto.passwordConfirm())) {
+      throw new PasswordInvalidException("New password does not match password confirmation!");
+    }
     try {
       UserSystem entity = userFormMapper.map(dto);
-      // dto.setPassword(passwordEncoder.encode(dto.password()));
+      entity.setPassword(passwordEncoder.encode(dto.password()));
+      entity.setPasswordConfirm(passwordEncoder.encode(dto.passwordConfirm()));
       userRepository.save(entity);
       return userViewMapper.map(entity);
 
@@ -71,18 +71,14 @@ public class UserSystemService {
       throw new PasswordInvalidException("New password does not match password confirmation!");
     }
 
-    UserSystem user = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("User not found!"));
-    // if (!passwordEncoder.matches(currentPassword, user.getPassword())) {
-    // throw new PasswordInvalidException("Incorrect password!");
-    // }
-
-    // user.setPassword(passwordEncoder.encode(newPassword));
-
-    if (!currentPassword.equals(user.getPassword())) {
+    UserSystem userSystem = userRepository.findById(id)
+        .orElseThrow(() -> new EntityNotFoundException("User not found!"));
+    if (!passwordEncoder.matches(currentPassword, userSystem.getPassword())) {
       throw new PasswordInvalidException("Incorrect password!");
     }
 
-    user.setPassword(newPassword);
+    userSystem.setPassword(passwordEncoder.encode(newPassword));
+
   }
 
   @Transactional(readOnly = false)
@@ -93,32 +89,40 @@ public class UserSystemService {
 
     UserSystem user = token.getUserSystem();
     user.setCodeVerifier(null);
-    // user.setPassword(passwordEncoder.encode(newPassword));
-    user.setPassword(newPassword);
+    user.setPassword(passwordEncoder.encode(newPassword));
 
     return userViewMapper.map(userRepository.save(user));
   }
 
-  @Transactional(readOnly = true)
-  public Page<UserSystemVIEW> searchAll(Pageable pageable) {
-    return userRepository.findAll(pageable).map(x -> userViewMapper.map(x));
+  @Transactional
+  public UserSystemVIEW update(UserSystemUpdateFORM dto) {
+    UserSystem entity = userRepository.findById(dto.user_id())
+        .orElseThrow(() -> new EntityNotFoundException("User not found!"));
+    entity = userUpdateMapper.map(dto, entity);
+    userRepository.save(entity);
+    return userViewMapper.map(entity);
   }
 
   @Transactional(readOnly = true)
-  public UserSystemVIEW searchByUsername(String username) {
-    return userViewMapper.map(userRepository.findByEmail(username).orElseThrow(
-        () -> new EntityNotFoundException(String.format("User with username = %s not found!", username))));
+  public List<UserSystemVIEW> searchAll() {
+    return userRepository.findAll().stream().map(x -> userViewMapper.map(x)).toList();
   }
 
   @Transactional(readOnly = true)
-  public RoleEnum searchRoleByUsername(String username) {
-    return userRepository.findRoleByEmail(username);
+  public UserSystem searchByEmail(String email) {
+    return userRepository.findByEmail(email).orElseThrow(() -> new EntityNotFoundException(
+        String.format(String.format("User with email = %s not found!", email))));
+  }
+
+  @Transactional(readOnly = true)
+  public UserSystem.Role searchRoleByEmail(String email) {
+    return userRepository.findRoleByEmail(email);
   }
 
   @Transactional(readOnly = false)
   public void activateUserRegistration(String code) {
-    String username = new String(Base64.getDecoder().decode(code));
-    UserSystem user = userRepository.findByEmail(username)
+    String email = new String(Base64.getDecoder().decode(code));
+    UserSystem user = userRepository.findByEmail(email)
         .orElseThrow(() -> new EntityNotFoundException("User not found!"));
 
     if (user.hasNotId()) {

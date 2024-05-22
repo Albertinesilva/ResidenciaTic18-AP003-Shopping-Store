@@ -1,6 +1,5 @@
 package br.com.techie.shoppingstore.AP003.model;
 
-import br.com.techie.shoppingstore.AP003.enums.RoleEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +8,9 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -17,26 +18,27 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "Users")
-public class UserSystem {
+@EntityListeners(AuditingEntityListener.class)
+public class UserSystem implements Serializable {
 
     @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
+    @Column(name = "username", nullable = false, unique = true)
     private String username;
 
     private String password;
 
     private String passwordConfirm;
 
-    private boolean active;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false, length = 25)
-    private RoleEnum role = RoleEnum.ROLE_CLIENT;
+    private Role role = Role.ROLE_CLIENT;
 
     @CreatedDate
     @Column(name = "date_creation")
@@ -54,6 +56,9 @@ public class UserSystem {
     @Column(name = "modified_by")
     private String modifiedBy;
 
+    @Column(name = "active", nullable = false, columnDefinition = "BOOLEAN")
+    private boolean active;
+
     @Column(name = "code_verifier", length = 200)
     private String codeVerifier;
 
@@ -65,14 +70,18 @@ public class UserSystem {
         return id != null;
     }
 
+    public enum Role {
+        ROLE_ADMIN, ROLE_CLIENT
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o)
             return true;
         if (o == null || getClass() != o.getClass())
             return false;
-        UserSystem user = (UserSystem) o;
-        return Objects.equals(id, user.id);
+        UserSystem usuario = (UserSystem) o;
+        return Objects.equals(id, usuario.id);
     }
 
     @Override
@@ -82,6 +91,7 @@ public class UserSystem {
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + '}';
+        return "Usuario{" + "id=" + id + '}';
     }
+
 }
