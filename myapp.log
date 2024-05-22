@@ -3056,3 +3056,26 @@ Caused by: org.hibernate.query.sqm.UnknownEntityException: Could not resolve roo
 2024-05-21T22:40:37.827-03:00 DEBUG 15336 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
 2024-05-21T22:40:37.827-03:00 DEBUG 15336 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [UserSystemVIEW[id=1, username=JohnDoe, email=johndoe@example.com]]
 2024-05-21T22:40:37.835-03:00 DEBUG 15336 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-21T22:49:42.247-03:00  INFO 2264 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Starting Ap003Application using Java 17.0.1 with PID 2264 (C:\Users\alber\OneDrive\Documentos\ProjetosResidencia\AP003\target\classes started by alber in C:\Users\alber\OneDrive\Documentos\ProjetosResidencia\AP003)
+2024-05-21T22:49:42.263-03:00  INFO 2264 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : No active profile set, falling back to 1 default profile: "default"
+2024-05-21T22:49:48.485-03:00  WARN 2264 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-21T22:49:48.647-03:00 DEBUG 2264 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 30 mappings in 'requestMappingHandlerMapping'
+2024-05-21T22:49:48.682-03:00 DEBUG 2264 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-05-21T22:49:48.752-03:00 DEBUG 2264 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-05-21T22:49:48.794-03:00 DEBUG 2264 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-05-21T22:49:52.003-03:00  INFO 2264 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Started Ap003Application in 10.156 seconds (process running for 10.816)
+2024-05-21T22:50:03.272-03:00  INFO 2264 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-21T22:50:03.273-03:00 DEBUG 2264 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-05-21T22:50:03.274-03:00 DEBUG 2264 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-05-21T22:50:03.274-03:00 DEBUG 2264 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-05-21T22:50:03.278-03:00 DEBUG 2264 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@75bd35a5
+2024-05-21T22:50:03.281-03:00 DEBUG 2264 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@497e9303
+2024-05-21T22:50:03.282-03:00 DEBUG 2264 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-05-21T22:50:03.283-03:00  INFO 2264 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
+2024-05-21T22:50:03.312-03:00  INFO 2264 --- [http-nio-8080-exec-1] b.c.t.s.A.i.jwt.JwtAuthorizationFilter   : JWT Token está nulo, vazio ou não iniciado com 'Bearer '.
+2024-05-21T22:50:03.320-03:00 DEBUG 2264 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/users", parameters={}
+2024-05-21T22:50:03.323-03:00 DEBUG 2264 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.UserSystemController#create(UserSystemFORM)
+2024-05-21T22:50:03.457-03:00 DEBUG 2264 --- [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [UserSystemFORM[email=20191tadssaj0026@ifba.edu.br, username=IFBA, password=JAVA!@#ResTIc18, password (truncated)...]
+2024-05-21T22:50:09.584-03:00 DEBUG 2264 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-21T22:50:09.588-03:00 DEBUG 2264 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [UserSystemVIEW[id=4, username=IFBA, email=20191tadssaj0026@ifba.edu.br]]
+2024-05-21T22:50:09.600-03:00 DEBUG 2264 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 201 CREATED

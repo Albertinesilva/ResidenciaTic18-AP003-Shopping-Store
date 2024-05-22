@@ -49,6 +49,7 @@ public class UserSystemService {
         try {
             UserSystem entity = userFormMapper.map(dto);
             entity.setPassword(passwordEncoder.encode(dto.password()));
+            entity.setPasswordConfirm(passwordEncoder.encode(dto.passwordConfirm()));
             userRepository.save(entity);
             return userViewMapper.map(entity);
 
