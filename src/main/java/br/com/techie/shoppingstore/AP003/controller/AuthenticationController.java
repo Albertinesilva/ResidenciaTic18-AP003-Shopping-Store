@@ -29,7 +29,7 @@ import br.com.techie.shoppingstore.AP003.infra.jwt.JwtUserDetailsService;
 @Slf4j
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/auth")
 public class AuthenticationController {
 
     private final JwtUserDetailsService detailsService;
@@ -43,7 +43,7 @@ public class AuthenticationController {
         @ApiResponse(responseCode = "422", description = "Invalid field(s)", content = @Content(mediaType = "application/json", 
         schema = @Schema(implementation = ErrorMessage.class)))
     })
-    @PostMapping("/auth")
+    @PostMapping
     public ResponseEntity<?> authenticate(@RequestBody @Valid UserSystemLoginFORM dto, HttpServletRequest request) {
 
         log.info("Authentication process via login {}", dto.email());
