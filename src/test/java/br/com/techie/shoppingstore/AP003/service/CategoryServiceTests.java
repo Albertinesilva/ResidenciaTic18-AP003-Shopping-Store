@@ -11,10 +11,8 @@ import java.util.Optional;
 import br.com.techie.shoppingstore.AP003.dto.form.CategoryFORM;
 import br.com.techie.shoppingstore.AP003.dto.form.CategoryUpdateFORM;
 import br.com.techie.shoppingstore.AP003.dto.view.CategoryVIEW;
+import br.com.techie.shoppingstore.AP003.infra.exception.DatabaseException;
 import br.com.techie.shoppingstore.AP003.infra.exception.ResourceNotFoundException;
-import br.com.techie.shoppingstore.AP003.mapper.updates.CategoryUpdateMapper;
-import br.com.techie.shoppingstore.AP003.mapper.views.CategoryViewMapper;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -35,30 +33,24 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import br.com.techie.shoppingstore.AP003.model.Category;
 import br.com.techie.shoppingstore.AP003.repository.CategoryRepository;
 import br.com.techie.shoppingstore.AP003.tests.Factory;
+import jakarta.persistence.EntityNotFoundException;
 
 @ExtendWith(SpringExtension.class)
 public class CategoryServiceTests {
 
   @InjectMocks
-  private CategoryService categoryService;
-
-  @Mock
-  private CategoryViewMapper categoryViewMapper;
-
-  @Mock
-  private CategoryUpdateMapper categoryUpdateMapper;
+  private CategoryService categoriaService;
 
   @Mock
   private CategoryRepository categoryRepository;
-
 
   private long existingId;
   private long nonExistingId;
   private long dependentId;
   private PageImpl<Category> page;
   private Category category;
-  CategoryFORM categoryForm;
-  CategoryUpdateFORM categoryUpdateForm;
+  CategoryFORM categoriaForm;
+  CategoryUpdateFORM categoriaUpdateForm;
 
   @BeforeEach
   void setUp() throws Exception {
@@ -66,30 +58,27 @@ public class CategoryServiceTests {
     nonExistingId = 2L;
     dependentId = 3L;
     category = Factory.createCategory();
-    categoryForm = Factory.createCategoryForm();
-    categoryUpdateForm = Factory.createCategoryUpdateForm();
-
+    categoriaForm = Factory.createCategoryForm();
+    categoriaUpdateForm = Factory.createCategoryUpdateForm();
     page = new PageImpl<>(List.of(category));
 
     when(categoryRepository.findAll((Pageable) ArgumentMatchers.any())).thenReturn(page);
 
     when(categoryRepository.save(ArgumentMatchers.any())).thenReturn(category);
 
-    when(categoryRepository.findById(nonExistingId)).thenThrow(ResourceNotFoundException.class);
-
     when(categoryRepository.findById(existingId)).thenReturn(Optional.of(category));
+    when(categoryRepository.findById(nonExistingId)).thenReturn(Optional.empty());
 
     doNothing().when(categoryRepository).deleteById(existingId);
     doThrow(EmptyResultDataAccessException.class).when(categoryRepository).deleteById(nonExistingId);
     doThrow(DataIntegrityViolationException.class).when(categoryRepository).deleteById(dependentId);
-
   }
 
   @Test
   @DisplayName("update should return CategoriaForm when id exists")
   public void updateShouldReturnCategoriaFormWhenIdExists() {
 
-    CategoryVIEW result = categoryService.update(categoryUpdateForm);
+    CategoryVIEW result = categoriaService.update(categoriaUpdateForm);
 
     Assertions.assertNotNull(result);
   }
@@ -97,24 +86,17 @@ public class CategoryServiceTests {
   @Test
   @DisplayName("update should throw ResourceNotFoundException when id does not exist")
   public void updateIdShouldThrowResourceNotFoundExceptionWhenIdDosNotExists() {
-      // Configura o mock para lançar ResourceNotFoundException quando findById for chamado com nonExistingId
-      when(categoryRepository.findById(nonExistingId)).thenThrow(ResourceNotFoundException.class);
-      
-      // Verifica se o método update lança ResourceNotFoundException ao ser chamado
-      Assertions.assertThrows(ResourceNotFoundException.class, () -> {
-          // Antes de chamar o método update, garantimos que a configuração do mock esteja aplicada corretamente
-          categoryService.update(categoryUpdateForm);
-      });
+    when(categoryRepository.findById(nonExistingId)).thenThrow(EntityNotFoundException.class);
+    Assertions.assertThrows(ResourceNotFoundException.class, () -> {
+      categoriaService.update(categoriaUpdateForm);
+    });
   }
-  
-
-
 
   @Test
   @DisplayName("findById should return CategoriaDTO when id exists")
   public void findByIdShouldReturnCategoriaFormWhenIdExists() {
 
-    CategoryVIEW result = categoryService.findById(existingId);
+    CategoryVIEW result = categoriaService.findById(existingId);
 
     Assertions.assertNotNull(result);
     verify(categoryRepository, Mockito.times(1)).findById(existingId);
@@ -125,7 +107,7 @@ public class CategoryServiceTests {
   public void findByIdShouldThrowResourceNotFoundExceptionWhenIdDosNotExists() {
 
     Assertions.assertThrows(ResourceNotFoundException.class, () -> {
-      categoryService.findById(nonExistingId);
+      categoriaService.findById(nonExistingId);
     });
   }
 
@@ -135,7 +117,7 @@ public class CategoryServiceTests {
 
     Pageable pageable = PageRequest.of(0, 10);
 
-    Page<CategoryVIEW> result = categoryService.findAllPaged(pageable);
+    Page<CategoryVIEW> result = categoriaService.findAllPaged(pageable);
 
     Assertions.assertNotNull(result);
     verify(categoryRepository, Mockito.times(1)).findAll(pageable);
@@ -146,7 +128,7 @@ public class CategoryServiceTests {
   public void deleteShouldDoNothingWhenIdExists() {
 
     Assertions.assertDoesNotThrow(() -> {
-      categoryService.delete(existingId);
+      categoriaService.delete(existingId);
     });
 
     verify(categoryRepository, Mockito.times(1)).deleteById(existingId);
@@ -156,8 +138,8 @@ public class CategoryServiceTests {
   @DisplayName("delete should throw EmptyResultDataAccessException when id does not exist")
   public void deleteShouldThrowResourceNotFoundExceptionWhenIdDoesNotExist() {
 
-    Assertions.assertThrows(Exception.class, () -> {
-      categoryService.delete(nonExistingId);
+    Assertions.assertThrows(ResourceNotFoundException.class, () -> {
+      categoriaService.delete(nonExistingId);
     });
 
     verify(categoryRepository, Mockito.times(1)).deleteById(nonExistingId);
@@ -167,8 +149,8 @@ public class CategoryServiceTests {
   @DisplayName("delete should throw DatabaseException when id is dependent")
   public void deleteShouldThrowDatabaseExceptionWhenIdWhenDependentId() {
 
-    Assertions.assertThrows(DataIntegrityViolationException.class, () -> {
-      categoryService.delete(dependentId);
+    Assertions.assertThrows(DatabaseException.class, () -> {
+      categoriaService.delete(dependentId);
     });
 
     verify(categoryRepository, Mockito.times(1)).deleteById(dependentId);

@@ -1,7 +1,9 @@
 package br.com.techie.shoppingstore.AP003.model;
 
-// import java.util.Set;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
+import br.com.techie.shoppingstore.AP003.enums.PaymentTypeEnum;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,14 +15,17 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "Category")
-public class Category {
+@Entity(name = "Payment")
+public class Payment {
 
     @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private LocalDateTime payday;
 
+    private PaymentTypeEnum paymentType;
+
+    private BigDecimal amount;
 }
 

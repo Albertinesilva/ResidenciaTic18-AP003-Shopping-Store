@@ -3,6 +3,7 @@ package br.com.techie.shoppingstore.AP003.repository;
 import br.com.techie.shoppingstore.AP003.enums.PaymentStatusEnum;
 import br.com.techie.shoppingstore.AP003.model.Cart;
 import br.com.techie.shoppingstore.AP003.model.Payment;
+import br.com.techie.shoppingstore.AP003.model.UserSystem;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -38,7 +39,8 @@ public class CartRepositoryTest {
     private Cart createCart() {
         faker = new Faker();
         Cart cart = new Cart();
-        // cart.setUser(new UserSystem());
+        cart.setId(faker.random().nextLong());
+        cart.setUser(new UserSystem());
         cart.setItems(new HashSet<>());
         cart.setTotalItems(faker.random().nextInt(1, 100));
         cart.setTotalPrice(BigDecimal.valueOf(faker.random().nextDouble()));

@@ -15,8 +15,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "Payment")
-public class Payment {
+@Entity(name = "Category")
+public class Category {
 
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
@@ -28,3 +28,4 @@ public class Payment {
 
     private BigDecimal amount;
 }
+
