@@ -12,7 +12,7 @@ public class UserSystemViewMapper implements Mapper<UserSystem, UserSystemVIEW> 
         return new UserSystemVIEW(
                 i.getId(),
                 i.getUsername(),
-                i.getEmail()
-        );
+                i.getEmail(),
+                i.getRole());
     }
 }

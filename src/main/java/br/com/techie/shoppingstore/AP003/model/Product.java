@@ -1,6 +1,5 @@
 package br.com.techie.shoppingstore.AP003.model;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

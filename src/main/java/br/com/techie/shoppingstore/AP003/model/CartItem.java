@@ -1,6 +1,5 @@
 package br.com.techie.shoppingstore.AP003.model;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -32,7 +31,7 @@ public class CartItem {
     private Product product;
 
     @ManyToOne
-    @JoinColumn(name = "cart_id")
+    @JoinColumn(name = "cart_id", insertable = false, updatable = false)
     private Cart cart;
 
 }

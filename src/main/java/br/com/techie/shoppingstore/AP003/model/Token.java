@@ -25,7 +25,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name = "token")
+@Table(name = "Token")
 public class Token implements Serializable {
 
   @Id

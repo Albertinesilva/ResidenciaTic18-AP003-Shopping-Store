@@ -13,7 +13,7 @@ public class PaymentFormMapper implements Mapper<PaymentFORM, Payment> {
                 null,
                 i.payday(),
                 i.payment_type(),
-                i.amount()
-        );
+                null
+                );
     }
 }
