@@ -2115,3 +2115,19 @@ Caused by: org.hibernate.HibernateException: Unable to determine Dialect without
 2024-05-22T20:35:44.410-03:00 DEBUG 16940 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
 2024-05-22T20:35:48.621-03:00  INFO 16940 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Started Ap003Application in 11.498 seconds (process running for 12.441)
 2024-05-22T22:01:46.822-03:00  WARN 16940 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=20m4s399ms271µs500ns).
+2024-05-23T14:43:21.967-03:00  INFO 18120 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Starting Ap003Application using Java 17.0.10 with PID 18120 (C:\repositorios\AP003\target\classes started by OutLaio in C:\repositorios\AP003)
+2024-05-23T14:43:21.971-03:00  INFO 18120 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : No active profile set, falling back to 1 default profile: "default"
+2024-05-23T14:43:28.914-03:00  WARN 18120 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-23T14:43:29.029-03:00 DEBUG 18120 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 36 mappings in 'requestMappingHandlerMapping'
+2024-05-23T14:43:29.082-03:00 DEBUG 18120 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-05-23T14:43:29.140-03:00 DEBUG 18120 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-05-23T14:43:29.189-03:00 DEBUG 18120 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-05-23T14:43:32.642-03:00  INFO 18120 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Started Ap003Application in 11.154 seconds (process running for 11.871)
+2024-05-23T14:47:44.095-03:00  INFO 17964 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Starting Ap003Application using Java 17.0.10 with PID 17964 (C:\repositorios\AP003\target\classes started by OutLaio in C:\repositorios\AP003)
+2024-05-23T14:47:44.098-03:00  INFO 17964 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : No active profile set, falling back to 1 default profile: "default"
+2024-05-23T14:47:49.619-03:00  WARN 17964 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-23T14:47:49.730-03:00 DEBUG 17964 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 36 mappings in 'requestMappingHandlerMapping'
+2024-05-23T14:47:49.762-03:00 DEBUG 17964 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-05-23T14:47:49.811-03:00 DEBUG 17964 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-05-23T14:47:49.863-03:00 DEBUG 17964 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-05-23T14:47:53.835-03:00  INFO 17964 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Started Ap003Application in 10.186 seconds (process running for 10.835)
