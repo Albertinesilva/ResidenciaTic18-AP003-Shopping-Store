@@ -55,7 +55,7 @@ public class UserSystemService {
 
         } catch (org.springframework.dao.DataIntegrityViolationException ex) {
             throw new EmailUniqueViolationException(
-                    String.format("Email: %s já cadastrado: ", dto.email()));
+                    String.format("Email: %s already registered: ", dto.email()));
         }
     }
 
