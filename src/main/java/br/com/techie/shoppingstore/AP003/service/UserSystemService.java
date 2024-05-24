@@ -3,7 +3,7 @@ package br.com.techie.shoppingstore.AP003.service;
 import br.com.techie.shoppingstore.AP003.dto.form.UserSystemFORM;
 import br.com.techie.shoppingstore.AP003.dto.form.UserSystemUpdateFORM;
 import br.com.techie.shoppingstore.AP003.dto.view.UserSystemVIEW;
-import br.com.techie.shoppingstore.AP003.mapper.forms.UserFormMapper;
+import br.com.techie.shoppingstore.AP003.mapper.forms.UserSystemFormMapper;
 import br.com.techie.shoppingstore.AP003.mapper.updates.UserSystemUpdateMapper;
 import br.com.techie.shoppingstore.AP003.mapper.views.UserSystemViewMapper;
 import br.com.techie.shoppingstore.AP003.model.UserSystem;
@@ -33,7 +33,7 @@ public class UserSystemService {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private UserFormMapper userFormMapper;
+    private UserSystemFormMapper userFormMapper;
 
     @Autowired
     private UserSystemViewMapper userViewMapper;

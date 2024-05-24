@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 
 @Component
-public class UserFormMapper implements Mapper<UserSystemFORM, UserSystem> {
+public class UserSystemFormMapper implements Mapper<UserSystemFORM, UserSystem> {
     @Override
     public UserSystem map(UserSystemFORM i) {
         return new UserSystem(
