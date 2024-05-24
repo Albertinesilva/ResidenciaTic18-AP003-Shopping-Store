@@ -1,7 +1,10 @@
 package br.com.techie.shoppingstore.AP003.repository;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -16,7 +19,6 @@ import com.github.javafaker.Faker;
 
 import br.com.techie.shoppingstore.AP003.model.Product;
 
-
 @DataJpaTest
 public class ProductRepositoryTest {
 
@@ -30,8 +32,7 @@ public class ProductRepositoryTest {
 
     public Faker faker;
 
-    private Product criaProduto() {
-
+    private Product createProduct() {
         faker = new Faker();
         Product product = new Product();
         product.setCategory(null);
@@ -43,48 +44,65 @@ public class ProductRepositoryTest {
         return product;
     }
 
-
-
     @BeforeEach
     public void setUp() {
         faker = new Faker();
-        product = criaProduto();
+        product = createProduct();
         entityManager.persistAndFlush(product);
     }
 
-
     @Test
-    public void testSave(){
+    public void testSave() {
+        // Given
+        Product newProduct = createProduct();
 
-        //Given
-        Product newProduct = criaProduto();
-
-        //When
+        // When
         Product savedProduct = productRepository.save(newProduct);
 
-        //Then
+        // Then
         assertThat(savedProduct).isNotNull();
         assertThat(savedProduct.getId()).isGreaterThan(0);
-
-        System.out.println(newProduct);
-
     }
 
     @Test
-    public void testFindById(){
-        //  Given
+    public void testFindById() {
+        // Given
         Product savedProduct = productRepository.save(product);
 
-        //  When
-        Optional<Product> retrievedProduto = productRepository.findById(savedProduct.getId());
+        // When
+        Optional<Product> retrievedProduct = productRepository.findById(savedProduct.getId());
 
         // Then
-        assertEquals(product, retrievedProduto.get());
-        assertTrue(retrievedProduto.isPresent());
-
-        System.out.println(retrievedProduto);
-
+        assertTrue(retrievedProduct.isPresent());
+        assertEquals(product, retrievedProduct.get());
     }
 
+    @Test
+    public void testUpdate() {
+        // Given
+        Product newProduct = createProduct();
+        Product savedProduct = productRepository.save(newProduct);
 
+        // When
+        savedProduct.setPrice(BigDecimal.TEN); // Changing the price
+        productRepository.save(savedProduct);
+
+        // Then
+        Product updatedProduct = entityManager.find(Product.class, savedProduct.getId());
+        assertEquals(BigDecimal.TEN, updatedProduct.getPrice());
+    }
+
+    @Test
+    public void testDelete() {
+        // Given
+        Product newProduct = createProduct();
+        Product savedProduct = productRepository.save(newProduct);
+
+        // When
+        productRepository.delete(savedProduct);
+
+        // Then
+        assertFalse(productRepository.existsById(savedProduct.getId()));
+    }
 }
+

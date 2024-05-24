@@ -2,7 +2,6 @@ package br.com.techie.shoppingstore.AP003.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-
 import br.com.techie.shoppingstore.AP003.enums.PaymentTypeEnum;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

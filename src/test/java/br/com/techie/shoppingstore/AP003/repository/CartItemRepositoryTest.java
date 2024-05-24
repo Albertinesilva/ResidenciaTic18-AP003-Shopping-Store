@@ -2,6 +2,7 @@ package br.com.techie.shoppingstore.AP003.repository;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -18,7 +19,7 @@ import br.com.techie.shoppingstore.AP003.model.CartItem;
 
 
 @DataJpaTest
-public class ItemCartRepositoryTest {
+public class CartItemRepositoryTest {
 
     @Autowired
     private CartItemRepository cartItemRepository;
@@ -30,56 +31,74 @@ public class ItemCartRepositoryTest {
 
     public Faker faker;
 
-    private CartItem criaItemCarrinho() {
-
+    private CartItem createCartItem() {
         faker = new Faker();
         CartItem cartItem = new CartItem();
         cartItem.setPrice(BigDecimal.valueOf(faker.random().nextDouble()));
         cartItem.setQuantity(faker.number().randomDigit());
         cartItem.setProduct(null);
-
         return cartItem;
     }
-
 
     @BeforeEach
     public void setUp() {
         faker = new Faker();
-        cartItem = criaItemCarrinho();
+        cartItem = createCartItem();
         entityManager.persistAndFlush(cartItem);
     }
 
-
     @Test
-    public void testSave(){
+    public void testSave() {
+        // Given
+        CartItem newCartItem = createCartItem();
 
-        //Given
-        CartItem newCartItem = criaItemCarrinho();
-
-        //When
+        // When
         CartItem savedCartItem = cartItemRepository.save(newCartItem);
 
-        //Then
+        // Then
         assertThat(savedCartItem).isNotNull();
         assertThat(savedCartItem.getId()).isGreaterThan(0);
-
     }
 
     @Test
-    public void testFindById(){
-        //  Given
+    public void testFindById() {
+        // Given
         CartItem savedCartItem = cartItemRepository.save(cartItem);
 
-        //  When
-        Optional<CartItem> retrievedItemCarrinho = cartItemRepository.findById(savedCartItem.getId());
+        // When
+        Optional<CartItem> retrievedCartItem = cartItemRepository.findById(savedCartItem.getId());
 
         // Then
-        assertEquals(cartItem, retrievedItemCarrinho.get());
-        assertTrue(retrievedItemCarrinho.isPresent());
-
+        assertTrue(retrievedCartItem.isPresent());
+        assertEquals(cartItem, retrievedCartItem.get());
     }
 
+    @Test
+    public void testUpdate() {
+        // Given
+        CartItem newCartItem = createCartItem();
+        CartItem savedCartItem = cartItemRepository.save(newCartItem);
 
+        // When
+        savedCartItem.setPrice(BigDecimal.TEN); // Changing the price
+        cartItemRepository.save(savedCartItem);
 
+        // Then
+        CartItem updatedCartItem = entityManager.find(CartItem.class, savedCartItem.getId());
+        assertEquals(BigDecimal.TEN, updatedCartItem.getPrice());
+    }
 
+    @Test
+    public void testDelete() {
+        // Given
+        CartItem newCartItem = createCartItem();
+        CartItem savedCartItem = cartItemRepository.save(newCartItem);
+
+        // When
+        cartItemRepository.delete(savedCartItem);
+
+        // Then
+        assertFalse(cartItemRepository.existsById(savedCartItem.getId()));
+    }
 }
+
