@@ -1,23 +1,20 @@
 package br.com.techie.shoppingstore.AP003.repository;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
-import java.math.BigDecimal;
 import java.util.Optional;
-
-import br.com.techie.shoppingstore.AP003.enums.PaymentStatusEnum;
 import br.com.techie.shoppingstore.AP003.enums.PaymentTypeEnum;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-
 import com.github.javafaker.Faker;
-
-import br.com.techie.shoppingstore.AP003.model.Cart;
 import br.com.techie.shoppingstore.AP003.model.Payment;
+
 
 
 @DataJpaTest
@@ -31,78 +28,78 @@ public class PaymentRepositoryTest {
 
     private Payment payment;
 
-    private Cart cart;
-
     public Faker faker;
 
-    private Payment criaPagamento() {
-
+    private Payment createPayment() {
         faker = new Faker();
-        cart = criaCarrinho();
         Payment payment = new Payment();
+        payment.setPayday(null);
         payment.setPaymentType(PaymentTypeEnum.MONEY);
+        payment.setAmount(null);
         return payment;
-    }
-
-    private Cart criaCarrinho() {
-
-        faker = new Faker();
-        Cart cart = new Cart();
-        cart.setPayment(null);
-        cart.setUser(null);
-        cart.setTotalItems(faker.random().nextInt(1, 100));
-        cart.setTotalPrice(BigDecimal.valueOf(faker.random().nextDouble()));
-        cart.setPurchaseDate(null);
-        cart.setStatus(PaymentStatusEnum.PENDING);
-        
-        return cart;
     }
 
 
     @BeforeEach
     public void setUp() {
         faker = new Faker();
-        payment = criaPagamento();
-        entityManager.persistAndFlush(cart);
+        payment = createPayment();
         entityManager.persistAndFlush(payment);
     }
 
-
     @Test
-    public void testSave(){
+    public void testSave() {
+        // Given
+        Payment newPayment = createPayment();
 
-        //Given
-        Payment newPayment = criaPagamento();
-
-        //When
+        // When
         Payment savedPayment = paymentRepository.save(newPayment);
 
-        //Then
+        // Then
         assertThat(savedPayment).isNotNull();
         assertThat(savedPayment.getId()).isGreaterThan(0);
-
-        System.out.println(newPayment);
-
     }
 
     @Test
-    public void testFindById(){
-        //  Given
+    public void testFindById() {
+        // Given
         Payment savedPayment = paymentRepository.save(payment);
 
-        //  When
-        Optional<Payment> retrievedPagamento = paymentRepository.findById(savedPayment.getId());
+        // When
+        Optional<Payment> retrievedPayment = paymentRepository.findById(savedPayment.getId());
 
         // Then
-        assertEquals(payment, retrievedPagamento.get());
-        assertTrue(retrievedPagamento.isPresent());
-
-        System.out.println(retrievedPagamento);
-
+        assertTrue(retrievedPayment.isPresent());
+        assertEquals(payment, retrievedPayment.get());
     }
 
+    @Test
+    public void testUpdate() {
+        // Given
+        Payment newPayment = createPayment();
+        Payment savedPayment = paymentRepository.save(newPayment);
 
+        // When
+        savedPayment.setPaymentType(PaymentTypeEnum.CREDIT_CARD); // Changing the payment type
+        paymentRepository.save(savedPayment);
 
+        // Then
+        Payment updatedPayment = entityManager.find(Payment.class, savedPayment.getId());
+        assertEquals(PaymentTypeEnum.CREDIT_CARD, updatedPayment.getPaymentType());
+    }
 
+    @Test
+    public void testDelete() {
+        // Given
+        Payment newPayment = createPayment();
+        Payment savedPayment = paymentRepository.save(newPayment);
+
+        // When
+        paymentRepository.delete(savedPayment);
+
+        // Then
+        assertFalse(paymentRepository.existsById(savedPayment.getId()));
+    }
 }
+
 

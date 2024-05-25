@@ -1,6 +1,5 @@
 package br.com.techie.shoppingstore.AP003.model;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,13 +10,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "Cart_Item")
-public class CartItem {
+public class CartItem implements Serializable {
+	private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
@@ -32,7 +33,7 @@ public class CartItem {
     private Product product;
 
     @ManyToOne
-    @JoinColumn(name = "cart_id")
+    @JoinColumn(name = "cart_id", insertable = false, updatable = false)
     private Cart cart;
 
 }

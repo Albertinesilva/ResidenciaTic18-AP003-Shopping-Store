@@ -25,9 +25,10 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name = "token")
+@Table(name = "Token")
 public class Token implements Serializable {
-
+	private static final long serialVersionUID = 1L;
+  
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id")
