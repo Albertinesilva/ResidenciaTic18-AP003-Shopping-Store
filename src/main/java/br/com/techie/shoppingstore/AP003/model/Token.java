@@ -27,7 +27,8 @@ import lombok.ToString;
 @Entity
 @Table(name = "Token")
 public class Token implements Serializable {
-
+	private static final long serialVersionUID = 1L;
+  
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id")

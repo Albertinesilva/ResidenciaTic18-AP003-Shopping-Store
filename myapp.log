@@ -3518,3 +3518,11 @@ br.com.techie.shoppingstore.AP003.infra.exception.PasswordInvalidException: New 
 2024-05-23T19:47:20.858-03:00 DEBUG 13020 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
 2024-05-23T19:47:20.859-03:00 DEBUG 13020 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Nothing to write: null body
 2024-05-23T19:47:20.866-03:00 DEBUG 13020 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 204 NO_CONTENT
+2024-05-25T10:07:30.878-03:00  INFO 12080 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Starting Ap003Application using Java 17.0.1 with PID 12080 (C:\Users\alber\OneDrive\Documentos\ProjetosResidencia\AP003\target\classes started by alber in C:\Users\alber\OneDrive\Documentos\ProjetosResidencia\AP003)
+2024-05-25T10:07:30.879-03:00  INFO 12080 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : No active profile set, falling back to 1 default profile: "default"
+2024-05-25T10:07:39.565-03:00  WARN 12080 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-25T10:07:39.748-03:00 DEBUG 12080 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 36 mappings in 'requestMappingHandlerMapping'
+2024-05-25T10:07:39.809-03:00 DEBUG 12080 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-05-25T10:07:39.901-03:00 DEBUG 12080 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-05-25T10:07:40.046-03:00 DEBUG 12080 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-05-25T10:07:45.047-03:00  INFO 12080 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Started Ap003Application in 14.923 seconds (process running for 15.809)
