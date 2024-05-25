@@ -2,7 +2,6 @@ package br.com.techie.shoppingstore.AP003.dto.form;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
-
 import java.util.Set;
 
 public record CartFORM(
