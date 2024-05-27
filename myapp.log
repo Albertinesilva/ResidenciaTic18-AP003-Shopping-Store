@@ -3526,3 +3526,87 @@ br.com.techie.shoppingstore.AP003.infra.exception.PasswordInvalidException: New 
 2024-05-25T10:07:39.901-03:00 DEBUG 12080 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
 2024-05-25T10:07:40.046-03:00 DEBUG 12080 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
 2024-05-25T10:07:45.047-03:00  INFO 12080 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Started Ap003Application in 14.923 seconds (process running for 15.809)
+2024-05-26T23:44:15.025-03:00  INFO 6584 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Starting Ap003Application using Java 17.0.10 with PID 6584 (C:\repositorios\AP003\target\classes started by OutLaio in C:\repositorios\AP003)
+2024-05-26T23:44:15.028-03:00  INFO 6584 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : No active profile set, falling back to 1 default profile: "default"
+2024-05-26T23:44:18.536-03:00  WARN 6584 --- [restartedMain] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 16.3 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2024-05-26T23:44:22.007-03:00  WARN 6584 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-26T23:44:22.127-03:00 DEBUG 6584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 37 mappings in 'requestMappingHandlerMapping'
+2024-05-26T23:44:22.168-03:00 DEBUG 6584 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-05-26T23:44:22.238-03:00 DEBUG 6584 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-05-26T23:44:22.294-03:00 DEBUG 6584 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-05-26T23:44:26.515-03:00  INFO 6584 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Started Ap003Application in 12.24 seconds (process running for 13.076)
+2024-05-26T23:44:50.236-03:00  INFO 6584 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-26T23:44:50.244-03:00 DEBUG 6584 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-05-26T23:44:50.244-03:00 DEBUG 6584 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-05-26T23:44:50.244-03:00 DEBUG 6584 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-05-26T23:44:50.244-03:00 DEBUG 6584 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@3dfbbb76
+2024-05-26T23:44:50.244-03:00 DEBUG 6584 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@c718857
+2024-05-26T23:44:50.244-03:00 DEBUG 6584 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-05-26T23:44:50.244-03:00  INFO 6584 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-05-26T23:44:50.278-03:00  INFO 6584 --- [http-nio-8080-exec-1] b.c.t.s.A.i.jwt.JwtAuthorizationFilter   : JWT Token está nulo, vazio ou não iniciado com 'Bearer '.
+2024-05-26T23:44:50.297-03:00 DEBUG 6584 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/auth", parameters={}
+2024-05-26T23:44:50.301-03:00 DEBUG 6584 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.AuthenticationController#authenticate(UserSystemLoginFORM, HttpServletRequest)
+2024-05-26T23:44:50.432-03:00 DEBUG 6584 --- [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [UserSystemLoginFORM[email=amandinha_estrelar@email.com, password=Amo@telm4]]
+2024-05-26T23:44:50.533-03:00  INFO 6584 --- [http-nio-8080-exec-1] b.c.t.s.A.c.AuthenticationController     : Authentication process via login amandinha_estrelar@email.com
+2024-05-26T23:44:51.441-03:00 DEBUG 6584 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-26T23:44:51.441-03:00 DEBUG 6584 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [br.com.techie.shoppingstore.AP003.infra.jwt.JwtToken@32de92f7]
+2024-05-26T23:44:51.455-03:00 DEBUG 6584 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-26T23:45:07.787-03:00 DEBUG 6584 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/users", parameters={}
+2024-05-26T23:45:07.787-03:00 DEBUG 6584 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.UserSystemController#getAll(Pageable)
+2024-05-26T23:45:07.843-03:00 DEBUG 6584 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-26T23:45:07.850-03:00 DEBUG 6584 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[UserSystemVIEW[id=4, username=rlaio, email=laio@email.com, role=ROLE_CLIENT], UserSystemVIEW[id=3,  (truncated)...]
+2024-05-26T23:45:07.856-03:00 DEBUG 6584 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-26T23:45:19.356-03:00  INFO 6584 --- [http-nio-8080-exec-3] b.c.t.s.A.i.jwt.JwtAuthorizationFilter   : JWT Token está nulo, vazio ou não iniciado com 'Bearer '.
+2024-05-26T23:45:19.359-03:00  INFO 6584 --- [http-nio-8080-exec-3] .c.t.s.A.i.j.JwtAuthenticationEntryPoint : Http Status 401 - Full authentication is required to access this resource
+2024-05-26T23:45:19.369-03:00  INFO 6584 --- [http-nio-8080-exec-3] .c.t.s.A.i.j.JwtAuthenticationEntryPoint : Http Status 401 - Full authentication is required to access this resource
+2024-05-26T23:45:27.595-03:00 DEBUG 6584 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/products", parameters={}
+2024-05-26T23:45:27.595-03:00  WARN 6584 --- [http-nio-8080-exec-6] o.s.web.servlet.PageNotFound             : No mapping for GET /products
+2024-05-26T23:45:27.603-03:00  WARN 6584 --- [http-nio-8080-exec-6] o.s.web.servlet.PageNotFound             : No endpoint GET /products.
+2024-05-26T23:45:27.603-03:00 DEBUG 6584 --- [http-nio-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.servlet.NoHandlerFoundException: No endpoint GET /products.]
+2024-05-26T23:45:27.603-03:00 DEBUG 6584 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2024-05-26T23:45:27.603-03:00  INFO 6584 --- [http-nio-8080-exec-6] .c.t.s.A.i.j.JwtAuthenticationEntryPoint : Http Status 401 - Full authentication is required to access this resource
+2024-05-26T23:45:50.039-03:00 DEBUG 6584 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products", parameters={}
+2024-05-26T23:45:50.039-03:00 DEBUG 6584 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.ProductController#getAll(Pageable)
+2024-05-26T23:45:50.082-03:00 DEBUG 6584 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-26T23:45:50.082-03:00 DEBUG 6584 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.ProductVIEW instances]
+2024-05-26T23:45:50.114-03:00 DEBUG 6584 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-26T23:46:07.639-03:00 ERROR 6584 --- [http-nio-8080-exec-2] b.c.t.s.AP003.infra.jwt.JwtUtils         : Token invalido JWE header does not contain a required 'enc' (Encryption Algorithm) header parameter.  This header parameter is mandatory per the JWE Specification, Section 4.1.2. See https://www.rfc-editor.org/rfc/rfc7516.html#section-4.1.2 for more information.
+2024-05-26T23:46:07.640-03:00  WARN 6584 --- [http-nio-8080-exec-2] b.c.t.s.A.i.jwt.JwtAuthorizationFilter   : JWT Token está inválido ou expirado.
+2024-05-26T23:46:07.640-03:00  INFO 6584 --- [http-nio-8080-exec-2] .c.t.s.A.i.j.JwtAuthenticationEntryPoint : Http Status 401 - Full authentication is required to access this resource
+2024-05-26T23:46:07.642-03:00  INFO 6584 --- [http-nio-8080-exec-2] .c.t.s.A.i.j.JwtAuthenticationEntryPoint : Http Status 401 - Full authentication is required to access this resource
+2024-05-26T23:46:16.828-03:00 DEBUG 6584 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/categories", parameters={}
+2024-05-26T23:46:16.829-03:00 DEBUG 6584 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.CategoryController#getAll(Pageable)
+2024-05-26T23:46:16.836-03:00 DEBUG 6584 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-26T23:46:16.836-03:00 DEBUG 6584 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.CategoryVIEW instances]
+2024-05-26T23:46:16.838-03:00 DEBUG 6584 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-26T23:46:30.957-03:00 ERROR 6584 --- [http-nio-8080-exec-8] b.c.t.s.AP003.infra.jwt.JwtUtils         : Token invalido JWT expired 284715957 milliseconds ago at 2024-05-23T19:41:15.000Z. Current time: 2024-05-27T02:46:30.957Z. Allowed clock skew: 0 milliseconds.
+2024-05-26T23:46:30.957-03:00  WARN 6584 --- [http-nio-8080-exec-8] b.c.t.s.A.i.jwt.JwtAuthorizationFilter   : JWT Token está inválido ou expirado.
+2024-05-26T23:46:30.957-03:00  INFO 6584 --- [http-nio-8080-exec-8] .c.t.s.A.i.j.JwtAuthenticationEntryPoint : Http Status 401 - Full authentication is required to access this resource
+2024-05-26T23:46:30.966-03:00  INFO 6584 --- [http-nio-8080-exec-8] .c.t.s.A.i.j.JwtAuthenticationEntryPoint : Http Status 401 - Full authentication is required to access this resource
+2024-05-26T23:46:38.205-03:00 DEBUG 6584 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/carts", parameters={}
+2024-05-26T23:46:38.205-03:00 DEBUG 6584 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.CartController#getAll(Pageable)
+2024-05-26T23:46:38.285-03:00 DEBUG 6584 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-26T23:46:38.285-03:00 DEBUG 6584 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.CartVIEW instances]
+2024-05-26T23:46:38.293-03:00 DEBUG 6584 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-26T23:48:58.475-03:00  INFO 348 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Starting Ap003Application using Java 17.0.10 with PID 348 (C:\repositorios\AP003\target\classes started by OutLaio in C:\repositorios\AP003)
+2024-05-26T23:48:58.481-03:00  INFO 348 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : No active profile set, falling back to 1 default profile: "default"
+2024-05-26T23:49:02.732-03:00  WARN 348 --- [restartedMain] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 16.3 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2024-05-26T23:49:06.107-03:00  WARN 348 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-26T23:49:06.247-03:00 DEBUG 348 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 37 mappings in 'requestMappingHandlerMapping'
+2024-05-26T23:49:06.287-03:00 DEBUG 348 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-05-26T23:49:06.335-03:00 DEBUG 348 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-05-26T23:49:06.377-03:00 DEBUG 348 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-05-26T23:49:09.909-03:00  INFO 348 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Started Ap003Application in 12.283 seconds (process running for 13.455)
+2024-05-26T23:49:15.358-03:00  INFO 348 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-26T23:49:15.358-03:00 DEBUG 348 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-05-26T23:49:15.358-03:00 DEBUG 348 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-05-26T23:49:15.358-03:00 DEBUG 348 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-05-26T23:49:15.358-03:00 DEBUG 348 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@3dfbbb76
+2024-05-26T23:49:15.358-03:00 DEBUG 348 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@c718857
+2024-05-26T23:49:15.358-03:00 DEBUG 348 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-05-26T23:49:15.358-03:00  INFO 348 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-05-26T23:49:15.786-03:00 DEBUG 348 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/carts", parameters={}
+2024-05-26T23:49:15.786-03:00 DEBUG 348 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.CartController#getAll(Pageable)
+2024-05-26T23:49:16.054-03:00 DEBUG 348 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-26T23:49:16.062-03:00 DEBUG 348 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.CartVIEW instances]
+2024-05-26T23:49:16.129-03:00 DEBUG 348 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK

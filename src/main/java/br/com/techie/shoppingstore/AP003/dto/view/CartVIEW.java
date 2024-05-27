@@ -13,7 +13,7 @@ public record CartVIEW(
         UserSystemVIEW user,
         BigDecimal total_price,
         Integer total_items,
-        LocalDateTime purchase_date,
+        String purchase_date,
         PaymentStatusEnum status
 ) {
 }

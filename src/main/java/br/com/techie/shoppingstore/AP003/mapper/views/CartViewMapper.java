@@ -45,7 +45,7 @@ public class CartViewMapper implements Mapper<Cart, CartVIEW> {
                 userViewMapper.map(i.getUser()),
                 i.getTotalPrice(),
                 i.getTotalItems(),
-                i.getPurchaseDate(),
+                i.getPurchaseDate().toString(),
                 i.getStatus()
         );
     }
