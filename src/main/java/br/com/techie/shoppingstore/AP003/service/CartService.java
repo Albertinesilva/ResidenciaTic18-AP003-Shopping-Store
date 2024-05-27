@@ -12,6 +12,7 @@ import br.com.techie.shoppingstore.AP003.mapper.updates.CartUpdateMapper;
 import br.com.techie.shoppingstore.AP003.mapper.views.CartViewMapper;
 import br.com.techie.shoppingstore.AP003.repository.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -60,6 +61,7 @@ public class CartService {
   }
 
   @Transactional
+  @CacheEvict(cacheNames = {"Carts"}, allEntries = true)
   public CartVIEW insert(CartFORM cartForm) {
     Cart entity = cartFormMapper.map(cartForm);
     cartRepository.save(entity);
@@ -67,6 +69,7 @@ public class CartService {
   }
 
   @Transactional
+  @CacheEvict(cacheNames = {"Carts"}, allEntries = true)
   public CartVIEW update(CartUpdateFORM dto) {
     Cart entity = cartRepository.findById(dto.cart_id())
         .orElseThrow(() -> new EntityNotFoundException("Cart not found!"));
@@ -75,6 +78,8 @@ public class CartService {
     return cartViewMapper.map(entity);
   }
 
+  @Transactional
+  @CacheEvict(cacheNames = {"Carts"}, allEntries = true)
   public void delete(Long id) {
     cartRepository.deleteById(id);
   }

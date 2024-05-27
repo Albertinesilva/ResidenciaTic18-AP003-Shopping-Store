@@ -11,6 +11,8 @@ import br.com.techie.shoppingstore.AP003.model.UserSystem;
 import br.com.techie.shoppingstore.AP003.repository.UserSystemRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -40,6 +42,7 @@ public class UserSystemService {
     private UserSystemUpdateMapper userUpdateMapper;
 
     @Transactional
+    @CacheEvict(cacheNames = {"UserSystem"}, allEntries = true)
     public UserSystemVIEW save(UserSystemFORM dto) {
         if (!dto.password().equals(dto.passwordConfirm())) {
             throw new PasswordInvalidException("New password does not match password confirmation!");
@@ -97,6 +100,7 @@ public class UserSystemService {
     }
 
     @Transactional
+    @CacheEvict(cacheNames = {"UserSystem"}, allEntries = true)
     public UserSystemVIEW update(UserSystemUpdateFORM dto) {
         UserSystem entity = userRepository.findById(dto.user_id()).orElseThrow(() -> new EntityNotFoundException("User not found!"));
         if(!entity.isActive()) throw new UserIsNotActiveException("This user is not active!");
@@ -108,6 +112,7 @@ public class UserSystemService {
     }
 
     @Transactional(readOnly = true)
+    @Cacheable("UserSystem")
     public List<UserSystemVIEW> searchAll(Pageable pageable) {
         return userRepository.findAllByActiveTrue(pageable).stream().map(x -> userViewMapper.map(x)).toList();
     }
@@ -140,6 +145,7 @@ public class UserSystemService {
     }
 
     @Transactional
+    @CacheEvict(cacheNames = {"UserSystem"}, allEntries = true)
     public void delete(Long id) {
         UserSystem user = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("User not found!"));
         if (!user.isActive()) throw new UserIsNotActiveException("This user is not active!");

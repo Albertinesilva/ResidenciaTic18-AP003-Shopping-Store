@@ -12,6 +12,7 @@ import br.com.techie.shoppingstore.AP003.repository.CategoryRepository;
 import br.com.techie.shoppingstore.AP003.repository.ProductRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -52,6 +53,7 @@ public class ProductService {
   }
 
   @Transactional
+  @CacheEvict(cacheNames = {"products"}, allEntries = true)
   public ProductVIEW insert(ProductFORM dto) {
     Product entity = productFormMapper.map(dto);
     entity.setCategory(categoryRepository.findById(dto.category_id()).orElseThrow(() -> new EntityNotFoundException("Category not found!")));
@@ -60,6 +62,7 @@ public class ProductService {
   }
 
   @Transactional
+  @CacheEvict(cacheNames = {"products"}, allEntries = true)
   public ProductVIEW update(ProductUpdateFORM dto) {
     Product entity = productRepository.findById(dto.product_id()).orElseThrow(() -> new EntityNotFoundException("Product not found!"));
     entity.setCategory(categoryRepository.findById(dto.category_id()).orElseThrow(() -> new EntityNotFoundException("Category not found!")));
@@ -68,6 +71,8 @@ public class ProductService {
     return productViewMapper.map(entity);
   }
 
+  @Transactional
+  @CacheEvict(cacheNames = {"products"}, allEntries = true)
   public void delete(Long id) {
     productRepository.deleteById(id);
   }

@@ -3,9 +3,11 @@ package br.com.techie.shoppingstore.AP003.controller;
 import br.com.techie.shoppingstore.AP003.dto.form.PasswordUpdateFORM;
 import br.com.techie.shoppingstore.AP003.dto.form.UserSystemFORM;
 import br.com.techie.shoppingstore.AP003.dto.form.UserSystemUpdateFORM;
+import br.com.techie.shoppingstore.AP003.dto.view.ScoreVIEW;
 import br.com.techie.shoppingstore.AP003.dto.view.UserSystemVIEW;
 import br.com.techie.shoppingstore.AP003.infra.exception.ErrorMessage;
 import br.com.techie.shoppingstore.AP003.service.EmailService;
+import br.com.techie.shoppingstore.AP003.service.ScoreService;
 import br.com.techie.shoppingstore.AP003.service.UserSystemService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -17,6 +19,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +37,9 @@ public class UserSystemController {
 
   private final UserSystemService userService;
   private final EmailService emailService;
+
+  @Autowired
+  private ScoreService scoreService;
 
   @Operation(summary = "Create a new user", description = "Feature to create a new user in the system.", responses = {
       @ApiResponse(responseCode = "201", description = "User created successfully.", 
@@ -124,6 +131,13 @@ public class UserSystemController {
   public ResponseEntity<Void> delete(@PathVariable Long id) {
     userService.delete(id);
     return ResponseEntity.noContent().build();
+  }
+
+  @GetMapping("{id}/scores")
+  @PreAuthorize("hasAnyRole('ADMIN', 'CLIENT') AND (#id == authentication.principal.id)")
+  public ResponseEntity<?> getScores(@PathVariable Long id, Pageable pageable) {
+    Page<ScoreVIEW> scores = scoreService.findAllByUser(id, pageable);
+    return ResponseEntity.ok().body(scores);
   }
 
 }
