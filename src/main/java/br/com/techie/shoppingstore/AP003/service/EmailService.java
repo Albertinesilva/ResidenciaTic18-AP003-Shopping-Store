@@ -37,7 +37,7 @@ public class EmailService {
         "UTF-8");
 
     Context context = new Context();
-    context.setVariable("titulo", "Bem-vindo ao ParkApi");
+    context.setVariable("titulo", "Bem-vindo ao Shopping Store");
     context.setVariable("texto", "Precisamos que você confirme seu cadastro clicando no link abaixo");
     context.setVariable("linkConfirmacao",
         "http://localhost:8080/api/v1/usuarios/confirmacao/cadastro?codigo=" + codigo);
@@ -48,7 +48,7 @@ public class EmailService {
     helper.setSubject("Confirmação de cadastro");
     helper.setFrom("nao-responder@park.com.br");
 
-    helper.addInline("logo", new ClassPathResource("/static/image/spring-security.png"));
+    helper.addInline("logo", new ClassPathResource("/static/image/shopping.png"));
 
     javaMailSender.send(mimeMessage);
   }
@@ -72,7 +72,7 @@ public class EmailService {
     helper.setSubject("Redefinição de senha");
     helper.setFrom("nao-responder@park.com.br");
 
-    helper.addInline("logo", new ClassPathResource("/static/image/spring-security.png"));
+    helper.addInline("logo", new ClassPathResource("/static/image/shopping.png"));
 
     javaMailSender.send(mimeMessage);
   }

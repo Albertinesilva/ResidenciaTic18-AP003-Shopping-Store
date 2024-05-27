@@ -174,7 +174,7 @@
 				<artifactId>flyway-maven-plugin</artifactId>
 				<version>10.11.1</version>
 				<configuration>
-					<url>jdbc:postgresql://localhost:5432/shopping_test</url>
+					<url>jdbc:postgresql://localhost:5432/shopping_store</url>
 					<user>${database.username}</user>
 					<password>${database.password}</password>
 					<locations>classpath:db/migration</locations>
