@@ -6,6 +6,6 @@ create table scores (
     product_id bigint,
 
     primary key (id),
-    add constraint fk_user_score foreign key (user_id) references users(id),
-    add constraint fk_product_score foreign key (product_id) references product(id)
+    constraint fk_user_score foreign key (user_id) references users(id),
+    constraint fk_product_score foreign key (product_id) references product(id)
 );

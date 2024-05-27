@@ -1,5 +1,8 @@
 package br.com.techie.shoppingstore.AP003.controller;
 
+import br.com.techie.shoppingstore.AP003.dto.form.ScoreFORM;
+import br.com.techie.shoppingstore.AP003.dto.view.ScoreVIEW;
+import br.com.techie.shoppingstore.AP003.service.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,6 +31,9 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import java.net.URI;
 
 @Tag(name = "Products", description = "Contains all operations related to product management including creating, updating, retrieving, and deleting products.")
 @RestController
@@ -36,6 +42,9 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private ScoreService scoreService;
 
     @Operation(summary = "Create a new product", description = "Create a new product with the provided details.",
     security = @SecurityRequirement(name = "security"), responses = {
@@ -53,7 +62,7 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.CREATED).body(newProduct);
     }
 
-    @Operation(summary = "List all products", description = "Retrieve a paginated list of all products.", 
+    @Operation(summary = "List all products", description = "Retrieve a paginated list of all products.",
     security = @SecurityRequirement(name = "security"), responses = {
             @ApiResponse(responseCode = "200", description = "Product list successfully retrieved.", 
             content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = ProductVIEW.class)))),
@@ -113,6 +122,27 @@ public class ProductController {
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         productService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/score")
+    @PreAuthorize("hasAnyRole('ADMIN', 'CLIENT')")
+    public ResponseEntity<ScoreVIEW> newScore(@RequestBody @Valid ScoreFORM scoreFORM){
+        ScoreVIEW view = scoreService.insert(scoreFORM);
+        return ResponseEntity.status(HttpStatus.CREATED).body(view);
+    }
+
+    @GetMapping("/{id}/scores")
+    @PreAuthorize("hasAnyRole('ADMIN', 'CLIENT')")
+    public ResponseEntity<?> getAllScores(@PathVariable Long id, Pageable pageable){
+        Page<ScoreVIEW> scores = scoreService.findAllByProduct(id, pageable);
+        return ResponseEntity.ok().body(scores);
+    }
+
+    @DeleteMapping("{id}/scores/{scoreId}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Void> deleteScore(@PathVariable Long id, @PathVariable Long scoreId){
+        scoreService.delete(id, scoreId);
         return ResponseEntity.noContent().build();
     }
 }

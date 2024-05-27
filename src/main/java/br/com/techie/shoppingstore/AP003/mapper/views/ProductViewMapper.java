@@ -18,7 +18,7 @@ public class ProductViewMapper implements Mapper<Product, ProductVIEW> {
 
     @Override
     public ProductVIEW map(Product i) {
-        Set<Score> scores = scoreRepository.findByProductId(i.getId(), Pageable.unpaged()).toSet();
+        Set<Score> scores = scoreRepository.findAllByProductId(i.getId(), Pageable.unpaged()).toSet();
         Double average = scores.stream().mapToDouble(Score::getValue).average().orElse(0);
 
         return new ProductVIEW(

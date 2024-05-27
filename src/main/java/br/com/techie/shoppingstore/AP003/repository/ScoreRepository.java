@@ -6,6 +6,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ScoreRepository extends JpaRepository<Score, Long> {
-    Page<Score> findByProductId(Long productId, Pageable pageable);
-    Page<Score> findByUserId(Long userId, Pageable pageable);
+    Page<Score> findAllByProductId(Long productId, Pageable pageable);
+    Page<Score> findAllByUserId(Long userId, Pageable pageable);
 }

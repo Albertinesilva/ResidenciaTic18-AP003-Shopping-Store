@@ -1,9 +1,6 @@
 package br.com.techie.shoppingstore.AP003.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,10 +10,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity(name = "Scores")
 public class Score {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "score")
     private Integer value;
 
+    @Column(name = "user_comment")
     private String comment;
 
     @ManyToOne
@@ -24,6 +24,6 @@ public class Score {
     private UserSystem user;
 
     @ManyToOne
-    @JoinColumn(name = "product_id", insertable = false, updatable = false)
+    @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 }
