@@ -18,14 +18,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import br.com.techie.shoppingstore.AP003.dto.form.UserSystemLoginFORM;
 import br.com.techie.shoppingstore.AP003.dto.view.UserSystemVIEW;
 import br.com.techie.shoppingstore.AP003.infra.exception.ErrorMessage;
 import br.com.techie.shoppingstore.AP003.infra.jwt.JwtToken;
 import br.com.techie.shoppingstore.AP003.infra.jwt.JwtUserDetailsService;
-
-import java.io.Console;
 
 @Tag(name = "Authentication", description = "Resource for proceeding with API authentication")
 @Slf4j

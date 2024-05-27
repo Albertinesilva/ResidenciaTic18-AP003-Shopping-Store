@@ -72,7 +72,7 @@ public class CartServiceTest {
                 null, // Add appropriate UserSystemVIEW instance
                 BigDecimal.valueOf(100),
                 2,
-                LocalDateTime.now(),
+                LocalDateTime.now().toString(),
                 PaymentStatusEnum.PENDING
         );
 

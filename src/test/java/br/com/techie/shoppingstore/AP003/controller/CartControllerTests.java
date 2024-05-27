@@ -75,7 +75,7 @@ class CartControllerTests {
         Set<CartItemFORM> cartItemsForm = new HashSet<>();
         cartItemsForm.add(cartItemForm);
 
-        PaymentVIEW paymentView = new PaymentVIEW(1L, LocalDateTime.now(), BigDecimal.valueOf(100), PaymentTypeEnum.CREDIT_CARD);
+        PaymentVIEW paymentView = new PaymentVIEW(1L, LocalDateTime.now().toString(), BigDecimal.valueOf(100), PaymentTypeEnum.CREDIT_CARD);
         PaymentFORM paymentForm = new PaymentFORM(1L, LocalDateTime.now(), BigDecimal.valueOf(150.00), PaymentTypeEnum.MONEY);
         UserSystemVIEW userView = new UserSystemVIEW(1L, "user@example.com", "User Name", null);
 
@@ -86,7 +86,7 @@ class CartControllerTests {
                 userView,
                 BigDecimal.valueOf(100),
                 1,
-                LocalDateTime.now(),
+                LocalDateTime.now().toString(),
                 PaymentStatusEnum.PAID
         );
 
