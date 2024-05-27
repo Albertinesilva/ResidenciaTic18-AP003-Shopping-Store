@@ -20,6 +20,7 @@ import java.util.Objects;
 @Entity(name = "Users")
 @EntityListeners(AuditingEntityListener.class)
 public class UserSystem implements Serializable {
+  private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,9 +1,9 @@
 package br.com.techie.shoppingstore.AP003.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Optional;
 
@@ -16,7 +16,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import com.github.javafaker.Faker;
 
 import br.com.techie.shoppingstore.AP003.model.Category;
-
 
 @DataJpaTest
 public class CategoryRepositoryTest {
@@ -31,12 +30,10 @@ public class CategoryRepositoryTest {
 
     public Faker faker;
 
-    private Category criaCategoria() {
-
+    private Category createCategory() {
         faker = new Faker();
         Category category = new Category();
         category.setName(faker.commerce().material());
-
         return category;
     }
 
@@ -44,41 +41,62 @@ public class CategoryRepositoryTest {
     @BeforeEach
     public void setUp() {
         faker = new Faker();
-        category = criaCategoria();
+        category = createCategory();
         entityManager.persistAndFlush(category);
     }
 
 
     @Test
-    public void testSave(){
-        //Given
-        Category newCategory = criaCategoria();
+    public void testSave() {
+        // Given
+        Category newCategory = createCategory();
 
-        //When
+        // When
         Category savedCategory = categoryRepository.save(newCategory);
 
-        //Then
+        // Then
         assertThat(savedCategory).isNotNull();
         assertThat(savedCategory.getId()).isGreaterThan(0);
-
     }
 
     @Test
-    public void testFindById(){
-        //  Given
+    public void testFindById() {
+        // Given
         Category savedCategory = categoryRepository.save(category);
 
-        //  When
-        Optional<Category> retrievedCategoria = categoryRepository.findById(savedCategory.getId());
+        // When
+        Optional<Category> retrievedCategory = categoryRepository.findById(savedCategory.getId());
 
         // Then
-        assertEquals(category, retrievedCategoria.get());
-        assertTrue(retrievedCategoria.isPresent());
-
+        assertTrue(retrievedCategory.isPresent());
+        assertEquals(category, retrievedCategory.get());
     }
 
+    @Test
+    public void testUpdate() {
+        // Given
+        Category newCategory = createCategory();
+        Category savedCategory = categoryRepository.save(newCategory);
 
+        // When
+        savedCategory.setName("Updated Category"); // Changing the category name
+        categoryRepository.save(savedCategory);
 
+        // Then
+        Category updatedCategory = entityManager.find(Category.class, savedCategory.getId());
+        assertEquals("Updated Category", updatedCategory.getName());
+    }
+
+    @Test
+    public void testDelete() {
+        // Given
+        Category newCategory = createCategory();
+        Category savedCategory = categoryRepository.save(newCategory);
+
+        // When
+        categoryRepository.delete(savedCategory);
+
+        // Then
+        assertFalse(categoryRepository.existsById(savedCategory.getId()));
+    }
 }
-
-

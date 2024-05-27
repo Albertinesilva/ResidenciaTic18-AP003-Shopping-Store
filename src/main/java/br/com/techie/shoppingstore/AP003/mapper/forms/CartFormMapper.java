@@ -7,7 +7,6 @@ import br.com.techie.shoppingstore.AP003.mapper.Mapper;
 import br.com.techie.shoppingstore.AP003.model.Cart;
 import br.com.techie.shoppingstore.AP003.model.CartItem;
 import br.com.techie.shoppingstore.AP003.repository.CartItemRepository;
-import br.com.techie.shoppingstore.AP003.repository.ProductRepository;
 import br.com.techie.shoppingstore.AP003.repository.UserSystemRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +20,6 @@ import java.util.Set;
 @Component
 public class CartFormMapper implements Mapper<CartFORM, Cart> {
 
-    @Autowired
-    private ProductRepository productRepository;
 
     @Autowired
     private CartItemRepository cartItemRepository;
