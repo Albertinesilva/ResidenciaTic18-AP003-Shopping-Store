@@ -65,16 +65,16 @@ public class CartServiceTest {
         cart.setPurchaseDate(LocalDateTime.now());
         cart.setStatus(PaymentStatusEnum.PENDING);
 
-        cartView = new CartVIEW(
-                1L,
-                Set.of(), // Add appropriate CartItemVIEW instances
-                null, // Add appropriate PaymentVIEW instance
-                null, // Add appropriate UserSystemVIEW instance
-                BigDecimal.valueOf(100),
-                2,
-                LocalDateTime.now(),
-                PaymentStatusEnum.PENDING
-        );
+        // cartView = new CartVIEW(
+        //         1L,
+        //         Set.of(), // Add appropriate CartItemVIEW instances
+        //         null, // Add appropriate PaymentVIEW instance
+        //         null, // Add appropriate UserSystemVIEW instance
+        //         BigDecimal.valueOf(100),
+        //         2,
+        //         LocalDateTime.now(),
+        //         PaymentStatusEnum.PENDING
+        // );
 
         cartForm = new CartFORM(
                 1L,

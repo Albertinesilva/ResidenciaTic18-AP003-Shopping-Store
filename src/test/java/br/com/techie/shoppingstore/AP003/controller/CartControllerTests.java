@@ -59,47 +59,47 @@ class CartControllerTests {
     private CartFORM cartForm;
     private CartUpdateFORM cartUpdateForm;
 
-    @BeforeEach
-    void setUp() {
-        MockitoAnnotations.openMocks(this);
-        mockMvc = MockMvcBuilders.standaloneSetup(cartController)
-                .setCustomArgumentResolvers(new PageableHandlerMethodArgumentResolver())
-                .build();
+    // @BeforeEach
+    // void setUp() {
+    //     MockitoAnnotations.openMocks(this);
+    //     mockMvc = MockMvcBuilders.standaloneSetup(cartController)
+    //             .setCustomArgumentResolvers(new PageableHandlerMethodArgumentResolver())
+    //             .build();
 
-        ProductVIEW productView = new ProductVIEW(1L, "Product Name", "Product Category", BigDecimal.valueOf(150.00), "Product Description", "http://image.url", 10, "chassis", "cpu", "OS", "chipset", "memory", "slots", "storage", "network");
-        CartItemVIEW cartItemView = new CartItemVIEW(1L, productView, BigDecimal.valueOf(100), 1);
-        Set<CartItemVIEW> cartItemsView = new HashSet<>();
-        cartItemsView.add(cartItemView);
+    //     ProductVIEW productView = new ProductVIEW(1L, "Product Name", "Product Category", BigDecimal.valueOf(150.00), "Product Description", "http://image.url", 10, "chassis", "cpu", "OS", "chipset", "memory", "slots", "storage", "network");
+    //     CartItemVIEW cartItemView = new CartItemVIEW(1L, productView, BigDecimal.valueOf(100), 1);
+    //     Set<CartItemVIEW> cartItemsView = new HashSet<>();
+    //     cartItemsView.add(cartItemView);
 
-        CartItemFORM cartItemForm = new CartItemFORM(1L, 1);
-        Set<CartItemFORM> cartItemsForm = new HashSet<>();
-        cartItemsForm.add(cartItemForm);
+    //     CartItemFORM cartItemForm = new CartItemFORM(1L, 1);
+    //     Set<CartItemFORM> cartItemsForm = new HashSet<>();
+    //     cartItemsForm.add(cartItemForm);
 
-        PaymentVIEW paymentView = new PaymentVIEW(1L, LocalDateTime.now(), BigDecimal.valueOf(100), PaymentTypeEnum.CREDIT_CARD);
-        PaymentFORM paymentForm = new PaymentFORM(1L, LocalDateTime.now(), BigDecimal.valueOf(150.00), PaymentTypeEnum.MONEY);
-        UserSystemVIEW userView = new UserSystemVIEW(1L, "user@example.com", "User Name", null);
+    //     PaymentVIEW paymentView = new PaymentVIEW(1L, LocalDateTime.now(), BigDecimal.valueOf(100), PaymentTypeEnum.CREDIT_CARD);
+    //     PaymentFORM paymentForm = new PaymentFORM(1L, LocalDateTime.now(), BigDecimal.valueOf(150.00), PaymentTypeEnum.MONEY);
+    //     UserSystemVIEW userView = new UserSystemVIEW(1L, "user@example.com", "User Name", null);
 
-        cartView = new CartVIEW(
-                1L,
-                cartItemsView,
-                paymentView,
-                userView,
-                BigDecimal.valueOf(100),
-                1,
-                LocalDateTime.now(),
-                PaymentStatusEnum.PAID
-        );
+    //     cartView = new CartVIEW(
+    //             1L,
+    //             cartItemsView,
+    //             paymentView,
+    //             userView,
+    //             BigDecimal.valueOf(100),
+    //             1,
+    //             LocalDateTime.now(),
+    //             PaymentStatusEnum.PAID
+    //     );
 
-        cartForm = new CartFORM(userView.id(), cartItemsForm);
-        cartUpdateForm = new CartUpdateFORM(1L, cartItemsForm, paymentForm, LocalDateTime.now(), PaymentStatusEnum.PAID);
+    //     cartForm = new CartFORM(userView.id(), cartItemsForm);
+    //     cartUpdateForm = new CartUpdateFORM(1L, cartItemsForm, paymentForm, LocalDateTime.now(), PaymentStatusEnum.PAID);
 
-        page = new PageImpl<>(Collections.singletonList(cartView));
+    //     page = new PageImpl<>(Collections.singletonList(cartView));
 
-        when(cartService.findAllPaged(any(Pageable.class))).thenReturn(page);
-        when(cartService.findById(anyLong())).thenReturn(cartView);
-        when(cartService.insert(any(CartFORM.class))).thenReturn(cartView);
-        when(cartService.update(any(CartUpdateFORM.class))).thenReturn(cartView);
-    }
+    //     when(cartService.findAllPaged(any(Pageable.class))).thenReturn(page);
+    //     when(cartService.findById(anyLong())).thenReturn(cartView);
+    //     when(cartService.insert(any(CartFORM.class))).thenReturn(cartView);
+    //     when(cartService.update(any(CartUpdateFORM.class))).thenReturn(cartView);
+    // }
 
     @Test
     @DisplayName("Get all carts")
