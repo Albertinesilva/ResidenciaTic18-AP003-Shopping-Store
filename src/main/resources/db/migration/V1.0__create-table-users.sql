@@ -16,8 +16,8 @@ create table users (
 
 -- Primeiro Insert
 INSERT INTO users (active, role, email, password, password_confirm, username
-) VALUES (TRUE, 'ROLE_ADMIN', 'admin@example.com', 'JAVA!@#ResTIc18', 'JAVA!@#ResTIc18', 'adminuser');
+) VALUES (TRUE, 'ROLE_ADMIN', 'admin@example.com', '$2a$10$ubiDvkO1jHZOJsCBFLVeLuXvAPAyFtbKlLHxoSZg0f6wLUJU3xBvi', '$2a$10$ubiDvkO1jHZOJsCBFLVeLuXvAPAyFtbKlLHxoSZg0f6wLUJU3xBvi', 'adminuser');
 
 -- Segundo Insert
 INSERT INTO users (active, role, email, password, password_confirm, username
-) VALUES (TRUE, 'ROLE_CLIENT', 'client@example.com', 'JAVA!@#ResTIc18', 'JAVA!@#ResTIc18', 'clientuser');
+) VALUES (TRUE, 'ROLE_CLIENT', 'client@example.com', '$2a$10$ubiDvkO1jHZOJsCBFLVeLuXvAPAyFtbKlLHxoSZg0f6wLUJU3xBvi', '$2a$10$ubiDvkO1jHZOJsCBFLVeLuXvAPAyFtbKlLHxoSZg0f6wLUJU3xBvi', 'clientuser');
