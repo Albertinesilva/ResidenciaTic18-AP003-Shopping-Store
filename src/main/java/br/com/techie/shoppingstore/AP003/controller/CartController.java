@@ -37,7 +37,7 @@ public class CartController {
             content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
     })
     @GetMapping
-    @PreAuthorize("hasAnyRole('ADMIN', 'CLIENT')")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<Page<CartVIEW>> getAll(Pageable pageable) {
         Page<CartVIEW> carts = cartService.findAllPaged(pageable);
         return ResponseEntity.ok().body(carts);
@@ -51,7 +51,7 @@ public class CartController {
             content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
     })
     @GetMapping("/paid")
-    @PreAuthorize("hasAnyRole('ADMIN', 'CLIENT')")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<Page<CartVIEW>> getAllPaid(Pageable pageable) {
         Page<CartVIEW> carts = cartService.findAllPaidPaged(pageable);
         return ResponseEntity.ok().body(carts);
@@ -65,7 +65,7 @@ public class CartController {
             content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
     })
     @GetMapping("/unpaid")
-    @PreAuthorize("hasAnyRole('ADMIN', 'CLIENT')")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<Page<CartVIEW>> getAllUnpaid(Pageable pageable) {
         Page<CartVIEW> carts = cartService.findAllUnpaidPaged(pageable);
         return ResponseEntity.ok().body(carts);
@@ -109,9 +109,9 @@ public class CartController {
             @ApiResponse(responseCode = "422", description = "Invalid or incorrectly formatted input data.", 
             content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
     })
-    @PutMapping("/{id}")
+    @PutMapping
     @PreAuthorize("hasAnyRole('ADMIN', 'CLIENT')")
-    public ResponseEntity<CartVIEW> update(@PathVariable Long id, @RequestBody CartUpdateFORM cartUpdateForm) {
+    public ResponseEntity<CartVIEW> update(@RequestBody CartUpdateFORM cartUpdateForm) {
         CartVIEW cart = cartService.update(cartUpdateForm);
         return ResponseEntity.ok().body(cart);
     }

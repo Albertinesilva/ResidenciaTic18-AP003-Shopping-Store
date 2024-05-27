@@ -11,7 +11,7 @@ public class PaymentViewMapper implements Mapper<Payment, PaymentVIEW> {
     public PaymentVIEW map(Payment i) {
         return new PaymentVIEW(
                 i.getId(),
-                i.getPayday(),
+                i.getPayday().toString(),
                 i.getAmount(),
                 i.getPaymentType()
         );

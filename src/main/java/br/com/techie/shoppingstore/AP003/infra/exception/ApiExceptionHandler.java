@@ -24,6 +24,15 @@ public class ApiExceptionHandler {
                 .body(new ErrorMessage(request, HttpStatus.FORBIDDEN, ex.getMessage()));
     }
 
+    @ExceptionHandler(UserIsNotActiveException.class)
+    public ResponseEntity<ErrorMessage> userIsNotActivateException(UserIsNotActiveException ex, HttpServletRequest request) {
+        log.error("Api Error - ", ex);
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(new ErrorMessage(request, HttpStatus.BAD_REQUEST, ex.getMessage()));
+    }
+
     @ExceptionHandler(PasswordInvalidException.class)
     public ResponseEntity<ErrorMessage> passwordInvalidException(RuntimeException ex, HttpServletRequest request) {
         log.error("Api Error - ", ex);

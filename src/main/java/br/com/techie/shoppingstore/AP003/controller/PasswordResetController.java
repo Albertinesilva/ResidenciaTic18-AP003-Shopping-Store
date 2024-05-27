@@ -28,7 +28,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/api/v1/password-reset")
 public class PasswordResetController {
 
-  private final UserSystemService usuarioService;
+  private final UserSystemService userService;
   private final TokenService tokenService;
 
   @Operation(summary = "Update password using token", description = "Resource to update the user's password with a token", responses = {
@@ -47,10 +47,10 @@ public class PasswordResetController {
     if (response != null) {
       return response;
     }
-    Token tokenEncontrado = tokenService.findByToken(token).get();
-    usuarioService.changePassword(tokenEncontrado, dto.new_password(), dto.confirm_password());
-    log.info("User password changed successfully. User: {}", tokenEncontrado.getUserSystem().getEmail());
-    tokenService.deleteToken(tokenEncontrado);
+    Token findedToken = tokenService.findByToken(token).get();
+    userService.changePassword(findedToken, dto.new_password(), dto.confirm_password());
+    log.info("User password changed successfully. User: {}", findedToken.getUserSystem().getEmail());
+    tokenService.deleteToken(findedToken);
     return ResponseEntity.noContent().build();
 
   }

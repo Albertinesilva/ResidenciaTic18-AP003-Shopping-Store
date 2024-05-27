@@ -17,6 +17,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -106,8 +107,8 @@ public class UserSystemController {
   })
   @GetMapping
   @PreAuthorize("hasRole('ADMIN')")
-  public ResponseEntity<List<UserSystemVIEW>> getAll() {
-    List<UserSystemVIEW> users = userService.searchAll();
+  public ResponseEntity<List<UserSystemVIEW>> getAll(Pageable pageable) {
+    List<UserSystemVIEW> users = userService.searchAll(pageable);
     return ResponseEntity.ok(users);
   }
 
@@ -115,6 +116,13 @@ public class UserSystemController {
   @PreAuthorize("hasRole('ADMIN')")
   public ResponseEntity<Void> Registrationconfirmationresponse(@RequestParam("code") String code) {
     userService.activateUserRegistration(code);
+    return ResponseEntity.noContent().build();
+  }
+
+  @DeleteMapping("/{id}")
+  @PreAuthorize("hasRole('ADMIN')")
+  public ResponseEntity<Void> delete(@PathVariable Long id) {
+    userService.delete(id);
     return ResponseEntity.noContent().build();
   }
 

@@ -17,6 +17,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "payments", description = "Contains all operations for registering, editing and reading payments.")
@@ -35,6 +36,7 @@ public class PaymentController {
       content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
   })
   @GetMapping
+  @PreAuthorize("hasAnyRole('ADMIN')")
   public ResponseEntity<Page<PaymentVIEW>> getAll(Pageable pageable) {
     Page<PaymentVIEW> payments = paymentService.findAllPaged(pageable);
     return ResponseEntity.ok().body(payments);
@@ -50,6 +52,7 @@ public class PaymentController {
       content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
   })
   @GetMapping("/{id}")
+  @PreAuthorize("hasAnyRole('ADMIN')")
   public ResponseEntity<PaymentVIEW> getById(@PathVariable Long id) {
     PaymentVIEW paymentVIEW = paymentService.findById(id);
     return ResponseEntity.ok().body(paymentVIEW);
@@ -66,6 +69,7 @@ public class PaymentController {
       content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
   })
   @PostMapping
+  @PreAuthorize("hasAnyRole('ADMIN', 'CLIENT')")
   public ResponseEntity<PaymentVIEW> create(@RequestBody @Valid PaymentFORM paymentFORM) {
     PaymentVIEW newPayment = paymentService.insert(paymentFORM);
     return ResponseEntity.status(HttpStatus.CREATED).body(newPayment);
@@ -80,6 +84,7 @@ public class PaymentController {
             content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
   })
   @DeleteMapping("/{id}")
+  @PreAuthorize("hasAnyRole('ADMIN')")
   public ResponseEntity<Void> delete(@PathVariable Long id) {
     paymentService.delete(id);
     return ResponseEntity.noContent().build();

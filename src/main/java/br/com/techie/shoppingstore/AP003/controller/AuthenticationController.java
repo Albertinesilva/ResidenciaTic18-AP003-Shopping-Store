@@ -25,6 +25,8 @@ import br.com.techie.shoppingstore.AP003.infra.exception.ErrorMessage;
 import br.com.techie.shoppingstore.AP003.infra.jwt.JwtToken;
 import br.com.techie.shoppingstore.AP003.infra.jwt.JwtUserDetailsService;
 
+import java.io.Console;
+
 @Tag(name = "Authentication", description = "Resource for proceeding with API authentication")
 @Slf4j
 @RequiredArgsConstructor
@@ -59,9 +61,9 @@ public class AuthenticationController {
             
         } catch (AuthenticationException ex) {
             log.warn("Bad Credentials from email '{}'", dto.email());
+            return ResponseEntity
+                    .badRequest()
+                    .body(new ErrorMessage(request, HttpStatus.BAD_REQUEST, "Invalid credentials: " + ex.getMessage()));
         }
-        return ResponseEntity
-                .badRequest()
-                .body(new ErrorMessage(request, HttpStatus.BAD_REQUEST, "Invalid credentials"));
     }
 }

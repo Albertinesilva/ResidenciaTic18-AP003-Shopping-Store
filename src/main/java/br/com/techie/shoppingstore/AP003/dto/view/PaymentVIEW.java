@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 public record PaymentVIEW(
         Long id,
-        LocalDateTime payday,
+        String payday,
         BigDecimal amount,
         PaymentTypeEnum paymentType
 ) { }

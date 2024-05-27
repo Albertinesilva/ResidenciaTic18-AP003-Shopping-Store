@@ -3,6 +3,7 @@ package br.com.techie.shoppingstore.AP003.service;
 import br.com.techie.shoppingstore.AP003.dto.form.UserSystemFORM;
 import br.com.techie.shoppingstore.AP003.dto.form.UserSystemUpdateFORM;
 import br.com.techie.shoppingstore.AP003.dto.view.UserSystemVIEW;
+import br.com.techie.shoppingstore.AP003.infra.exception.*;
 import br.com.techie.shoppingstore.AP003.mapper.forms.UserFormMapper;
 import br.com.techie.shoppingstore.AP003.mapper.updates.UserSystemUpdateMapper;
 import br.com.techie.shoppingstore.AP003.mapper.views.UserSystemViewMapper;
@@ -10,14 +11,11 @@ import br.com.techie.shoppingstore.AP003.model.UserSystem;
 import br.com.techie.shoppingstore.AP003.repository.UserSystemRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.techie.shoppingstore.AP003.infra.exception.AccessDeniedException;
-import br.com.techie.shoppingstore.AP003.infra.exception.EmailUniqueViolationException;
-import br.com.techie.shoppingstore.AP003.infra.exception.EntityNotFoundException;
-import br.com.techie.shoppingstore.AP003.infra.exception.PasswordInvalidException;
 import br.com.techie.shoppingstore.AP003.model.Token;
 
 import java.util.Base64;
@@ -61,8 +59,10 @@ public class UserSystemService {
 
     @Transactional(readOnly = true)
     public UserSystemVIEW searchById(Long id) {
-        return userViewMapper.map(userRepository.findById(id).orElseThrow(
-                () -> new EntityNotFoundException(String.format("User with id = %s not found!", id))));
+        UserSystem user = userRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException(String.format("User with id = %s not found!", id)));
+        if(!user.isActive()) throw new UserIsNotActiveException("This user is not active!");
+        return userViewMapper.map(user);
     }
 
     @Transactional
@@ -72,6 +72,8 @@ public class UserSystemService {
         }
 
         UserSystem userSystem = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("User not found!"));
+        if(!userSystem.isActive()) throw new UserIsNotActiveException("This user is not active!");
+
         if (!passwordEncoder.matches(currentPassword, userSystem.getPassword())) {
             throw new PasswordInvalidException("Incorrect password!");
         }
@@ -87,6 +89,7 @@ public class UserSystemService {
         }
 
         UserSystem user = token.getUserSystem();
+        if(!user.isActive()) throw new UserIsNotActiveException("This user is not active!");
         user.setCodeVerifier(null);
         user.setPassword(passwordEncoder.encode(newPassword));
 
@@ -96,25 +99,33 @@ public class UserSystemService {
     @Transactional
     public UserSystemVIEW update(UserSystemUpdateFORM dto) {
         UserSystem entity = userRepository.findById(dto.user_id()).orElseThrow(() -> new EntityNotFoundException("User not found!"));
+        if(!entity.isActive()) throw new UserIsNotActiveException("This user is not active!");
+        if(userRepository.findByEmail(dto.email()).isPresent())
+            throw new EmailUniqueViolationException(String.format("Email: %s already registered: ", dto.email()));
         entity = userUpdateMapper.map(dto, entity);
         userRepository.save(entity);
         return userViewMapper.map(entity);
     }
 
     @Transactional(readOnly = true)
-    public List<UserSystemVIEW> searchAll() {
-        return userRepository.findAll().stream().map(x -> userViewMapper.map(x)).toList();
+    public List<UserSystemVIEW> searchAll(Pageable pageable) {
+        return userRepository.findAllByActiveTrue(pageable).stream().map(x -> userViewMapper.map(x)).toList();
     }
 
     @Transactional(readOnly = true)
     public UserSystem searchByEmail(String email) {
-        return userRepository.findByEmail(email).orElseThrow(() -> new EntityNotFoundException(
+        UserSystem user = userRepository.findByEmail(email).orElseThrow(() -> new EntityNotFoundException(
                 String.format(String.format("User with email = %s not found!", email))));
+        if(!user.isActive()) throw new UserIsNotActiveException("This user is not active!");
+        return user;
     }
 
     @Transactional(readOnly = true)
     public UserSystem.Role searchRoleByEmail(String email) {
-        return userRepository.findRoleByEmail(email);
+        UserSystem user = userRepository.findByEmail(email).orElseThrow(() -> new EntityNotFoundException(
+                String.format(String.format("User with email = %s not found!", email))));
+        if (!user.isActive()) throw new UserIsNotActiveException("This user is not active!");
+        return user.getRole();
     }
 
     @Transactional(readOnly = false)
@@ -128,4 +139,10 @@ public class UserSystemService {
         user.setActive(true);
     }
 
+    @Transactional
+    public void delete(Long id) {
+        UserSystem user = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("User not found!"));
+        if (!user.isActive()) throw new UserIsNotActiveException("This user is not active!");
+        user.setActive(false);
+    }
 }
