@@ -13,6 +13,6 @@ public interface TokenRepository extends JpaRepository<Token, Long> {
 
   Optional<Token> findByToken(String token);
 
-Optional<Token> findByUserSystem(UserSystem userSystem);
+  Optional<Token> findByUserSystem(UserSystem userSystem);
 
 }

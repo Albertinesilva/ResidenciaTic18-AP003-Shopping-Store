@@ -8,6 +8,7 @@ public record ProductVIEW(
         String category,
         BigDecimal price,
         String description,
+        Double score,
         String urlImage,
         Integer stock,
         String chassis,

@@ -24,6 +24,7 @@ public class ProductFormMapper implements Mapper<ProductFORM, Product> {
                 i.slots(),
                 i.storage(),
                 i.network(),
+                null,
                 null
         );
     }
