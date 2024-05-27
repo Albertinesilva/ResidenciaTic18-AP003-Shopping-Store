@@ -438,3 +438,390 @@ Caused by: org.postgresql.util.PSQLException: ERRO: erro de sintaxe em ou próxi
 2024-05-27T15:15:44.074-03:00 DEBUG 18096 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
 2024-05-27T15:15:44.074-03:00 DEBUG 18096 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.ProductVIEW instances]
 2024-05-27T15:15:44.076-03:00 DEBUG 18096 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-27T15:45:25.757-03:00  INFO 3368 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Starting Ap003Application using Java 17.0.10 with PID 3368 (C:\repositorios\AP003\target\classes started by OutLaio in C:\repositorios\AP003)
+2024-05-27T15:45:25.760-03:00  INFO 3368 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : No active profile set, falling back to 1 default profile: "default"
+2024-05-27T15:45:29.287-03:00  WARN 3368 --- [restartedMain] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 16.3 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2024-05-27T15:45:33.148-03:00  WARN 3368 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-27T15:45:33.279-03:00 DEBUG 3368 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 41 mappings in 'requestMappingHandlerMapping'
+2024-05-27T15:45:33.324-03:00 DEBUG 3368 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-05-27T15:45:33.394-03:00 DEBUG 3368 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-05-27T15:45:33.442-03:00 DEBUG 3368 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-05-27T15:45:36.646-03:00  INFO 3368 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Started Ap003Application in 11.442 seconds (process running for 12.347)
+2024-05-27T15:45:41.939-03:00  INFO 3368 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-27T15:45:41.939-03:00 DEBUG 3368 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-05-27T15:45:41.939-03:00 DEBUG 3368 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-05-27T15:45:41.939-03:00 DEBUG 3368 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-05-27T15:45:41.940-03:00 DEBUG 3368 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@5bb83a38
+2024-05-27T15:45:41.941-03:00 DEBUG 3368 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@7d268d9d
+2024-05-27T15:45:41.942-03:00 DEBUG 3368 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-05-27T15:45:41.942-03:00  INFO 3368 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2024-05-27T15:45:42.116-03:00 ERROR 3368 --- [http-nio-8080-exec-1] b.c.t.s.AP003.infra.jwt.JwtUtils         : Token invalido JWT expired 1471115 milliseconds ago at 2024-05-27T18:21:11.000Z. Current time: 2024-05-27T18:45:42.115Z. Allowed clock skew: 0 milliseconds.
+2024-05-27T15:45:42.117-03:00  WARN 3368 --- [http-nio-8080-exec-1] b.c.t.s.A.i.jwt.JwtAuthorizationFilter   : JWT Token está inválido ou expirado.
+2024-05-27T15:45:42.122-03:00  INFO 3368 --- [http-nio-8080-exec-1] .c.t.s.A.i.j.JwtAuthenticationEntryPoint : Http Status 401 - Full authentication is required to access this resource
+2024-05-27T15:45:42.135-03:00  INFO 3368 --- [http-nio-8080-exec-1] .c.t.s.A.i.j.JwtAuthenticationEntryPoint : Http Status 401 - Full authentication is required to access this resource
+2024-05-27T15:45:46.831-03:00  INFO 3368 --- [http-nio-8080-exec-2] b.c.t.s.A.i.jwt.JwtAuthorizationFilter   : JWT Token está nulo, vazio ou não iniciado com 'Bearer '.
+2024-05-27T15:45:46.834-03:00 DEBUG 3368 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/auth", parameters={}
+2024-05-27T15:45:46.836-03:00 DEBUG 3368 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.AuthenticationController#authenticate(UserSystemLoginFORM, HttpServletRequest)
+2024-05-27T15:45:46.924-03:00 DEBUG 3368 --- [http-nio-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [UserSystemLoginFORM[email=laio@email.com, password=Teste@123]]
+2024-05-27T15:45:46.987-03:00  INFO 3368 --- [http-nio-8080-exec-2] b.c.t.s.A.c.AuthenticationController     : Authentication process via login laio@email.com
+2024-05-27T15:45:47.443-03:00 DEBUG 3368 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T15:45:47.444-03:00 DEBUG 3368 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [br.com.techie.shoppingstore.AP003.infra.jwt.JwtToken@3ab640c2]
+2024-05-27T15:45:47.451-03:00 DEBUG 3368 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-27T15:46:02.566-03:00 DEBUG 3368 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products", parameters={}
+2024-05-27T15:46:02.566-03:00 DEBUG 3368 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.ProductController#getAll(Pageable)
+2024-05-27T15:46:02.673-03:00 DEBUG 3368 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T15:46:02.673-03:00 DEBUG 3368 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.ProductVIEW instances]
+2024-05-27T15:46:02.694-03:00 DEBUG 3368 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-27T15:46:28.657-03:00 DEBUG 3368 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/products/score", parameters={}
+2024-05-27T15:46:28.658-03:00 DEBUG 3368 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.ProductController#newScore(ScoreFORM)
+2024-05-27T15:46:28.668-03:00 DEBUG 3368 --- [http-nio-8080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [ScoreFORM[product_id=1, user_id=4, score=4, comment=Just good]]
+2024-05-27T15:46:28.740-03:00 DEBUG 3368 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T15:46:28.742-03:00 DEBUG 3368 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [ScoreVIEW[identifier=rlaio, score=4, comment=Just good]]
+2024-05-27T15:46:28.744-03:00 DEBUG 3368 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 201 CREATED
+2024-05-27T15:46:33.886-03:00 DEBUG 3368 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products", parameters={}
+2024-05-27T15:46:33.886-03:00 DEBUG 3368 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.ProductController#getAll(Pageable)
+2024-05-27T15:46:33.905-03:00 DEBUG 3368 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T15:46:33.905-03:00 DEBUG 3368 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.ProductVIEW instances]
+2024-05-27T15:46:33.907-03:00 DEBUG 3368 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-27T15:48:33.584-03:00  INFO 3368 --- [http-nio-8080-exec-7] b.c.t.s.A.i.jwt.JwtAuthorizationFilter   : JWT Token está nulo, vazio ou não iniciado com 'Bearer '.
+2024-05-27T15:48:33.637-03:00  INFO 3368 --- [http-nio-8080-exec-7] .c.t.s.A.i.j.JwtAuthenticationEntryPoint : Http Status 401 - Full authentication is required to access this resource
+2024-05-27T15:48:33.648-03:00  INFO 3368 --- [http-nio-8080-exec-7] .c.t.s.A.i.j.JwtAuthenticationEntryPoint : Http Status 401 - Full authentication is required to access this resource
+2024-05-27T15:48:56.255-03:00 DEBUG 3368 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products/1/scores", parameters={}
+2024-05-27T15:48:56.259-03:00 DEBUG 3368 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.ProductController#getAllScores(Long, Pageable)
+2024-05-27T15:48:56.354-03:00 DEBUG 3368 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T15:48:56.376-03:00 DEBUG 3368 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.ScoreVIEW instances]
+2024-05-27T15:48:56.382-03:00 DEBUG 3368 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-27T15:51:19.484-03:00 DEBUG 3368 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/products/score", parameters={}
+2024-05-27T15:51:19.502-03:00 DEBUG 3368 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.ProductController#newScore(ScoreFORM)
+2024-05-27T15:51:19.552-03:00 DEBUG 3368 --- [http-nio-8080-exec-10] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [ScoreFORM[product_id=1, user_id=4, score=5, comment=Amazing]]
+2024-05-27T15:51:19.673-03:00 DEBUG 3368 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T15:51:19.676-03:00 DEBUG 3368 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [ScoreVIEW[identifier=rlaio, score=5, comment=Amazing]]
+2024-05-27T15:51:19.687-03:00 DEBUG 3368 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 201 CREATED
+2024-05-27T15:51:25.575-03:00 DEBUG 3368 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products", parameters={}
+2024-05-27T15:51:25.576-03:00 DEBUG 3368 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.ProductController#getAll(Pageable)
+2024-05-27T15:51:25.710-03:00 DEBUG 3368 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T15:51:25.719-03:00 DEBUG 3368 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.ProductVIEW instances]
+2024-05-27T15:51:25.727-03:00 DEBUG 3368 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-27T15:51:31.393-03:00 DEBUG 3368 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products/1/scores", parameters={}
+2024-05-27T15:51:31.394-03:00 DEBUG 3368 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.ProductController#getAllScores(Long, Pageable)
+2024-05-27T15:51:31.433-03:00 DEBUG 3368 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T15:51:31.433-03:00 DEBUG 3368 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.ScoreVIEW instances]
+2024-05-27T15:51:31.437-03:00 DEBUG 3368 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-27T15:51:46.790-03:00  INFO 20032 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Starting Ap003Application using Java 17.0.10 with PID 20032 (C:\repositorios\AP003\target\classes started by OutLaio in C:\repositorios\AP003)
+2024-05-27T15:51:46.797-03:00  INFO 20032 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : No active profile set, falling back to 1 default profile: "default"
+2024-05-27T15:51:50.741-03:00  WARN 20032 --- [restartedMain] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 16.3 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2024-05-27T15:51:54.695-03:00  WARN 20032 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-27T15:51:54.871-03:00 DEBUG 20032 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 41 mappings in 'requestMappingHandlerMapping'
+2024-05-27T15:51:54.918-03:00 DEBUG 20032 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-05-27T15:51:54.990-03:00 DEBUG 20032 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-05-27T15:51:55.056-03:00 DEBUG 20032 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-05-27T15:51:59.552-03:00  INFO 20032 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Started Ap003Application in 13.421 seconds (process running for 14.224)
+2024-05-27T15:52:02.761-03:00  INFO 20032 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-27T15:52:02.761-03:00 DEBUG 20032 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-05-27T15:52:02.761-03:00 DEBUG 20032 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-05-27T15:52:02.761-03:00 DEBUG 20032 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-05-27T15:52:02.762-03:00 DEBUG 20032 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@6c012965
+2024-05-27T15:52:02.763-03:00 DEBUG 20032 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@1e5ef60c
+2024-05-27T15:52:02.763-03:00 DEBUG 20032 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-05-27T15:52:02.763-03:00  INFO 20032 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-05-27T15:52:03.134-03:00 DEBUG 20032 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products/1/scores", parameters={}
+2024-05-27T15:52:03.136-03:00 DEBUG 20032 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.ProductController#getAllScores(Long, Pageable)
+2024-05-27T15:52:03.265-03:00 DEBUG 20032 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T15:52:03.267-03:00 DEBUG 20032 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.ScoreVIEW instances]
+2024-05-27T15:52:03.297-03:00 DEBUG 20032 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-27T15:52:26.503-03:00 DEBUG 20032 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/products/score", parameters={}
+2024-05-27T15:52:26.503-03:00 DEBUG 20032 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.ProductController#newScore(ScoreFORM)
+2024-05-27T15:52:26.546-03:00 DEBUG 20032 --- [http-nio-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [ScoreFORM[product_id=1, user_id=4, score=3, comment=Medium]]
+2024-05-27T15:52:26.663-03:00 DEBUG 20032 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T15:52:26.664-03:00 DEBUG 20032 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [ScoreVIEW[identifier=rlaio, score=3, comment=Medium]]
+2024-05-27T15:52:26.666-03:00 DEBUG 20032 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 201 CREATED
+2024-05-27T15:52:31.365-03:00 DEBUG 20032 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products", parameters={}
+2024-05-27T15:52:31.366-03:00 DEBUG 20032 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.ProductController#getAll(Pageable)
+2024-05-27T15:52:31.397-03:00 DEBUG 20032 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T15:52:31.399-03:00 DEBUG 20032 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.ProductVIEW instances]
+2024-05-27T15:52:31.411-03:00 DEBUG 20032 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-27T15:52:36.699-03:00 DEBUG 20032 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products/1/scores", parameters={}
+2024-05-27T15:52:36.700-03:00 DEBUG 20032 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.ProductController#getAllScores(Long, Pageable)
+2024-05-27T15:52:36.702-03:00 DEBUG 20032 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T15:52:36.703-03:00 DEBUG 20032 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.ScoreVIEW instances]
+2024-05-27T15:52:36.705-03:00 DEBUG 20032 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-27T15:52:43.443-03:00 DEBUG 20032 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products/1/scores", parameters={}
+2024-05-27T15:52:43.444-03:00 DEBUG 20032 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.ProductController#getAllScores(Long, Pageable)
+2024-05-27T15:52:43.446-03:00 DEBUG 20032 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T15:52:43.447-03:00 DEBUG 20032 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.ScoreVIEW instances]
+2024-05-27T15:52:43.449-03:00 DEBUG 20032 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-27T15:53:15.117-03:00  INFO 10024 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Starting Ap003Application using Java 17.0.10 with PID 10024 (C:\repositorios\AP003\target\classes started by OutLaio in C:\repositorios\AP003)
+2024-05-27T15:53:15.120-03:00  INFO 10024 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : No active profile set, falling back to 1 default profile: "default"
+2024-05-27T15:53:18.121-03:00  WARN 10024 --- [restartedMain] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 16.3 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2024-05-27T15:53:21.698-03:00  WARN 10024 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-27T15:53:21.835-03:00 DEBUG 10024 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 41 mappings in 'requestMappingHandlerMapping'
+2024-05-27T15:53:21.893-03:00 DEBUG 10024 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-05-27T15:53:21.962-03:00 DEBUG 10024 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-05-27T15:53:22.020-03:00 DEBUG 10024 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-05-27T15:53:25.210-03:00  INFO 10024 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Started Ap003Application in 10.562 seconds (process running for 11.108)
+2024-05-27T15:53:29.219-03:00  INFO 10024 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-27T15:53:29.220-03:00 DEBUG 10024 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-05-27T15:53:29.220-03:00 DEBUG 10024 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-05-27T15:53:29.220-03:00 DEBUG 10024 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-05-27T15:53:29.222-03:00 DEBUG 10024 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@29a52c40
+2024-05-27T15:53:29.223-03:00 DEBUG 10024 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@7dd5da70
+2024-05-27T15:53:29.223-03:00 DEBUG 10024 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-05-27T15:53:29.224-03:00  INFO 10024 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2024-05-27T15:53:29.577-03:00 DEBUG 10024 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products/1/scores", parameters={}
+2024-05-27T15:53:29.580-03:00 DEBUG 10024 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.ProductController#getAllScores(Long, Pageable)
+2024-05-27T15:53:29.752-03:00 DEBUG 10024 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T15:53:29.756-03:00 DEBUG 10024 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.ScoreVIEW instances]
+2024-05-27T15:53:29.805-03:00 DEBUG 10024 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-27T15:53:41.116-03:00 DEBUG 10024 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products", parameters={}
+2024-05-27T15:53:41.117-03:00 DEBUG 10024 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.ProductController#getAll(Pageable)
+2024-05-27T15:53:41.159-03:00 DEBUG 10024 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T15:53:41.159-03:00 DEBUG 10024 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.ProductVIEW instances]
+2024-05-27T15:53:41.170-03:00 DEBUG 10024 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-27T15:53:54.306-03:00 DEBUG 10024 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/products/score", parameters={}
+2024-05-27T15:53:54.307-03:00 DEBUG 10024 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.ProductController#newScore(ScoreFORM)
+2024-05-27T15:53:54.360-03:00 DEBUG 10024 --- [http-nio-8080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [ScoreFORM[product_id=1, user_id=4, score=5, comment=Awesome]]
+2024-05-27T15:53:54.499-03:00 DEBUG 10024 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T15:53:54.502-03:00 DEBUG 10024 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [ScoreVIEW[identifier=rlaio, score=5, comment=Awesome]]
+2024-05-27T15:53:54.504-03:00 DEBUG 10024 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 201 CREATED
+2024-05-27T15:54:00.323-03:00 DEBUG 10024 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products", parameters={}
+2024-05-27T15:54:00.323-03:00 DEBUG 10024 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.ProductController#getAll(Pageable)
+2024-05-27T15:54:00.344-03:00 DEBUG 10024 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T15:54:00.344-03:00 DEBUG 10024 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.ProductVIEW instances]
+2024-05-27T15:54:00.346-03:00 DEBUG 10024 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-27T15:54:08.773-03:00 DEBUG 10024 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products/1/scores", parameters={}
+2024-05-27T15:54:08.773-03:00 DEBUG 10024 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.ProductController#getAllScores(Long, Pageable)
+2024-05-27T15:54:08.784-03:00 DEBUG 10024 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T15:54:08.785-03:00 DEBUG 10024 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.ScoreVIEW instances]
+2024-05-27T15:54:08.786-03:00 DEBUG 10024 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-27T16:19:51.676-03:00  INFO 10024 --- [http-nio-8080-exec-7] b.c.t.s.A.i.jwt.JwtAuthorizationFilter   : JWT Token está nulo, vazio ou não iniciado com 'Bearer '.
+2024-05-27T16:19:52.059-03:00 DEBUG 10024 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/auth", parameters={}
+2024-05-27T16:19:52.076-03:00 DEBUG 10024 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.AuthenticationController#authenticate(UserSystemLoginFORM, HttpServletRequest)
+2024-05-27T16:19:52.702-03:00 DEBUG 10024 --- [http-nio-8080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [UserSystemLoginFORM[email=laio@email.com, password=Teste@123]]
+2024-05-27T16:19:52.844-03:00  INFO 10024 --- [http-nio-8080-exec-7] b.c.t.s.A.c.AuthenticationController     : Authentication process via login laio@email.com
+2024-05-27T16:19:53.450-03:00 DEBUG 10024 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T16:19:53.451-03:00 DEBUG 10024 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [br.com.techie.shoppingstore.AP003.infra.jwt.JwtToken@1916a2b9]
+2024-05-27T16:19:53.460-03:00 DEBUG 10024 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-27T16:20:31.545-03:00 DEBUG 10024 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/users/1/scores", parameters={}
+2024-05-27T16:20:31.546-03:00 DEBUG 10024 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.UserSystemController#getScores(Long, Pageable)
+2024-05-27T16:20:31.603-03:00 DEBUG 10024 --- [http-nio-8080-exec-8] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler br.com.techie.shoppingstore.AP003.infra.exception.ApiExceptionHandler#accessDeniedException(AccessDeniedException, HttpServletRequest)
+2024-05-27T16:20:31.604-03:00 ERROR 10024 --- [http-nio-8080-exec-8] b.c.t.s.A.i.e.ApiExceptionHandler        : Api Error - 
+
+org.springframework.security.access.AccessDeniedException: Access Denied
+	at org.springframework.security.authorization.method.AuthorizationManagerBeforeMethodInterceptor.attemptAuthorization(AuthorizationManagerBeforeMethodInterceptor.java:256) ~[spring-security-core-6.2.4.jar:6.2.4]
+	at org.springframework.security.authorization.method.AuthorizationManagerBeforeMethodInterceptor.invoke(AuthorizationManagerBeforeMethodInterceptor.java:197) ~[spring-security-core-6.2.4.jar:6.2.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.6.jar:6.1.6]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.6.jar:6.1.6]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720) ~[spring-aop-6.1.6.jar:6.1.6]
+	at br.com.techie.shoppingstore.AP003.controller.UserSystemController$$SpringCGLIB$$0.getScores(<generated>) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:206) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at br.com.techie.shoppingstore.AP003.infra.jwt.JwtAuthorizationFilter.doFilterInternal(JwtAuthorizationFilter.java:45) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2024-05-27T16:20:31.633-03:00 DEBUG 10024 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Found 'Content-Type:application/json' in response
+2024-05-27T16:20:31.646-03:00 DEBUG 10024 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [ErrorMessage(path=/api/v1/users/1/scores, method=GET, status=403, statusText=Forbidden, message=Acce (truncated)...]
+2024-05-27T16:20:31.648-03:00 DEBUG 10024 --- [http-nio-8080-exec-8] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.security.access.AccessDeniedException: Access Denied]
+2024-05-27T16:20:31.649-03:00 DEBUG 10024 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-27T16:20:41.894-03:00 DEBUG 10024 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/users/4/scores", parameters={}
+2024-05-27T16:20:41.894-03:00 DEBUG 10024 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.UserSystemController#getScores(Long, Pageable)
+2024-05-27T16:20:41.972-03:00 DEBUG 10024 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T16:20:41.979-03:00 DEBUG 10024 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.ScoreVIEW instances]
+2024-05-27T16:20:41.984-03:00 DEBUG 10024 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-27T16:20:55.362-03:00 ERROR 10024 --- [http-nio-8080-exec-10] b.c.t.s.AP003.infra.jwt.JwtUtils         : Token invalido JWT expired 1508352 milliseconds ago at 2024-05-27T18:55:47.000Z. Current time: 2024-05-27T19:20:55.352Z. Allowed clock skew: 0 milliseconds.
+2024-05-27T16:20:55.362-03:00  WARN 10024 --- [http-nio-8080-exec-10] b.c.t.s.A.i.jwt.JwtAuthorizationFilter   : JWT Token está inválido ou expirado.
+2024-05-27T16:20:55.368-03:00  INFO 10024 --- [http-nio-8080-exec-10] .c.t.s.A.i.j.JwtAuthenticationEntryPoint : Http Status 401 - Full authentication is required to access this resource
+2024-05-27T16:20:55.417-03:00  INFO 10024 --- [http-nio-8080-exec-10] .c.t.s.A.i.j.JwtAuthenticationEntryPoint : Http Status 401 - Full authentication is required to access this resource
+2024-05-27T16:21:01.430-03:00 DEBUG 10024 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products/1/scores", parameters={}
+2024-05-27T16:21:01.431-03:00 DEBUG 10024 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.ProductController#getAllScores(Long, Pageable)
+2024-05-27T16:21:01.438-03:00 DEBUG 10024 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T16:21:01.439-03:00 DEBUG 10024 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.ScoreVIEW instances]
+2024-05-27T16:21:01.440-03:00 DEBUG 10024 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-27T16:21:21.517-03:00 DEBUG 10024 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products/1/scores", parameters={}
+2024-05-27T16:21:21.518-03:00 DEBUG 10024 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.ProductController#getAllScores(Long, Pageable)
+2024-05-27T16:21:21.522-03:00 DEBUG 10024 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T16:21:21.527-03:00 DEBUG 10024 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.ScoreVIEW instances]
+2024-05-27T16:21:21.530-03:00 DEBUG 10024 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-27T16:21:24.148-03:00 DEBUG 10024 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products/1/scores", parameters={}
+2024-05-27T16:21:24.149-03:00 DEBUG 10024 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.ProductController#getAllScores(Long, Pageable)
+2024-05-27T16:21:24.153-03:00 DEBUG 10024 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T16:21:24.154-03:00 DEBUG 10024 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.ScoreVIEW instances]
+2024-05-27T16:21:24.162-03:00 DEBUG 10024 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-27T16:21:30.781-03:00 ERROR 10024 --- [http-nio-8080-exec-4] b.c.t.s.AP003.infra.jwt.JwtUtils         : Token invalido JWT expired 1543781 milliseconds ago at 2024-05-27T18:55:47.000Z. Current time: 2024-05-27T19:21:30.781Z. Allowed clock skew: 0 milliseconds.
+2024-05-27T16:21:30.782-03:00  WARN 10024 --- [http-nio-8080-exec-4] b.c.t.s.A.i.jwt.JwtAuthorizationFilter   : JWT Token está inválido ou expirado.
+2024-05-27T16:21:30.783-03:00  INFO 10024 --- [http-nio-8080-exec-4] .c.t.s.A.i.j.JwtAuthenticationEntryPoint : Http Status 401 - Full authentication is required to access this resource
+2024-05-27T16:21:30.784-03:00  INFO 10024 --- [http-nio-8080-exec-4] .c.t.s.A.i.j.JwtAuthenticationEntryPoint : Http Status 401 - Full authentication is required to access this resource
+2024-05-27T16:21:36.137-03:00 DEBUG 10024 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products", parameters={}
+2024-05-27T16:21:36.137-03:00 DEBUG 10024 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.ProductController#getAll(Pageable)
+2024-05-27T16:21:36.145-03:00 DEBUG 10024 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T16:21:36.146-03:00 DEBUG 10024 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.ProductVIEW instances]
+2024-05-27T16:21:36.153-03:00 DEBUG 10024 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-27T16:21:46.750-03:00 DEBUG 10024 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products", parameters={}
+2024-05-27T16:21:46.750-03:00 DEBUG 10024 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.ProductController#getAll(Pageable)
+2024-05-27T16:21:46.753-03:00 DEBUG 10024 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T16:21:46.753-03:00 DEBUG 10024 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.ProductVIEW instances]
+2024-05-27T16:21:46.755-03:00 DEBUG 10024 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-27T16:22:05.391-03:00  INFO 6088 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Starting Ap003Application using Java 17.0.10 with PID 6088 (C:\repositorios\AP003\target\classes started by OutLaio in C:\repositorios\AP003)
+2024-05-27T16:22:05.395-03:00  INFO 6088 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : No active profile set, falling back to 1 default profile: "default"
+2024-05-27T16:22:08.981-03:00  WARN 6088 --- [restartedMain] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 16.3 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2024-05-27T16:22:13.081-03:00  WARN 6088 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-27T16:22:13.250-03:00 DEBUG 6088 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 41 mappings in 'requestMappingHandlerMapping'
+2024-05-27T16:22:13.295-03:00 DEBUG 6088 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-05-27T16:22:13.382-03:00 DEBUG 6088 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-05-27T16:22:13.438-03:00 DEBUG 6088 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-05-27T16:22:16.724-03:00  INFO 6088 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Started Ap003Application in 11.889 seconds (process running for 12.669)
+2024-05-27T16:22:26.637-03:00  INFO 6088 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-27T16:22:26.637-03:00 DEBUG 6088 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-05-27T16:22:26.637-03:00 DEBUG 6088 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-05-27T16:22:26.637-03:00 DEBUG 6088 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-05-27T16:22:26.638-03:00 DEBUG 6088 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@1bb17d69
+2024-05-27T16:22:26.639-03:00 DEBUG 6088 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@67080b1b
+2024-05-27T16:22:26.639-03:00 DEBUG 6088 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-05-27T16:22:26.639-03:00  INFO 6088 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-05-27T16:22:26.956-03:00 DEBUG 6088 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products", parameters={}
+2024-05-27T16:22:26.958-03:00 DEBUG 6088 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.ProductController#getAll(Pageable)
+2024-05-27T16:22:27.111-03:00 DEBUG 6088 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T16:22:27.113-03:00 DEBUG 6088 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.ProductVIEW instances]
+2024-05-27T16:22:27.157-03:00 DEBUG 6088 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-27T16:22:31.814-03:00 DEBUG 6088 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products/1/scores", parameters={}
+2024-05-27T16:22:31.816-03:00 DEBUG 6088 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.ProductController#getAllScores(Long, Pageable)
+2024-05-27T16:22:31.833-03:00 DEBUG 6088 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T16:22:31.833-03:00 DEBUG 6088 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.ScoreVIEW instances]
+2024-05-27T16:22:31.836-03:00 DEBUG 6088 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-27T16:22:37.223-03:00 DEBUG 6088 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/users/4/scores", parameters={}
+2024-05-27T16:22:37.224-03:00 DEBUG 6088 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.UserSystemController#getScores(Long, Pageable)
+2024-05-27T16:22:37.239-03:00 DEBUG 6088 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T16:22:37.240-03:00 DEBUG 6088 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.ScoreVIEW instances]
+2024-05-27T16:22:37.241-03:00 DEBUG 6088 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-27T16:22:54.751-03:00 DEBUG 6088 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/products/score", parameters={}
+2024-05-27T16:22:54.751-03:00 DEBUG 6088 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.ProductController#newScore(ScoreFORM)
+2024-05-27T16:22:54.826-03:00 DEBUG 6088 --- [http-nio-8080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [ScoreFORM[product_id=1, user_id=4, score=5, comment=Awesome]]
+2024-05-27T16:22:54.985-03:00 DEBUG 6088 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T16:22:54.988-03:00 DEBUG 6088 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [ScoreVIEW[identifier=rlaio, score=5, comment=Awesome]]
+2024-05-27T16:22:54.990-03:00 DEBUG 6088 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 201 CREATED
+2024-05-27T16:23:01.405-03:00 DEBUG 6088 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products/1/scores", parameters={}
+2024-05-27T16:23:01.407-03:00 DEBUG 6088 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.ProductController#getAllScores(Long, Pageable)
+2024-05-27T16:23:01.416-03:00 DEBUG 6088 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T16:23:01.416-03:00 DEBUG 6088 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.ScoreVIEW instances]
+2024-05-27T16:23:01.417-03:00 DEBUG 6088 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-27T16:23:07.337-03:00 DEBUG 6088 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products", parameters={}
+2024-05-27T16:23:07.338-03:00 DEBUG 6088 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.ProductController#getAll(Pageable)
+2024-05-27T16:23:07.355-03:00 DEBUG 6088 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T16:23:07.356-03:00 DEBUG 6088 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.ProductVIEW instances]
+2024-05-27T16:23:07.358-03:00 DEBUG 6088 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-27T16:23:12.744-03:00 DEBUG 6088 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/users/4/scores", parameters={}
+2024-05-27T16:23:12.744-03:00 DEBUG 6088 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.UserSystemController#getScores(Long, Pageable)
+2024-05-27T16:23:12.752-03:00 DEBUG 6088 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T16:23:12.752-03:00 DEBUG 6088 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.ScoreVIEW instances]
+2024-05-27T16:23:12.754-03:00 DEBUG 6088 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-27T16:23:21.765-03:00 DEBUG 6088 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/products/score", parameters={}
+2024-05-27T16:23:21.766-03:00 DEBUG 6088 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.ProductController#newScore(ScoreFORM)
+2024-05-27T16:23:21.768-03:00 DEBUG 6088 --- [http-nio-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [ScoreFORM[product_id=1, user_id=4, score=4, comment=Awesome]]
+2024-05-27T16:23:21.775-03:00 DEBUG 6088 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T16:23:21.775-03:00 DEBUG 6088 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [ScoreVIEW[identifier=rlaio, score=4, comment=Awesome]]
+2024-05-27T16:23:21.778-03:00 DEBUG 6088 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 201 CREATED
+2024-05-27T16:23:26.497-03:00 DEBUG 6088 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products/1/scores", parameters={}
+2024-05-27T16:23:26.498-03:00 DEBUG 6088 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.ProductController#getAllScores(Long, Pageable)
+2024-05-27T16:23:26.505-03:00 DEBUG 6088 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T16:23:26.505-03:00 DEBUG 6088 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.ScoreVIEW instances]
+2024-05-27T16:23:26.506-03:00 DEBUG 6088 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-27T16:23:31.412-03:00 DEBUG 6088 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products", parameters={}
+2024-05-27T16:23:31.413-03:00 DEBUG 6088 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.ProductController#getAll(Pageable)
+2024-05-27T16:23:31.433-03:00 DEBUG 6088 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T16:23:31.433-03:00 DEBUG 6088 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.ProductVIEW instances]
+2024-05-27T16:23:31.436-03:00 DEBUG 6088 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-27T16:23:37.584-03:00 DEBUG 6088 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/users/4/scores", parameters={}
+2024-05-27T16:23:37.585-03:00 DEBUG 6088 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.UserSystemController#getScores(Long, Pageable)
+2024-05-27T16:23:37.592-03:00 DEBUG 6088 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-27T16:23:37.593-03:00 DEBUG 6088 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.ScoreVIEW instances]
+2024-05-27T16:23:37.593-03:00 DEBUG 6088 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
