@@ -134,7 +134,7 @@ public class UserSystemController {
   }
 
   @GetMapping("{id}/scores")
-  @PreAuthorize("hasAnyRole('ADMIN', 'CLIENT') AND (#id == authentication.principal.id)")
+  @PreAuthorize("hasRole('ADMIN') OR ( hasRole('CLIENT') AND #id == authentication.principal.id )")
   public ResponseEntity<?> getScores(@PathVariable Long id, Pageable pageable) {
     Page<ScoreVIEW> scores = scoreService.findAllByUser(id, pageable);
     return ResponseEntity.ok().body(scores);
