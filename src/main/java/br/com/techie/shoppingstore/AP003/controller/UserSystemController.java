@@ -119,13 +119,29 @@ public class UserSystemController {
     return ResponseEntity.ok(users);
   }
 
-  @GetMapping("/confirm/register")
-  @PreAuthorize("hasRole('ADMIN')")
-  public ResponseEntity<Void> Registrationconfirmationresponse(@RequestParam("code") String code) {
-    userService.activateUserRegistration(code);
-    return ResponseEntity.noContent().build();
+  @Operation(summary = "Retrieve scores", description = "Request requires a Bearer Token. Access restricted to logged in ADMIN OR CLIENT", 
+  security = @SecurityRequirement(name = "security"), responses = {
+      @ApiResponse(responseCode = "200", description = "Scores retrieved successfully."),
+      @ApiResponse(responseCode = "403", description = "User without permission to access this resource.", 
+      content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
+      @ApiResponse(responseCode = "422", description = "Invalid or incorrectly formatted fields.", 
+      content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
+  })
+  @GetMapping("{id}/scores")
+  @PreAuthorize("hasRole('ADMIN') OR ( hasRole('CLIENT') AND #id == authentication.principal.id )")
+  public ResponseEntity<?> getScores(@PathVariable Long id, Pageable pageable) {
+    Page<ScoreVIEW> scores = scoreService.findAllByUser(id, pageable);
+    return ResponseEntity.ok().body(scores);
   }
 
+  @Operation(summary = "Delete user", description = "Request requires a Bearer Token. Access restricted to logged in ADMIN", 
+  security = @SecurityRequirement(name = "security"), responses = {
+      @ApiResponse(responseCode = "204", description = "User deleted successfully."),
+      @ApiResponse(responseCode = "403", description = "User without permission to access this resource.", 
+      content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
+      @ApiResponse(responseCode = "404", description = "User not found.", 
+      content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
+  })
   @DeleteMapping("/{id}")
   @PreAuthorize("hasRole('ADMIN')")
   public ResponseEntity<Void> delete(@PathVariable Long id) {
@@ -133,11 +149,21 @@ public class UserSystemController {
     return ResponseEntity.noContent().build();
   }
 
-  @GetMapping("{id}/scores")
-  @PreAuthorize("hasRole('ADMIN') OR ( hasRole('CLIENT') AND #id == authentication.principal.id )")
-  public ResponseEntity<?> getScores(@PathVariable Long id, Pageable pageable) {
-    Page<ScoreVIEW> scores = scoreService.findAllByUser(id, pageable);
-    return ResponseEntity.ok().body(scores);
+  @Operation(summary = "Confirm or deactivate user registration", description = "Request requires a Bearer Token. Access restricted to logged in ADMIN. This endpoint activates or deactivates a user based on the provided code.", 
+  security = @SecurityRequirement(name = "security"), responses = {
+      @ApiResponse(responseCode = "204", description = "User registration status updated successfully."),
+      @ApiResponse(responseCode = "400", description = "Invalid code provided.", 
+      content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
+      @ApiResponse(responseCode = "403", description = "User without permission to access this resource.", 
+      content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
+      @ApiResponse(responseCode = "404", description = "User not found or code invalid.", 
+      content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
+  })
+  @GetMapping("/confirm/register")
+  @PreAuthorize("hasRole('ADMIN')")
+  public ResponseEntity<Void> Registrationconfirmationresponse(@RequestParam("code") String code) {
+    userService.activateUserRegistration(code);
+    return ResponseEntity.noContent().build();
   }
 
 }

@@ -4,7 +4,6 @@ import br.com.techie.shoppingstore.AP003.dto.form.ScoreFORM;
 import br.com.techie.shoppingstore.AP003.dto.view.ScoreVIEW;
 import br.com.techie.shoppingstore.AP003.service.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -32,9 +31,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-import org.springframework.web.util.UriComponentsBuilder;
-
-import java.net.URI;
 
 @Tag(name = "Products", description = "Contains all operations related to product management including creating, updating, retrieving, and deleting products.")
 @RestController
