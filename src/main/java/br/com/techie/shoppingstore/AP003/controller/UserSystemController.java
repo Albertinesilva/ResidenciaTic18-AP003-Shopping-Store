@@ -160,7 +160,7 @@ public class UserSystemController {
       content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
   })
   @GetMapping("/confirm/register")
-  @PreAuthorize("hasRole('ADMIN')")
+//  @PreAuthorize("hasRole('ADMIN')")
   public ResponseEntity<Void> Registrationconfirmationresponse(@RequestParam("code") String code) {
     userService.activateUserRegistration(code);
     return ResponseEntity.noContent().build();

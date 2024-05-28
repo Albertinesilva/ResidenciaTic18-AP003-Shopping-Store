@@ -4498,3 +4498,687 @@ Caused by: org.postgresql.util.PSQLException: FATAL: n�o existe o banco de dad
 2024-05-28T13:33:32.188-03:00 DEBUG 18720 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
 2024-05-28T13:33:32.233-03:00 DEBUG 18720 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
 2024-05-28T13:33:35.749-03:00  INFO 18720 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Started Ap003Application in 10.23 seconds (process running for 10.712)
+2024-05-28T13:53:51.969-03:00  INFO 6332 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Starting Ap003Application using Java 17.0.10 with PID 6332 (C:\repositorios\AP003\target\classes started by OutLaio in C:\repositorios\AP003)
+2024-05-28T13:53:51.974-03:00  INFO 6332 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : No active profile set, falling back to 1 default profile: "default"
+2024-05-28T13:53:54.886-03:00  WARN 6332 --- [restartedMain] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 16.3 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2024-05-28T13:53:58.355-03:00  WARN 6332 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-28T13:53:58.487-03:00 DEBUG 6332 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 41 mappings in 'requestMappingHandlerMapping'
+2024-05-28T13:53:58.524-03:00 DEBUG 6332 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-05-28T13:53:58.582-03:00 DEBUG 6332 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-05-28T13:53:58.637-03:00 DEBUG 6332 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-05-28T13:54:02.054-03:00  INFO 6332 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Started Ap003Application in 10.526 seconds (process running for 11.167)
+2024-05-28T13:55:15.219-03:00  INFO 6332 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-28T13:55:15.220-03:00 DEBUG 6332 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-05-28T13:55:15.220-03:00 DEBUG 6332 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-05-28T13:55:15.221-03:00 DEBUG 6332 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-05-28T13:55:15.223-03:00 DEBUG 6332 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@19759f93
+2024-05-28T13:55:15.223-03:00 DEBUG 6332 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@29641aa6
+2024-05-28T13:55:15.224-03:00 DEBUG 6332 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-05-28T13:55:15.224-03:00  INFO 6332 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2024-05-28T13:55:15.259-03:00  INFO 6332 --- [http-nio-8080-exec-1] b.c.t.s.A.i.jwt.JwtAuthorizationFilter   : JWT Token está nulo, vazio ou não iniciado com 'Bearer '.
+2024-05-28T13:55:15.268-03:00 DEBUG 6332 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/users", parameters={}
+2024-05-28T13:55:15.272-03:00 DEBUG 6332 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.UserSystemController#create(UserSystemFORM)
+2024-05-28T13:55:15.415-03:00 DEBUG 6332 --- [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [UserSystemFORM[email=rlaio@email.com, username=rlaio, password=Teste@123, passwordConfirm=Teste@123]]
+2024-05-28T13:55:21.267-03:00 DEBUG 6332 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-28T13:55:21.271-03:00 DEBUG 6332 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [UserSystemVIEW[id=3, username=rlaio, email=rlaio@email.com, role=ROLE_CLIENT]]
+2024-05-28T13:55:21.288-03:00 DEBUG 6332 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 201 CREATED
+2024-05-28T13:56:23.647-03:00  INFO 6332 --- [http-nio-8080-exec-3] b.c.t.s.A.i.jwt.JwtAuthorizationFilter   : JWT Token está nulo, vazio ou não iniciado com 'Bearer '.
+2024-05-28T13:56:23.648-03:00 DEBUG 6332 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/auth", parameters={}
+2024-05-28T13:56:23.648-03:00 DEBUG 6332 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.AuthenticationController#authenticate(UserSystemLoginFORM, HttpServletRequest)
+2024-05-28T13:56:23.655-03:00 DEBUG 6332 --- [http-nio-8080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [UserSystemLoginFORM[email=laio@email.com, password=Teste@123]]
+2024-05-28T13:56:23.664-03:00  INFO 6332 --- [http-nio-8080-exec-3] b.c.t.s.A.c.AuthenticationController     : Authentication process via login laio@email.com
+2024-05-28T13:56:23.905-03:00  WARN 6332 --- [http-nio-8080-exec-3] b.c.t.s.A.c.AuthenticationController     : Bad Credentials from email 'laio@email.com'
+2024-05-28T13:56:23.910-03:00 DEBUG 6332 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-28T13:56:23.917-03:00 DEBUG 6332 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [ErrorMessage(path=/api/v1/auth, method=POST, status=400, statusText=Bad Request, message=Invalid cre (truncated)...]
+2024-05-28T13:56:23.919-03:00 DEBUG 6332 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2024-05-28T13:56:30.917-03:00  INFO 6332 --- [http-nio-8080-exec-4] b.c.t.s.A.i.jwt.JwtAuthorizationFilter   : JWT Token está nulo, vazio ou não iniciado com 'Bearer '.
+2024-05-28T13:56:30.918-03:00 DEBUG 6332 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/auth", parameters={}
+2024-05-28T13:56:30.918-03:00 DEBUG 6332 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.AuthenticationController#authenticate(UserSystemLoginFORM, HttpServletRequest)
+2024-05-28T13:56:30.919-03:00 DEBUG 6332 --- [http-nio-8080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [UserSystemLoginFORM[email=rlaio@email.com, password=Teste@123]]
+2024-05-28T13:56:30.920-03:00  INFO 6332 --- [http-nio-8080-exec-4] b.c.t.s.A.c.AuthenticationController     : Authentication process via login rlaio@email.com
+2024-05-28T13:56:30.931-03:00  WARN 6332 --- [http-nio-8080-exec-4] b.c.t.s.A.c.AuthenticationController     : Bad Credentials from email 'rlaio@email.com'
+2024-05-28T13:56:30.932-03:00 DEBUG 6332 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-28T13:56:30.932-03:00 DEBUG 6332 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [ErrorMessage(path=/api/v1/auth, method=POST, status=400, statusText=Bad Request, message=Invalid cre (truncated)...]
+2024-05-28T13:56:30.933-03:00 DEBUG 6332 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2024-05-28T13:57:04.599-03:00  INFO 6332 --- [http-nio-8080-exec-5] b.c.t.s.A.i.jwt.JwtAuthorizationFilter   : JWT Token está nulo, vazio ou não iniciado com 'Bearer '.
+2024-05-28T13:57:04.600-03:00 DEBUG 6332 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/users", parameters={}
+2024-05-28T13:57:04.600-03:00 DEBUG 6332 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.UserSystemController#create(UserSystemFORM)
+2024-05-28T13:57:04.601-03:00 DEBUG 6332 --- [http-nio-8080-exec-5] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [UserSystemFORM[email=laiorodrigues22@gmail.com, username=rlaio, password=Teste@123, passwordConfirm= (truncated)...]
+2024-05-28T13:57:04.793-03:00  WARN 6332 --- [http-nio-8080-exec-5] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 23505
+2024-05-28T13:57:04.794-03:00 ERROR 6332 --- [http-nio-8080-exec-5] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERRO: duplicar valor da chave viola a restrição de unicidade "users_username_key"
+  Detalhe: Chave (username)=(rlaio) já existe.
+2024-05-28T13:57:04.804-03:00 DEBUG 6332 --- [http-nio-8080-exec-5] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler br.com.techie.shoppingstore.AP003.infra.exception.ApiExceptionHandler#uniqueViolationException(RuntimeException, HttpServletRequest)
+2024-05-28T13:57:04.804-03:00 ERROR 6332 --- [http-nio-8080-exec-5] b.c.t.s.A.i.e.ApiExceptionHandler        : Api Error - br.com.techie.shoppingstore.AP003.infra.exception.EmailUniqueViolationException: Email: laiorodrigues22@gmail.com already registered: 
+2024-05-28T13:57:04.807-03:00 DEBUG 6332 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Found 'Content-Type:application/json' in response
+2024-05-28T13:57:04.807-03:00 DEBUG 6332 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [ErrorMessage(path=/api/v1/users, method=POST, status=409, statusText=Conflict, message=Email: laioro (truncated)...]
+2024-05-28T13:57:04.809-03:00 DEBUG 6332 --- [http-nio-8080-exec-5] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [br.com.techie.shoppingstore.AP003.infra.exception.EmailUniqueViolationException: Email: laiorodrigues22@gmail.com already registered: ]
+2024-05-28T13:57:04.809-03:00 DEBUG 6332 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 409 CONFLICT
+2024-05-28T13:59:59.581-03:00  INFO 18604 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Starting Ap003Application using Java 17.0.10 with PID 18604 (C:\repositorios\AP003\target\classes started by OutLaio in C:\repositorios\AP003)
+2024-05-28T13:59:59.585-03:00  INFO 18604 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : No active profile set, falling back to 1 default profile: "default"
+2024-05-28T14:00:02.735-03:00  WARN 18604 --- [restartedMain] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 16.3 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2024-05-28T14:00:06.190-03:00  WARN 18604 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-28T14:00:06.334-03:00 DEBUG 18604 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 41 mappings in 'requestMappingHandlerMapping'
+2024-05-28T14:00:06.448-03:00 DEBUG 18604 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-05-28T14:00:06.518-03:00 DEBUG 18604 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-05-28T14:00:06.577-03:00 DEBUG 18604 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-05-28T14:00:10.477-03:00  INFO 18604 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Started Ap003Application in 11.489 seconds (process running for 12.137)
+2024-05-28T14:00:15.865-03:00  INFO 18604 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-28T14:00:15.866-03:00 DEBUG 18604 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-05-28T14:00:15.866-03:00 DEBUG 18604 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-05-28T14:00:15.866-03:00 DEBUG 18604 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-05-28T14:00:15.867-03:00 DEBUG 18604 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@4cb5ff9c
+2024-05-28T14:00:15.868-03:00 DEBUG 18604 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@cf9aea7
+2024-05-28T14:00:15.868-03:00 DEBUG 18604 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-05-28T14:00:15.868-03:00  INFO 18604 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2024-05-28T14:00:15.893-03:00  INFO 18604 --- [http-nio-8080-exec-2] b.c.t.s.A.i.jwt.JwtAuthorizationFilter   : JWT Token está nulo, vazio ou não iniciado com 'Bearer '.
+2024-05-28T14:00:15.900-03:00 DEBUG 18604 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/users", parameters={}
+2024-05-28T14:00:15.902-03:00 DEBUG 18604 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.UserSystemController#create(UserSystemFORM)
+2024-05-28T14:00:16.003-03:00 DEBUG 18604 --- [http-nio-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [UserSystemFORM[email=laiorodrigues22@gmail.com, username=rlaio, password=Teste@123, passwordConfirm= (truncated)...]
+2024-05-28T14:00:16.298-03:00  WARN 18604 --- [http-nio-8080-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 23505
+2024-05-28T14:00:16.300-03:00 ERROR 18604 --- [http-nio-8080-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERRO: duplicar valor da chave viola a restrição de unicidade "users_username_key"
+  Detalhe: Chave (username)=(rlaio) já existe.
+2024-05-28T14:00:16.314-03:00 DEBUG 18604 --- [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler br.com.techie.shoppingstore.AP003.infra.exception.ApiExceptionHandler#uniqueViolationException(RuntimeException, HttpServletRequest)
+2024-05-28T14:00:16.315-03:00 ERROR 18604 --- [http-nio-8080-exec-2] b.c.t.s.A.i.e.ApiExceptionHandler        : Api Error - br.com.techie.shoppingstore.AP003.infra.exception.EmailUniqueViolationException: could not execute statement [ERRO: duplicar valor da chave viola a restrição de unicidade "users_username_key"
+  Detalhe: Chave (username)=(rlaio) já existe.] [insert into users (active,code_verifier,creator_by,date_creation,date_modification,email,modified_by,password,password_confirm,role,username) values (?,?,?,?,?,?,?,?,?,?,?)]; SQL [insert into users (active,code_verifier,creator_by,date_creation,date_modification,email,modified_by,password,password_confirm,role,username) values (?,?,?,?,?,?,?,?,?,?,?)]; constraint [null]
+2024-05-28T14:00:16.321-03:00 DEBUG 18604 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Found 'Content-Type:application/json' in response
+2024-05-28T14:00:16.339-03:00 DEBUG 18604 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [ErrorMessage(path=/api/v1/users, method=POST, status=409, statusText=Conflict, message=could not exe (truncated)...]
+2024-05-28T14:00:16.354-03:00 DEBUG 18604 --- [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [br.com.techie.shoppingstore.AP003.infra.exception.EmailUniqueViolationException: could not execute statement [ERRO: duplicar valor da chave viola a restrição de unicidade "users_username_key"<EOL>  Detalhe: Chave (username)=(rlaio) já existe.] [insert into users (active,code_verifier,creator_by,date_creation,date_modification,email,modified_by,password,password_confirm,role,username) values (?,?,?,?,?,?,?,?,?,?,?)]; SQL [insert into users (active,code_verifier,creator_by,date_creation,date_modification,email,modified_by,password,password_confirm,role,username) values (?,?,?,?,?,?,?,?,?,?,?)]; constraint [null]]
+2024-05-28T14:00:16.355-03:00 DEBUG 18604 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 409 CONFLICT
+2024-05-28T14:01:28.294-03:00  INFO 14924 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Starting Ap003Application using Java 17.0.10 with PID 14924 (C:\repositorios\AP003\target\classes started by OutLaio in C:\repositorios\AP003)
+2024-05-28T14:01:28.298-03:00  INFO 14924 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : No active profile set, falling back to 1 default profile: "default"
+2024-05-28T14:01:31.399-03:00  WARN 14924 --- [restartedMain] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 16.3 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2024-05-28T14:01:34.573-03:00  WARN 14924 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-28T14:01:34.718-03:00 DEBUG 14924 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 41 mappings in 'requestMappingHandlerMapping'
+2024-05-28T14:01:34.756-03:00 DEBUG 14924 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-05-28T14:01:34.824-03:00 DEBUG 14924 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-05-28T14:01:34.866-03:00 DEBUG 14924 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-05-28T14:01:38.131-03:00  INFO 14924 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Started Ap003Application in 10.288 seconds (process running for 10.817)
+2024-05-28T14:01:41.104-03:00  INFO 14924 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-28T14:01:41.104-03:00 DEBUG 14924 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-05-28T14:01:41.105-03:00 DEBUG 14924 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-05-28T14:01:41.105-03:00 DEBUG 14924 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-05-28T14:01:41.106-03:00 DEBUG 14924 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@169e19cb
+2024-05-28T14:01:41.106-03:00 DEBUG 14924 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@5ef6b13a
+2024-05-28T14:01:41.107-03:00 DEBUG 14924 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-05-28T14:01:41.107-03:00  INFO 14924 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2024-05-28T14:01:41.131-03:00  INFO 14924 --- [http-nio-8080-exec-1] b.c.t.s.A.i.jwt.JwtAuthorizationFilter   : JWT Token está nulo, vazio ou não iniciado com 'Bearer '.
+2024-05-28T14:01:41.137-03:00 DEBUG 14924 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/users", parameters={}
+2024-05-28T14:01:41.139-03:00 DEBUG 14924 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.UserSystemController#create(UserSystemFORM)
+2024-05-28T14:01:41.218-03:00 DEBUG 14924 --- [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [UserSystemFORM[email=laiorodrigues22@gmail.com, username=rlaio, password=Teste@123, passwordConfirm= (truncated)...]
+2024-05-28T14:01:41.491-03:00  WARN 14924 --- [http-nio-8080-exec-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 23505
+2024-05-28T14:01:41.492-03:00 ERROR 14924 --- [http-nio-8080-exec-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERRO: duplicar valor da chave viola a restrição de unicidade "users_username_key"
+  Detalhe: Chave (username)=(rlaio) já existe.
+2024-05-28T14:01:41.505-03:00 DEBUG 14924 --- [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler br.com.techie.shoppingstore.AP003.infra.exception.ApiExceptionHandler#uniqueViolationException(RuntimeException, HttpServletRequest)
+2024-05-28T14:01:41.506-03:00 ERROR 14924 --- [http-nio-8080-exec-1] b.c.t.s.A.i.e.ApiExceptionHandler        : Api Error - br.com.techie.shoppingstore.AP003.infra.exception.EmailUniqueViolationException: Email or username already registered
+2024-05-28T14:01:41.512-03:00 DEBUG 14924 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Found 'Content-Type:application/json' in response
+2024-05-28T14:01:41.532-03:00 DEBUG 14924 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [ErrorMessage(path=/api/v1/users, method=POST, status=409, statusText=Conflict, message=Email or user (truncated)...]
+2024-05-28T14:01:41.544-03:00 DEBUG 14924 --- [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [br.com.techie.shoppingstore.AP003.infra.exception.EmailUniqueViolationException: Email or username already registered]
+2024-05-28T14:01:41.545-03:00 DEBUG 14924 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 409 CONFLICT
+2024-05-28T14:01:55.466-03:00  INFO 14924 --- [http-nio-8080-exec-2] b.c.t.s.A.i.jwt.JwtAuthorizationFilter   : JWT Token está nulo, vazio ou não iniciado com 'Bearer '.
+2024-05-28T14:01:55.467-03:00 DEBUG 14924 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/users", parameters={}
+2024-05-28T14:01:55.468-03:00 DEBUG 14924 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.UserSystemController#create(UserSystemFORM)
+2024-05-28T14:01:55.470-03:00 DEBUG 14924 --- [http-nio-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [UserSystemFORM[email=laiorodrigues22@gmail.com, username=laior, password=Teste@123, passwordConfirm= (truncated)...]
+2024-05-28T14:01:59.629-03:00 DEBUG 14924 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-28T14:01:59.630-03:00 DEBUG 14924 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [UserSystemVIEW[id=7, username=laior, email=laiorodrigues22@gmail.com, role=ROLE_CLIENT]]
+2024-05-28T14:01:59.632-03:00 DEBUG 14924 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 201 CREATED
+2024-05-28T14:02:19.353-03:00  INFO 14924 --- [http-nio-8080-exec-3] b.c.t.s.A.i.jwt.JwtAuthorizationFilter   : JWT Token está nulo, vazio ou não iniciado com 'Bearer '.
+2024-05-28T14:02:19.361-03:00  INFO 14924 --- [http-nio-8080-exec-3] .c.t.s.A.i.j.JwtAuthenticationEntryPoint : Http Status 401 - Full authentication is required to access this resource
+2024-05-28T14:02:19.377-03:00  INFO 14924 --- [http-nio-8080-exec-3] .c.t.s.A.i.j.JwtAuthenticationEntryPoint : Http Status 401 - Full authentication is required to access this resource
+2024-05-28T14:09:49.962-03:00  INFO 16364 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Starting Ap003Application using Java 17.0.10 with PID 16364 (C:\repositorios\AP003\target\classes started by OutLaio in C:\repositorios\AP003)
+2024-05-28T14:09:49.966-03:00  INFO 16364 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : No active profile set, falling back to 1 default profile: "default"
+2024-05-28T14:09:53.253-03:00  WARN 16364 --- [restartedMain] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 16.3 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2024-05-28T14:09:58.234-03:00  WARN 16364 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-28T14:09:58.385-03:00 DEBUG 16364 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 41 mappings in 'requestMappingHandlerMapping'
+2024-05-28T14:09:58.427-03:00 DEBUG 16364 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-05-28T14:09:58.487-03:00 DEBUG 16364 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-05-28T14:09:58.539-03:00 DEBUG 16364 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-05-28T14:10:02.143-03:00  INFO 16364 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Started Ap003Application in 12.861 seconds (process running for 13.539)
+2024-05-28T14:11:20.259-03:00  INFO 16364 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-28T14:11:20.259-03:00 DEBUG 16364 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-05-28T14:11:20.260-03:00 DEBUG 16364 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-05-28T14:11:20.260-03:00 DEBUG 16364 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-05-28T14:11:20.261-03:00 DEBUG 16364 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@37e95ffe
+2024-05-28T14:11:20.261-03:00 DEBUG 16364 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@62eb0c2c
+2024-05-28T14:11:20.261-03:00 DEBUG 16364 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-05-28T14:11:20.262-03:00  INFO 16364 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-05-28T14:11:20.286-03:00  INFO 16364 --- [http-nio-8080-exec-2] b.c.t.s.A.i.jwt.JwtAuthorizationFilter   : JWT Token está nulo, vazio ou não iniciado com 'Bearer '.
+2024-05-28T14:11:20.294-03:00 DEBUG 16364 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/users", parameters={}
+2024-05-28T14:11:20.296-03:00 DEBUG 16364 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.UserSystemController#create(UserSystemFORM)
+2024-05-28T14:11:20.405-03:00 DEBUG 16364 --- [http-nio-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [UserSystemFORM[email=laiorodrigues22@gmail.com, username=rlaio, password=Teste@123, passwordConfirm= (truncated)...]
+2024-05-28T14:11:25.339-03:00 DEBUG 16364 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-28T14:11:25.342-03:00 DEBUG 16364 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [UserSystemVIEW[id=8, username=rlaio, email=laiorodrigues22@gmail.com, role=ROLE_CLIENT]]
+2024-05-28T14:11:25.353-03:00 DEBUG 16364 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 201 CREATED
+2024-05-28T14:11:47.118-03:00  INFO 16364 --- [http-nio-8080-exec-1] b.c.t.s.A.i.jwt.JwtAuthorizationFilter   : JWT Token está nulo, vazio ou não iniciado com 'Bearer '.
+2024-05-28T14:11:47.119-03:00  INFO 16364 --- [http-nio-8080-exec-1] .c.t.s.A.i.j.JwtAuthenticationEntryPoint : Http Status 401 - Full authentication is required to access this resource
+2024-05-28T14:11:47.129-03:00  INFO 16364 --- [http-nio-8080-exec-1] .c.t.s.A.i.j.JwtAuthenticationEntryPoint : Http Status 401 - Full authentication is required to access this resource
+2024-05-28T14:13:08.078-03:00  INFO 16448 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Starting Ap003Application using Java 17.0.10 with PID 16448 (C:\repositorios\AP003\target\classes started by OutLaio in C:\repositorios\AP003)
+2024-05-28T14:13:08.081-03:00  INFO 16448 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : No active profile set, falling back to 1 default profile: "default"
+2024-05-28T14:13:11.153-03:00  WARN 16448 --- [restartedMain] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 16.3 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2024-05-28T14:13:14.298-03:00  WARN 16448 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-28T14:13:14.450-03:00 DEBUG 16448 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 41 mappings in 'requestMappingHandlerMapping'
+2024-05-28T14:13:14.486-03:00 DEBUG 16448 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-05-28T14:13:14.551-03:00 DEBUG 16448 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-05-28T14:13:14.592-03:00 DEBUG 16448 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-05-28T14:13:17.907-03:00  INFO 16448 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Started Ap003Application in 10.342 seconds (process running for 10.944)
+2024-05-28T14:13:24.890-03:00  INFO 16448 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-28T14:13:24.890-03:00 DEBUG 16448 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-05-28T14:13:24.891-03:00 DEBUG 16448 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-05-28T14:13:24.891-03:00 DEBUG 16448 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-05-28T14:13:24.892-03:00 DEBUG 16448 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@11a93012
+2024-05-28T14:13:24.892-03:00 DEBUG 16448 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@7e2bbab0
+2024-05-28T14:13:24.892-03:00 DEBUG 16448 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-05-28T14:13:24.892-03:00  INFO 16448 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-05-28T14:13:24.915-03:00  INFO 16448 --- [http-nio-8080-exec-1] b.c.t.s.A.i.jwt.JwtAuthorizationFilter   : JWT Token está nulo, vazio ou não iniciado com 'Bearer '.
+2024-05-28T14:13:24.922-03:00 DEBUG 16448 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/users/confirm/register?code=bGFpb3JvZHJpZ3VlczIyQGdtYWlsLmNvbQ%3D%3D", parameters={masked}
+2024-05-28T14:13:24.924-03:00 DEBUG 16448 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.UserSystemController#Registrationconfirmationresponse(String)
+2024-05-28T14:13:25.166-03:00 DEBUG 16448 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-28T14:13:25.167-03:00 DEBUG 16448 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Nothing to write: null body
+2024-05-28T14:13:25.169-03:00 DEBUG 16448 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 204 NO_CONTENT
+2024-05-28T14:13:42.064-03:00  INFO 16448 --- [http-nio-8080-exec-2] b.c.t.s.A.i.jwt.JwtAuthorizationFilter   : JWT Token está nulo, vazio ou não iniciado com 'Bearer '.
+2024-05-28T14:13:42.065-03:00 DEBUG 16448 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/auth", parameters={}
+2024-05-28T14:13:42.065-03:00 DEBUG 16448 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.AuthenticationController#authenticate(UserSystemLoginFORM, HttpServletRequest)
+2024-05-28T14:13:42.162-03:00 DEBUG 16448 --- [http-nio-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [UserSystemLoginFORM[email=rlaio@email.com, password=Teste@123]]
+2024-05-28T14:13:42.219-03:00  INFO 16448 --- [http-nio-8080-exec-2] b.c.t.s.A.c.AuthenticationController     : Authentication process via login rlaio@email.com
+2024-05-28T14:13:42.348-03:00  WARN 16448 --- [http-nio-8080-exec-2] b.c.t.s.A.c.AuthenticationController     : Bad Credentials from email 'rlaio@email.com'
+2024-05-28T14:13:42.366-03:00 DEBUG 16448 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-28T14:13:42.373-03:00 DEBUG 16448 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [ErrorMessage(path=/api/v1/auth, method=POST, status=400, statusText=Bad Request, message=Invalid cre (truncated)...]
+2024-05-28T14:13:42.388-03:00 DEBUG 16448 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2024-05-28T14:13:57.547-03:00  INFO 16448 --- [http-nio-8080-exec-3] b.c.t.s.A.i.jwt.JwtAuthorizationFilter   : JWT Token está nulo, vazio ou não iniciado com 'Bearer '.
+2024-05-28T14:13:57.548-03:00 DEBUG 16448 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/auth", parameters={}
+2024-05-28T14:13:57.548-03:00 DEBUG 16448 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.AuthenticationController#authenticate(UserSystemLoginFORM, HttpServletRequest)
+2024-05-28T14:13:57.550-03:00 DEBUG 16448 --- [http-nio-8080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [UserSystemLoginFORM[email=laiorodrigues22@gmail.com, password=Teste@123]]
+2024-05-28T14:13:57.550-03:00  INFO 16448 --- [http-nio-8080-exec-3] b.c.t.s.A.c.AuthenticationController     : Authentication process via login laiorodrigues22@gmail.com
+2024-05-28T14:13:57.771-03:00 DEBUG 16448 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-28T14:13:57.773-03:00 DEBUG 16448 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [br.com.techie.shoppingstore.AP003.infra.jwt.JwtToken@dd7e644]
+2024-05-28T14:13:57.774-03:00 DEBUG 16448 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-28T14:14:10.574-03:00 DEBUG 16448 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products", parameters={}
+2024-05-28T14:14:10.575-03:00 DEBUG 16448 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.ProductController#getAll(Pageable)
+2024-05-28T14:14:10.700-03:00 DEBUG 16448 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-28T14:14:10.704-03:00 DEBUG 16448 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.ProductVIEW instances]
+2024-05-28T14:14:10.728-03:00 DEBUG 16448 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-28T14:15:34.818-03:00 DEBUG 16448 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/categories", parameters={}
+2024-05-28T14:15:34.818-03:00 DEBUG 16448 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.CategoryController#getAll(Pageable)
+2024-05-28T14:15:34.826-03:00 DEBUG 16448 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-28T14:15:34.826-03:00 DEBUG 16448 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.CategoryVIEW instances]
+2024-05-28T14:15:34.829-03:00 DEBUG 16448 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-28T14:16:00.394-03:00 DEBUG 16448 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/carts", parameters={}
+2024-05-28T14:16:00.394-03:00 DEBUG 16448 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.CartController#getAll(Pageable)
+2024-05-28T14:16:00.399-03:00 DEBUG 16448 --- [http-nio-8080-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler br.com.techie.shoppingstore.AP003.infra.exception.ApiExceptionHandler#accessDeniedException(AccessDeniedException, HttpServletRequest)
+2024-05-28T14:16:00.400-03:00 ERROR 16448 --- [http-nio-8080-exec-7] b.c.t.s.A.i.e.ApiExceptionHandler        : Api Error - 
+
+org.springframework.security.access.AccessDeniedException: Access Denied
+	at org.springframework.security.authorization.method.AuthorizationManagerBeforeMethodInterceptor.attemptAuthorization(AuthorizationManagerBeforeMethodInterceptor.java:256) ~[spring-security-core-6.2.4.jar:6.2.4]
+	at org.springframework.security.authorization.method.AuthorizationManagerBeforeMethodInterceptor.invoke(AuthorizationManagerBeforeMethodInterceptor.java:197) ~[spring-security-core-6.2.4.jar:6.2.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.6.jar:6.1.6]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.6.jar:6.1.6]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720) ~[spring-aop-6.1.6.jar:6.1.6]
+	at br.com.techie.shoppingstore.AP003.controller.CartController$$SpringCGLIB$$0.getAll(<generated>) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:206) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at br.com.techie.shoppingstore.AP003.infra.jwt.JwtAuthorizationFilter.doFilterInternal(JwtAuthorizationFilter.java:45) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2024-05-28T14:16:00.415-03:00 DEBUG 16448 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Found 'Content-Type:application/json' in response
+2024-05-28T14:16:00.416-03:00 DEBUG 16448 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [ErrorMessage(path=/api/v1/carts, method=GET, status=403, statusText=Forbidden, message=Access Denied (truncated)...]
+2024-05-28T14:16:00.418-03:00 DEBUG 16448 --- [http-nio-8080-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.security.access.AccessDeniedException: Access Denied]
+2024-05-28T14:16:00.418-03:00 DEBUG 16448 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-28T14:21:51.820-03:00 DEBUG 16448 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products", parameters={}
+2024-05-28T14:21:51.820-03:00 DEBUG 16448 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.ProductController#getAll(Pageable)
+2024-05-28T14:21:51.822-03:00 DEBUG 16448 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-28T14:21:51.822-03:00 DEBUG 16448 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.ProductVIEW instances]
+2024-05-28T14:21:51.824-03:00 DEBUG 16448 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-28T14:22:21.782-03:00  INFO 16448 --- [http-nio-8080-exec-10] b.c.t.s.A.i.jwt.JwtAuthorizationFilter   : JWT Token está nulo, vazio ou não iniciado com 'Bearer '.
+2024-05-28T14:22:21.786-03:00  INFO 16448 --- [http-nio-8080-exec-10] .c.t.s.A.i.j.JwtAuthenticationEntryPoint : Http Status 401 - Full authentication is required to access this resource
+2024-05-28T14:22:21.800-03:00  INFO 16448 --- [http-nio-8080-exec-10] .c.t.s.A.i.j.JwtAuthenticationEntryPoint : Http Status 401 - Full authentication is required to access this resource
+2024-05-28T14:22:43.459-03:00 DEBUG 16448 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/carts", parameters={}
+2024-05-28T14:22:43.459-03:00 DEBUG 16448 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.CartController#create(CartFORM)
+2024-05-28T14:22:43.475-03:00 DEBUG 16448 --- [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [CartFORM[user_id=3, items=[CartItemFORM[product_id=1, quantity=2], CartItemFORM[product_id=2, quanti (truncated)...]
+2024-05-28T14:22:43.484-03:00 DEBUG 16448 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Failed to complete request: jakarta.persistence.EntityNotFoundException: User not found!
+2024-05-28T14:22:43.489-03:00 ERROR 16448 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: jakarta.persistence.EntityNotFoundException: User not found!] with root cause
+
+jakarta.persistence.EntityNotFoundException: User not found!
+	at br.com.techie.shoppingstore.AP003.mapper.forms.CartFormMapper.lambda$0(CartFormMapper.java:36) ~[classes/:na]
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403) ~[na:na]
+	at br.com.techie.shoppingstore.AP003.mapper.forms.CartFormMapper.map(CartFormMapper.java:36) ~[classes/:na]
+	at br.com.techie.shoppingstore.AP003.service.CartService.insert(CartService.java:66) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354) ~[spring-aop-6.1.6.jar:6.1.6]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.1.6.jar:6.1.6]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.1.6.jar:6.1.6]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.6.jar:6.1.6]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.1.6.jar:6.1.6]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:392) ~[spring-tx-6.1.6.jar:6.1.6]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.6.jar:6.1.6]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.6.jar:6.1.6]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.6.jar:6.1.6]
+	at org.springframework.cache.interceptor.CacheInterceptor.lambda$invoke$0(CacheInterceptor.java:64) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.cache.interceptor.CacheAspectSupport.invokeOperation(CacheAspectSupport.java:416) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.cache.interceptor.CacheAspectSupport.evaluate(CacheAspectSupport.java:545) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.cache.interceptor.CacheAspectSupport.execute(CacheAspectSupport.java:433) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.cache.interceptor.CacheAspectSupport.execute(CacheAspectSupport.java:395) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.cache.interceptor.CacheInterceptor.invoke(CacheInterceptor.java:74) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.6.jar:6.1.6]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.6.jar:6.1.6]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720) ~[spring-aop-6.1.6.jar:6.1.6]
+	at br.com.techie.shoppingstore.AP003.service.CartService$$SpringCGLIB$$0.insert(<generated>) ~[classes/:na]
+	at br.com.techie.shoppingstore.AP003.controller.CartController.create(CartController.java:99) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354) ~[spring-aop-6.1.6.jar:6.1.6]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.1.6.jar:6.1.6]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.1.6.jar:6.1.6]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.6.jar:6.1.6]
+	at org.springframework.security.authorization.method.AuthorizationManagerBeforeMethodInterceptor.invoke(AuthorizationManagerBeforeMethodInterceptor.java:198) ~[spring-security-core-6.2.4.jar:6.2.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.6.jar:6.1.6]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.6.jar:6.1.6]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720) ~[spring-aop-6.1.6.jar:6.1.6]
+	at br.com.techie.shoppingstore.AP003.controller.CartController$$SpringCGLIB$$0.create(<generated>) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:206) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at br.com.techie.shoppingstore.AP003.infra.jwt.JwtAuthorizationFilter.doFilterInternal(JwtAuthorizationFilter.java:45) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2024-05-28T14:22:43.492-03:00  INFO 16448 --- [http-nio-8080-exec-1] .c.t.s.A.i.j.JwtAuthenticationEntryPoint : Http Status 401 - Full authentication is required to access this resource
+2024-05-28T14:23:23.522-03:00 DEBUG 16448 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/carts", parameters={}
+2024-05-28T14:23:23.522-03:00 DEBUG 16448 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.CartController#create(CartFORM)
+2024-05-28T14:23:23.523-03:00 DEBUG 16448 --- [http-nio-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [CartFORM[user_id=8, items=[CartItemFORM[product_id=1, quantity=2], CartItemFORM[product_id=2, quanti (truncated)...]
+2024-05-28T14:23:23.639-03:00 DEBUG 16448 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-28T14:23:23.650-03:00 DEBUG 16448 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [CartVIEW[id=3, cartItems=[CartItemVIEW[id=3, product=ProductVIEW[id=1, name=DELL PowerEdge R740, cat (truncated)...]
+2024-05-28T14:23:23.655-03:00 DEBUG 16448 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 201 CREATED
+2024-05-28T14:23:44.444-03:00 DEBUG 16448 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/carts/3", parameters={}
+2024-05-28T14:23:44.444-03:00 DEBUG 16448 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.CartController#getById(Long)
+2024-05-28T14:23:44.469-03:00 DEBUG 16448 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-28T14:23:44.470-03:00 DEBUG 16448 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [CartVIEW[id=3, cartItems=[CartItemVIEW[id=3, product=ProductVIEW[id=1, name=DELL PowerEdge R740, cat (truncated)...]
+2024-05-28T14:23:44.470-03:00 DEBUG 16448 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-28T14:24:31.160-03:00  INFO 16448 --- [http-nio-8080-exec-4] b.c.t.s.A.i.jwt.JwtAuthorizationFilter   : JWT Token está nulo, vazio ou não iniciado com 'Bearer '.
+2024-05-28T14:24:31.162-03:00  INFO 16448 --- [http-nio-8080-exec-4] .c.t.s.A.i.j.JwtAuthenticationEntryPoint : Http Status 401 - Full authentication is required to access this resource
+2024-05-28T14:24:31.163-03:00  INFO 16448 --- [http-nio-8080-exec-4] .c.t.s.A.i.j.JwtAuthenticationEntryPoint : Http Status 401 - Full authentication is required to access this resource
+2024-05-28T14:24:47.288-03:00  INFO 16448 --- [http-nio-8080-exec-5] .c.t.s.A.i.j.JwtAuthenticationEntryPoint : Http Status 401 - Full authentication is required to access this resource
+2024-05-28T14:24:51.771-03:00 DEBUG 16448 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/cart/payment", parameters={}
+2024-05-28T14:24:51.773-03:00 DEBUG 16448 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.PaymentController#create(PaymentFORM)
+2024-05-28T14:24:51.806-03:00 DEBUG 16448 --- [http-nio-8080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [PaymentFORM[cart_id=3, payday=2024-05-28T14:24, amount=null, payment_type=MONEY]]
+2024-05-28T14:24:51.845-03:00 DEBUG 16448 --- [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler br.com.techie.shoppingstore.AP003.infra.exception.ApiExceptionHandler#methodArgumentNotValidException(HttpServletRequest, MethodArgumentNotValidException, BindingResult)
+2024-05-28T14:24:51.847-03:00 ERROR 16448 --- [http-nio-8080-exec-6] b.c.t.s.A.i.e.ApiExceptionHandler        : Api Error - org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<br.com.techie.shoppingstore.AP003.dto.view.PaymentVIEW> br.com.techie.shoppingstore.AP003.controller.PaymentController.create(br.com.techie.shoppingstore.AP003.dto.form.PaymentFORM) with 2 errors: [Field error in object 'paymentFORM' on field 'amount': rejected value [null]; codes [NotNull.paymentFORM.amount,NotNull.amount,NotNull.java.math.BigDecimal,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [paymentFORM.amount,amount]; arguments []; default message [amount]]; default message [Payment amount is required!]] [Field error in object 'paymentFORM' on field 'payday': rejected value [2024-05-28T14:24]; codes [Future.paymentFORM.payday,Future.payday,Future.java.time.LocalDateTime,Future]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [paymentFORM.payday,payday]; arguments []; default message [payday]]; default message [Payment date must be in the future!]] 
+2024-05-28T14:24:51.847-03:00 DEBUG 16448 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Found 'Content-Type:application/json' in response
+2024-05-28T14:24:51.848-03:00 DEBUG 16448 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [ErrorMessage(path=/api/v1/cart/payment, method=POST, status=422, statusText=Unprocessable Entity, me (truncated)...]
+2024-05-28T14:24:51.852-03:00 DEBUG 16448 --- [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<br.com.techie.shoppingstore.AP003.dto.view.PaymentVIEW> br.com.techie.shoppingstore.AP003.controller.PaymentController.create(br.com.techie.shoppingstore.AP003.dto.form.PaymentFORM) with 2 errors: [Field error in object 'paymentFORM' on field 'amount': rejected value [null]; codes [NotNull.paymentFORM.amount,NotNull.amount,NotNull.java.math.BigDecimal,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [paymentFORM.amount,amount]; arguments []; default message [amount]]; default message [Payment amount is required!]] [Field error in object 'paymentFORM' on field 'payday': rejected value [2024-05-28T14:24]; codes [Future.paymentFORM.payday,Future.payday,Future.java.time.LocalDateTime,Future]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [paymentFORM.payday,payday]; arguments []; default message [payday]]; default message [Payment date must be in the future!]] ]
+2024-05-28T14:24:51.853-03:00 DEBUG 16448 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 422 UNPROCESSABLE_ENTITY
+2024-05-28T14:26:16.974-03:00  INFO 18792 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Starting Ap003Application using Java 17.0.10 with PID 18792 (C:\repositorios\AP003\target\classes started by OutLaio in C:\repositorios\AP003)
+2024-05-28T14:26:16.977-03:00  INFO 18792 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : No active profile set, falling back to 1 default profile: "default"
+2024-05-28T14:26:19.779-03:00  WARN 18792 --- [restartedMain] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 16.3 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2024-05-28T14:26:22.632-03:00  WARN 18792 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-28T14:26:22.732-03:00 DEBUG 18792 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 41 mappings in 'requestMappingHandlerMapping'
+2024-05-28T14:26:22.773-03:00 DEBUG 18792 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-05-28T14:26:22.828-03:00 DEBUG 18792 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-05-28T14:26:22.885-03:00 DEBUG 18792 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-05-28T14:26:25.714-03:00  INFO 18792 --- [restartedMain] b.c.t.s.AP003.Ap003Application           : Started Ap003Application in 9.181 seconds (process running for 9.787)
+2024-05-28T14:26:33.118-03:00  INFO 18792 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-28T14:26:33.120-03:00 DEBUG 18792 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-05-28T14:26:33.120-03:00 DEBUG 18792 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-05-28T14:26:33.120-03:00 DEBUG 18792 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-05-28T14:26:33.121-03:00 DEBUG 18792 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@425cea1b
+2024-05-28T14:26:33.121-03:00 DEBUG 18792 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@255d28c8
+2024-05-28T14:26:33.122-03:00 DEBUG 18792 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-05-28T14:26:33.122-03:00  INFO 18792 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-05-28T14:26:33.380-03:00 DEBUG 18792 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/cart/payment", parameters={}
+2024-05-28T14:26:33.383-03:00 DEBUG 18792 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.PaymentController#create(PaymentFORM)
+2024-05-28T14:26:33.455-03:00 DEBUG 18792 --- [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [PaymentFORM[cart_id=3, payday=2024-05-28T14:24, payment_type=MONEY]]
+2024-05-28T14:26:33.616-03:00 DEBUG 18792 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-28T14:26:33.621-03:00 DEBUG 18792 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [PaymentVIEW[id=3, payday=2024-05-28T14:24, amount=9500.00, paymentType=MONEY]]
+2024-05-28T14:26:33.640-03:00 DEBUG 18792 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 201 CREATED
+2024-05-28T14:26:50.893-03:00 DEBUG 18792 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/carts/3", parameters={}
+2024-05-28T14:26:50.894-03:00 DEBUG 18792 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.CartController#getById(Long)
+2024-05-28T14:26:50.978-03:00 DEBUG 18792 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-28T14:26:50.991-03:00 DEBUG 18792 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [CartVIEW[id=3, cartItems=[CartItemVIEW[id=3, product=ProductVIEW[id=1, name=DELL PowerEdge R740, cat (truncated)...]
+2024-05-28T14:26:51.002-03:00 DEBUG 18792 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-28T14:27:56.622-03:00  INFO 18792 --- [http-nio-8080-exec-7] b.c.t.s.A.i.jwt.JwtAuthorizationFilter   : JWT Token está nulo, vazio ou não iniciado com 'Bearer '.
+2024-05-28T14:27:56.623-03:00 DEBUG 18792 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/auth", parameters={}
+2024-05-28T14:27:56.624-03:00 DEBUG 18792 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.AuthenticationController#authenticate(UserSystemLoginFORM, HttpServletRequest)
+2024-05-28T14:27:56.633-03:00 DEBUG 18792 --- [http-nio-8080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [UserSystemLoginFORM[email=admin@example.com, password=JAVA!@ResTIc18]]
+2024-05-28T14:27:56.647-03:00  INFO 18792 --- [http-nio-8080-exec-7] b.c.t.s.A.c.AuthenticationController     : Authentication process via login admin@example.com
+2024-05-28T14:27:56.876-03:00  WARN 18792 --- [http-nio-8080-exec-7] b.c.t.s.A.c.AuthenticationController     : Bad Credentials from email 'admin@example.com'
+2024-05-28T14:27:56.880-03:00 DEBUG 18792 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-28T14:27:56.885-03:00 DEBUG 18792 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [ErrorMessage(path=/api/v1/auth, method=POST, status=400, statusText=Bad Request, message=Invalid cre (truncated)...]
+2024-05-28T14:27:56.886-03:00 DEBUG 18792 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2024-05-28T14:28:34.123-03:00  INFO 18792 --- [http-nio-8080-exec-3] b.c.t.s.A.i.jwt.JwtAuthorizationFilter   : JWT Token está nulo, vazio ou não iniciado com 'Bearer '.
+2024-05-28T14:28:34.124-03:00 DEBUG 18792 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/auth", parameters={}
+2024-05-28T14:28:34.124-03:00 DEBUG 18792 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.AuthenticationController#authenticate(UserSystemLoginFORM, HttpServletRequest)
+2024-05-28T14:28:34.124-03:00 DEBUG 18792 --- [http-nio-8080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [UserSystemLoginFORM[email=admin@example.com, password=JAVA!@#ResTIc18]]
+2024-05-28T14:28:34.125-03:00  INFO 18792 --- [http-nio-8080-exec-3] b.c.t.s.A.c.AuthenticationController     : Authentication process via login admin@example.com
+2024-05-28T14:28:34.213-03:00 DEBUG 18792 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-28T14:28:34.213-03:00 DEBUG 18792 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [br.com.techie.shoppingstore.AP003.infra.jwt.JwtToken@78a4bd89]
+2024-05-28T14:28:34.214-03:00 DEBUG 18792 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-28T14:28:47.415-03:00 DEBUG 18792 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/users", parameters={}
+2024-05-28T14:28:47.415-03:00 DEBUG 18792 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.UserSystemController#getAll(Pageable)
+2024-05-28T14:28:47.430-03:00 DEBUG 18792 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-28T14:28:47.431-03:00 DEBUG 18792 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[UserSystemVIEW[id=1, username=adminuser, email=admin@example.com, role=ROLE_ADMIN], UserSystemVIEW[ (truncated)...]
+2024-05-28T14:28:47.432-03:00 DEBUG 18792 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-28T14:28:59.250-03:00 DEBUG 18792 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/carts", parameters={}
+2024-05-28T14:28:59.250-03:00 DEBUG 18792 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.CartController#getAll(Pageable)
+2024-05-28T14:28:59.252-03:00 DEBUG 18792 --- [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler br.com.techie.shoppingstore.AP003.infra.exception.ApiExceptionHandler#accessDeniedException(AccessDeniedException, HttpServletRequest)
+2024-05-28T14:28:59.253-03:00 ERROR 18792 --- [http-nio-8080-exec-4] b.c.t.s.A.i.e.ApiExceptionHandler        : Api Error - 
+
+org.springframework.security.access.AccessDeniedException: Access Denied
+	at org.springframework.security.authorization.method.AuthorizationManagerBeforeMethodInterceptor.attemptAuthorization(AuthorizationManagerBeforeMethodInterceptor.java:256) ~[spring-security-core-6.2.4.jar:6.2.4]
+	at org.springframework.security.authorization.method.AuthorizationManagerBeforeMethodInterceptor.invoke(AuthorizationManagerBeforeMethodInterceptor.java:197) ~[spring-security-core-6.2.4.jar:6.2.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.6.jar:6.1.6]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.6.jar:6.1.6]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720) ~[spring-aop-6.1.6.jar:6.1.6]
+	at br.com.techie.shoppingstore.AP003.controller.CartController$$SpringCGLIB$$0.getAll(<generated>) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:206) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at br.com.techie.shoppingstore.AP003.infra.jwt.JwtAuthorizationFilter.doFilterInternal(JwtAuthorizationFilter.java:45) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2024-05-28T14:28:59.261-03:00 DEBUG 18792 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Found 'Content-Type:application/json' in response
+2024-05-28T14:28:59.261-03:00 DEBUG 18792 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [ErrorMessage(path=/api/v1/carts, method=GET, status=403, statusText=Forbidden, message=Access Denied (truncated)...]
+2024-05-28T14:28:59.262-03:00 DEBUG 18792 --- [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.security.access.AccessDeniedException: Access Denied]
+2024-05-28T14:28:59.262-03:00 DEBUG 18792 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-28T14:29:04.143-03:00 DEBUG 18792 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/carts", parameters={}
+2024-05-28T14:29:04.144-03:00 DEBUG 18792 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.CartController#getAll(Pageable)
+2024-05-28T14:29:04.188-03:00 DEBUG 18792 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-28T14:29:04.189-03:00 DEBUG 18792 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.CartVIEW instances]
+2024-05-28T14:29:04.194-03:00 DEBUG 18792 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-28T15:06:30.401-03:00  INFO 18792 --- [http-nio-8080-exec-10] b.c.t.s.A.i.jwt.JwtAuthorizationFilter   : JWT Token está nulo, vazio ou não iniciado com 'Bearer '.
+2024-05-28T15:06:30.513-03:00 DEBUG 18792 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/users/confirm/register?code=bGFpb3JvZHJpZ3VlczIyQGdtYWlsLmNvbQ==", parameters={masked}
+2024-05-28T15:06:30.517-03:00 DEBUG 18792 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.UserSystemController#Registrationconfirmationresponse(String)
+2024-05-28T15:06:31.335-03:00 DEBUG 18792 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7] and supported [application/json, application/*+json]
+2024-05-28T15:06:31.393-03:00 DEBUG 18792 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Nothing to write: null body
+2024-05-28T15:06:31.412-03:00 DEBUG 18792 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 204 NO_CONTENT
+2024-05-28T15:09:07.841-03:00  INFO 18792 --- [http-nio-8080-exec-2] b.c.t.s.A.i.jwt.JwtAuthorizationFilter   : JWT Token está nulo, vazio ou não iniciado com 'Bearer '.
+2024-05-28T15:09:07.881-03:00 DEBUG 18792 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/auth", parameters={}
+2024-05-28T15:09:07.884-03:00 DEBUG 18792 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.AuthenticationController#authenticate(UserSystemLoginFORM, HttpServletRequest)
+2024-05-28T15:09:08.035-03:00 DEBUG 18792 --- [http-nio-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [UserSystemLoginFORM[email=laiorodrigues22@gmail.com, password=Teste@123]]
+2024-05-28T15:09:08.265-03:00  INFO 18792 --- [http-nio-8080-exec-2] b.c.t.s.A.c.AuthenticationController     : Authentication process via login laiorodrigues22@gmail.com
+2024-05-28T15:09:08.634-03:00 DEBUG 18792 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-28T15:09:08.646-03:00 DEBUG 18792 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [br.com.techie.shoppingstore.AP003.infra.jwt.JwtToken@7b7a06a4]
+2024-05-28T15:09:08.664-03:00 DEBUG 18792 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-28T15:09:30.633-03:00 DEBUG 18792 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products", parameters={}
+2024-05-28T15:09:30.633-03:00 DEBUG 18792 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.ProductController#getAll(Pageable)
+2024-05-28T15:09:31.000-03:00 DEBUG 18792 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-28T15:09:31.012-03:00 DEBUG 18792 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [Page 1 of 1 containing br.com.techie.shoppingstore.AP003.dto.view.ProductVIEW instances]
+2024-05-28T15:09:31.028-03:00 DEBUG 18792 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-28T15:12:17.494-03:00 DEBUG 18792 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/carts/3", parameters={}
+2024-05-28T15:12:17.496-03:00 DEBUG 18792 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to br.com.techie.shoppingstore.AP003.controller.CartController#getById(Long)
+2024-05-28T15:12:17.611-03:00 DEBUG 18792 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-28T15:12:17.613-03:00 DEBUG 18792 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [CartVIEW[id=3, cartItems=[CartItemVIEW[id=3, product=ProductVIEW[id=1, name=DELL PowerEdge R740, cat (truncated)...]
+2024-05-28T15:12:17.619-03:00 DEBUG 18792 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-28T15:28:50.543-03:00  WARN 18792 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m29s749ms920µs100ns).

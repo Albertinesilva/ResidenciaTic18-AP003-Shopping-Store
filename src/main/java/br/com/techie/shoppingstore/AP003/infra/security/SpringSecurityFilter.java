@@ -38,6 +38,7 @@ public class SpringSecurityFilter {
                         .httpBasic(basic -> basic.disable())
                         .authorizeHttpRequests((authorize) -> authorize
                                 .requestMatchers(HttpMethod.POST, "/api/v1/users").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/api/v1/users/confirm/register").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/api/v1/auth").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/api/v1/password-recovery").permitAll()
                                 .requestMatchers(HttpMethod.PATCH, "/api/v1/password-reset").permitAll()

@@ -40,7 +40,7 @@ public class EmailService {
     context.setVariable("titulo", "Bem-vindo ao Shopping Store");
     context.setVariable("texto", "Precisamos que você confirme seu cadastro clicando no link abaixo");
     context.setVariable("linkConfirmacao",
-        "http://localhost:8080/api/v1/usuarios/confirmacao/cadastro?codigo=" + codigo);
+        "http://localhost:8080/api/v1/users/confirm/register?code=" + codigo);
 
     String html = templateEngine.process("email/confirmacao", context);
     helper.setTo(destino);

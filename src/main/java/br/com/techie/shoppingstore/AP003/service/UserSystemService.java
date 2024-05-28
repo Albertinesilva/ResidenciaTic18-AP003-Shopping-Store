@@ -55,8 +55,7 @@ public class UserSystemService {
             return userViewMapper.map(entity);
 
         } catch (org.springframework.dao.DataIntegrityViolationException ex) {
-            throw new EmailUniqueViolationException(
-                    String.format("Email: %s already registered: ", dto.email()));
+            throw new EmailUniqueViolationException("Email or username already registered");
         }
     }
 

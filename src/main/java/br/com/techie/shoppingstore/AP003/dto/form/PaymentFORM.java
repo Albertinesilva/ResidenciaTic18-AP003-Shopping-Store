@@ -16,14 +16,9 @@ public record PaymentFORM(
         Long cart_id,
 
         @NotNull(message = "Payment date is required!")
-        @Future(message = "Payment date must be in the future!")
         @JsonAlias({"date", "datePayment", "dayPayment", "paymentDate", "paymentDay"})
         @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
         LocalDateTime payday,
-
-        @NotNull(message = "Payment amount is required!")
-        @DecimalMin(value = "0.01", message = "Payment amount must be greater than or equal to 0.01")
-        BigDecimal amount,
 
         @NotNull(message = "Payment type is required!")
         PaymentTypeEnum payment_type
