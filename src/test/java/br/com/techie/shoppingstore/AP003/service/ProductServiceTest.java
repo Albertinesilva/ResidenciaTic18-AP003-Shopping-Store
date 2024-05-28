@@ -9,6 +9,7 @@ import br.com.techie.shoppingstore.AP003.mapper.updates.ProductUpdateMapper;
 import br.com.techie.shoppingstore.AP003.mapper.views.ProductViewMapper;
 import br.com.techie.shoppingstore.AP003.model.Category;
 import br.com.techie.shoppingstore.AP003.model.Product;
+import br.com.techie.shoppingstore.AP003.model.Score;
 import br.com.techie.shoppingstore.AP003.repository.CategoryRepository;
 import br.com.techie.shoppingstore.AP003.repository.ProductRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -26,6 +27,7 @@ import org.springframework.data.domain.Pageable;
 import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.Optional;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -53,6 +55,7 @@ public class ProductServiceTest {
 
     private Product product;
     private Category category;
+    private Set<Score> scores;
     private ProductFORM productForm;
     private ProductUpdateFORM productUpdateForm;
     private ProductVIEW productView;
@@ -63,9 +66,11 @@ public class ProductServiceTest {
         category.setId(1L);
         category.setName("Servers");
 
+        scores = null;
+        
         product = new Product(1L, "Dell PowerEdge R740", BigDecimal.valueOf(4999.99), "A powerful Dell server", 5, 
                 "url/dell_poweredge_r740.png", "Rack", "Intel Xeon Gold", "Windows Server 2019", 
-                "Intel C620", "64GB DDR4", "16 DIMM slots", "4TB SSD", "10Gb Ethernet", category);
+                "Intel C620", "64GB DDR4", "16 DIMM slots", "4TB SSD", "10Gb Ethernet", category, scores);
 
         productForm = new ProductFORM("Dell PowerEdge R740", 1L, BigDecimal.valueOf(4999.99), "A powerful Dell server", 5, 
                 "url/dell_poweredge_r740.png", "Rack", "Intel Xeon Gold", "Windows Server 2019", 
@@ -76,7 +81,7 @@ public class ProductServiceTest {
                 "Windows Server 2022", "Intel C621", "128GB DDR4", "16 DIMM slots", "8TB SSD", "10Gb Ethernet");
 
         productView = new ProductVIEW(1L, "Dell PowerEdge R740", "Servers", BigDecimal.valueOf(4999.99), 
-                "A powerful Dell server", "url/dell_poweredge_r740.png", 5, "Rack", "Intel Xeon Gold", 
+                "A powerful Dell server", 4.5, "url/dell_poweredge_r740.png", 5, "Rack", "Intel Xeon Gold", 
                 "Windows Server 2019", "Intel C620", "64GB DDR4", "16 DIMM slots", "4TB SSD", "10Gb Ethernet");
     }
 
