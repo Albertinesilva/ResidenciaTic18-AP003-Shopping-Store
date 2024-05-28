@@ -13,8 +13,9 @@ O objetivo primordial desta atividade é avaliar e fortalecer os conhecimentos e
 
 ## Equipe e Papéis
 
-- **Líder Técnico:** [Nome do Residente]
-- **Desenvolvedor:** [Nome do Residente]
-- **Desenvolvedor:** [Nome do Residente]
-- **Desenvolvedor:** [Nome do Residente]
-- **Desenvolvedor:** [Nome do Residente]
+- **Líder Técnico:** Albert
+- **Desenvolvedor:** Laio
+- **Desenvolvedor:** Leandro
+- **Desenvolvedor:** Carlos
+- **Desenvolvedor:** Biancardy
+- **Desenvolvedor:** Diogo
