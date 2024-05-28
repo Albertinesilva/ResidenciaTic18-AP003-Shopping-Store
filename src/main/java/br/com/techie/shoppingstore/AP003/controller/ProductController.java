@@ -122,6 +122,17 @@ public class ProductController {
         return ResponseEntity.noContent().build();
     }
 
+    @Operation(summary = "Create new score", description = "Request requires a Bearer Token. Access restricted to logged in ADMIN or CLIENT", 
+    security = @SecurityRequirement(name = "security"), responses = {
+            @ApiResponse(responseCode = "201", description = "Score created successfully.", 
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = ScoreVIEW.class))),
+            @ApiResponse(responseCode = "400", description = "Invalid score data provided.", 
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
+            @ApiResponse(responseCode = "403", description = "User without permission to access this resource.", 
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
+            @ApiResponse(responseCode = "422", description = "Invalid or incorrectly formatted fields.", 
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
+    })
     @PostMapping("/score")
     @PreAuthorize("hasAnyRole('ADMIN', 'CLIENT')")
     public ResponseEntity<ScoreVIEW> newScore(@RequestBody @Valid ScoreFORM scoreFORM){
@@ -129,6 +140,13 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.CREATED).body(view);
     }
 
+    @Operation(summary = "List all scores for a product", description = "Request requires a Bearer Token. Access restricted to logged in ADMIN or CLIENT", 
+    security = @SecurityRequirement(name = "security"), responses = {
+            @ApiResponse(responseCode = "200", description = "List of all scores for the specified product", 
+            content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = ScoreVIEW.class)))),
+            @ApiResponse(responseCode = "403", description = "User without permission to access this resource.", 
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
+    })
     @GetMapping("/{id}/scores")
     @PreAuthorize("hasAnyRole('ADMIN', 'CLIENT')")
     public ResponseEntity<?> getAllScores(@PathVariable Long id, Pageable pageable){
@@ -136,6 +154,14 @@ public class ProductController {
         return ResponseEntity.ok().body(scores);
     }
 
+    @Operation(summary = "Delete score", description = "Request requires a Bearer Token. Access restricted to logged in ADMIN", 
+    security = @SecurityRequirement(name = "security"), responses = {
+            @ApiResponse(responseCode = "204", description = "Score deleted successfully."),
+            @ApiResponse(responseCode = "403", description = "User without permission to access this resource.", 
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
+            @ApiResponse(responseCode = "404", description = "Score not found.", 
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
+    })
     @DeleteMapping("{id}/scores/{scoreId}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> deleteScore(@PathVariable Long id, @PathVariable Long scoreId){
