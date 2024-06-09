@@ -58,7 +58,7 @@ public class PaymentServiceTest {
         cart = new Cart();
         cart.setId(1L);
         cart.setTotalPrice(BigDecimal.valueOf(100));
-        paymentForm = new PaymentFORM(1L, LocalDateTime.now().plusDays(1), BigDecimal.valueOf(100), PaymentTypeEnum.CREDIT_CARD);
+        // paymentForm = new PaymentVIEW(1L, LocalDateTime.now().plusDays(1).toString(), BigDecimal.valueOf(100), PaymentTypeEnum.CREDIT_CARD);
         paymentView = new PaymentVIEW(1L, LocalDateTime.now().plusDays(1).toString(), BigDecimal.valueOf(100), PaymentTypeEnum.CREDIT_CARD);
     }
 
